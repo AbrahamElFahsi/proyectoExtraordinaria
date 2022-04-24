@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="css/style.css">
-<footer id="footer">
-      <div style="padding: 20px 0;  background: #252525;">
-        <div class="container">
+<footer id="footer" class="mt-5">
+      <div>
+        <div class="container-fluid bg-dark">
           <div class="row d-flex justify-content-between">
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="">

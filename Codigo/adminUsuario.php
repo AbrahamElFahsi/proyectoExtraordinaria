@@ -15,7 +15,11 @@ $conexion=conectar(false);
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
-    <?php include 'nav.php'; ?>
+<?php   include 'nav.php';
+            if ($_SESSION['Rol']!="adminnistrador") {
+                header('Location: principal.php');
+            }
+    ?>
 <div class="container forms">
     <div class="row"><h1 class="text-center col-12">Panel de administrador de usuario</h1></div>
         <div class=row>  

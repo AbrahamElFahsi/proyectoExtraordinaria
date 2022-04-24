@@ -17,7 +17,7 @@
 </head>
 <body>
 <?php include 'nav.php'; ?>
-<div class="container forms">
+<div class="container forms mb-5">
     <div class="row"><h1 class="text-center col-12">Modificar Usuario</h1></div>
     <div class="row">
         <div class="col-md-6">
@@ -37,7 +37,7 @@
             </div>
         </div> 
         <div class="col-md-12">
-                <input type="submit" value="Login" class="btn col-12 bg-info" id="login">
+                <input type="submit" value="Login" class="btn col-12 boton" id="login">
                 <?php
                     if (isset($_SESSION['usuario'])) {
                         $id=$_SESSION['idUsuario'];
@@ -78,7 +78,7 @@
         </div> 
     </div>
 </div>
-    
+<?php include 'footer.php'; ?>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>

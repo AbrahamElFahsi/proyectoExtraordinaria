@@ -1,6 +1,7 @@
 <?php
 require 'ConectorBD.php';
 require 'BD/DAOHilo.php';
+require 'BD/DAOArticulo.php';
 $conexion=conectar(false);
 ?>
 <!DOCTYPE html>
@@ -13,47 +14,84 @@ $conexion=conectar(false);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<?php   include 'nav.php';
+    <?php   include 'nav.php';
             if ($_SESSION['Rol']!="adminnistrador") {
                 header('Location: principal.php');
             }
     ?>
-<div class="container forms">
+<div class="container-fluid forms">
     <div class="row"><h1 class="text-center col-12">Panel de administrador de usuario</h1></div>
         <div class="row">  
             <table class="table table-responsive table-striped">
                 <thead>
                     <tr>
-                    <th scope="col">Id Hilo</th>
-                    <th scope="col">Tema del Hilo</th>
-                    <th scope="col">Descripcion del hilo</th>
-                    <th scope="col">Imagen</th>
+                    <th scope="col">Id ARTICULO</th>
+                    <th scope="col">Cabecera</th>
+                    <th scope="col">cuerpo</th>
+                    <th scope="col">pie</th>
                     <th scope="col">Usuario creador</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">dni</th>
+                    <th scope="col">Imagen del articulo</th>
+                    <th scope="col">idHilo</th>
+                    <th scope="col">tema</th>
+                    <th scope="col">Imagen hilo</th>
+                    <th scope="col">descripcion</th>
+                    <th scope="col">Creador Hilo</th>
+                    <th scope="col">Id creador Hilo</th>
+                    <th scope="col">estado</th>
                     <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                        $hilo=consultaHilos($conexion);
-                        While($hiloMostrar=mysqli_fetch_assoc($hilo)){
+                        $articulos=todosArticulos($conexion);
+                        While($articuloMostrar=mysqli_fetch_assoc($articulos)){
                     ?>
                     <tr>
-                    <th scope="row"><?php echo $hiloMostrar['idHilo']; ?></th>
-                    <td><?php echo $hiloMostrar['tema']; ?></td>
-                    <td><?php echo $hiloMostrar['descripcion']; ?></td>
-                    <td><img src="<?php echo $hiloMostrar['imagen']; ?>"></td>
-                    <td><?php echo $hiloMostrar['usuario']; ?></td>
-                    <td><?php echo $hiloMostrar['nombre']; ?></td>
-                    <td><?php echo $hiloMostrar['apellidos']; ?></td>
-                    <td><?php echo $hiloMostrar['dni']; ?></td>
+                    <th style="color: #fcffb4;" scope="row"><?php echo $articuloMostrar['idArticulo']; ?></th>
+                    <td style="color: #fcffb4;"><?php echo $articuloMostrar['cabecera']; ?></td>
+                    <td style="color: #fcffb4;"><?php echo $articuloMostrar['cuerpo']; ?></td>
+                    <td style="color: #fcffb4;"><?php echo $articuloMostrar['pie']; ?></td>
+                    <td style="color: #fcffb4;"><?php echo $articuloMostrar['idCreadorArticulo']; ?></td>
+                    <td><img src="<?php echo $articuloMostrar['imagenArticulo']; ?>"></td>
+                    <td style="color: #fcffb4;"><?php echo $articuloMostrar['idHilo']; ?></td>
+                    <td style="color: #fcffb4;"><?php echo $articuloMostrar['tema']; ?></td>
+                    <td><img src="<?php echo $articuloMostrar['imagenHilo']; ?>"></td>
+                    <td style="color: #fcffb4;"><?php echo $articuloMostrar['descripcion']; ?></td>
+                    <td style="color: #fcffb4;"><?php echo $articuloMostrar['creadorHilo']; ?></td>
+                    <td style="color: #fcffb4;"><?php echo $articuloMostrar['idCreadorHilo']; ?></td>
+                    <td style="color: #fcffb4;"><?php if ($articuloMostrar['estado']!="eliminado") {
+                        ?>  
+                        <form action="adminArticulo.php" method="post"><input type="hidden" name="idArticuloMarcar" value="<?php echo $articuloMostrar['idArticulo']; ?>"> <input type="submit" class="text-danger" name="MarcarArticuEliminado" value="Marcar como eliminado"></form>
+                        <?php
+
+                    }else {
+                        ?>
+                        <form action="adminArticulo.php" method="post"><input type="hidden" name="idArticuloQuitarMarcar" value="<?php echo $articuloMostrar['idArticulo']; ?>"> <input type="submit" class="text-danger" name="QuitarMarcaArticuEliminado" value="Quitar de eliminado"></form>
+                        <?php
+                    }
+                     
+                    if (isset($_POST['MarcarArticuEliminado']) && $articuloMostrar['idArticulo']==$_POST['idArticuloMarcar']) {
+                        $resultadoElim=actualizarArticulo($conexion,"estado","eliminado",$_POST['idArticuloMarcar']);
+                        if ($resultadoElim) {
+                            echo "<p>Se marco como eliminado</p>";
+                        }else {
+                            echo "<p>No se consigio modificar el estado</p>";
+                        }
+                    }elseif (isset($_POST['QuitarMarcaArticuEliminado']) && $articuloMostrar['idArticulo']==$_POST['idArticuloQuitarMarcar']) {
+                        $resultadoElim=actualizarArticulo($conexion,"estado","Null",$_POST['idArticuloQuitarMarcar']);
+                        if ($resultadoElim) {
+                            echo "<p>Se quito marca eliminado</p>";
+                        }else {
+                            echo "<p>No se consigio modificar el estado</p>";
+                        }
+                    }
+                     echo $articuloMostrar['estado']; ?></td>
                     <td>
-                        <form action="modificarHilo.php" method="POST" class="row"><input type="hidden" name="idHiloModi" value="<?php echo $hiloMostrar['idHilo']; ?>"><input type="submit" value="modificar" name="modificarHilo" class="btn btn-primary col-12"></form>
-                        <form action="eliminarHilo.php" method="POST" class="row"><input type="hidden" name="idHiloElim" value="<?php echo $hiloMostrar['idHilo']; ?>"><input type="submit" value="Eliminar" name="eliminarHilo" class="btn btn-danger col-12"></form>
+                        <form action="modificarArticulo.php" method="POST" class="row"><input type="hidden" name="idArticuloModi" value="<?php echo $articuloMostrar['idArticulo']; ?>"><input type="submit" style="color: #fcffb4;" value="modificar" name="modificarArticulo" class="btn btn-primary col-12"></form>
+                        <form action="eliminarArticulo.php" method="POST" class="row"><input type="hidden" name="idArticuloElim" value="<?php echo $articuloMostrar['idArticulo']; ?>"><input type="submit" style="color: #fcffb4;" value="Eliminar" name="eliminarArticulo" class="btn btn-danger col-12"></form>
                     </td>
                     </tr>
                     <?php
@@ -63,10 +101,11 @@ $conexion=conectar(false);
             </table>
         </div>
         <div class="row v-center">
-            <a href="crearHilo.php" class="btn btn-primary col-11 mx-auto mb-3" role="button">Crear usuario</a>
+            <a href="crearArticulo.php" class="btn btn-primary col-11 mx-auto mb-3" role="button">Crear Articulo</a>
         </div>
+        <div class="row">
         <?php
-                                            if (isset($_POST['crearHilo'])) {
+                                            if (isset($_POST['crearArticulo'])) {
                                             
                                                 //Recogemos el archivo enviado por el formulario
                                                 $archivo = $_FILES['archivo']['name'];
@@ -117,6 +156,8 @@ $conexion=conectar(false);
                                             }
                                         ?>
     
+    
+        </div>
 </div>
     <?php include 'footer.php'; ?>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

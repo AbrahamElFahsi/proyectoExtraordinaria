@@ -11,8 +11,12 @@
         
         require 'ConectorBD.php';
         require 'BD/DAOUsuario.php'; 
-        require 'BD/DAOHilo.php'; 
+        require 'BD/DAOHilo.php';
+        require 'BD/DAOArticulo.php'; 
         include 'nav.php';
+        if ($_SESSION['Rol']!="adminnistrador") {
+            header('Location: principal.php');
+        }
         $conexion=conectar(false)
     ?>
     <link rel="stylesheet" href="css/style.css">
@@ -27,7 +31,7 @@
     <div class="row"><h1 class="text-center col-12">Crear Articulo</h1></div>
     <div class="row">
         <div class="col-12">
-            <form action="adminArticulo.php" method="post" enctype="multipart/form-data" id="crearHiloForm">
+            <form action="adminArticulo.php" method="post" enctype="multipart/form-data" id="crearArticuloForm">
                 <div class="form-group col-12">
                     <p class="text-center">Imagen del hilo</p>
                     <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>  
@@ -35,21 +39,39 @@
                     <label id="upload-label" for="upload" class="font-weight-light text-muted">Elija una imagen representativa del Articulo</label>
                 </div>   
                 <div class="form-group col-12">
-                    <label for="tema">Cabecera <i class="fa-solid fa-grip-lines"></i></i></label>
+                    <label for="hilo">Hilo del articulo <i class="fa-solid fa-arrows-to-dot"></i></i></i></label>
+                    <select name="hilo" id="hilo" class="col-12">
+                        <option value=0>Seleccione un Hilo</option>
+                        <?php
+                        $hilo=consultaSoloHilos($conexion);
+                        
+                        while ($HiloArticulo=mysqli_fetch_assoc($hilo)) {
+                            ?>
+                            <option value=<?php echo $HiloArticulo['idHilo'] ?>><?php echo $HiloArticulo['tema'] ?></option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="form-group col-12">
+                    <label for="cabecera">Cabecera <i class="fa-solid fa-grip-lines"></i></i></label>
                     <textarea class="form-control" id="cabecera" maxlength="150" name="cabecera" rows="2"></textarea> 
-                    <small id="avisoTema">La cabecera del que trata el hilo, maximo 100 caracteres</small>
+                    <small id="avisocabecera">La cabecera del que trata el hilo, maximo 100 caracteres</small>
                 </div>
                 <div class="form-group col-12">
-                    <label for="tema">Cuerpo <i class="fa-solid fa-align-justify"></i></i></i></label>
+                    <label for="cuerpo">Cuerpo <i class="fa-solid fa-align-justify"></i></i></i></label>
                     <textarea class="form-control" id="cuerpo" maxlength="20000" name="cuerpo" rows="20"></textarea> 
-                    <small id="avisoTema">El tema del que trata el hilo, maximo 100 caracteres</small>
+                    <small id="avisocuerpo">El tema del que trata el hilo, maximo 100 caracteres</small>
                 </div>
                 <div class="form-group col-12">
-                    <label for="tema">pie <i class="fa-solid fa-arrow-down"></i></label>
+                    <label for="pie">pie <i class="fa-solid fa-arrow-down"></i></label>
                     <textarea class="form-control" id="pie" maxlength="150" name="pie" rows="8"></textarea> 
-                    <small id="avisoTema">El tema del que trata el hilo, maximo 100 caracteres</small>
-                </div>        
-                <input type="submit" value="Modificar tema" name="crearHilo" class="btn btn-primary col-11 mx-auto">           
+                    <small id="avisopie">El tema del que trata el hilo, maximo 100 caracteres</small>
+                    <small id="avisoForm"></small> 
+                </div>
+                <div class="form-group col-12">
+                    <input type="submit" value="Modificar tema" name="crearArticulo" class="btn btn-primary col-12 mx-auto">   
+                </div>
             </form>
         </div>
     </div>

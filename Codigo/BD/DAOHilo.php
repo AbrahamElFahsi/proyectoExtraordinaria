@@ -4,6 +4,11 @@ function consultaHilos($conexion){
     $resultado = mysqli_query($conexion,$consulta);
     return $resultado;
 }
+function consultaSoloHilos($conexion){
+    $consulta = "SELECT * from hilo ";
+    $resultado = mysqli_query($conexion,$consulta);
+    return $resultado;
+}
 function eliminarHilosArticulos($conexion,$idHilo){
     $consulta = "DELETE FROM `articulo` WHERE `idHilo` = $idHilo";
     $resultado = mysqli_query($conexion,$consulta);

@@ -9,7 +9,10 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
     <link rel="stylesheet" href="css/style.css">
     <?php 
-        include 'nav.php';
+         include 'nav.php';
+         if ($_SESSION['Rol']!="adminnistrador") {
+             header('Location: principal.php');
+         }
         require 'ConectorBD.php';
         require 'BD/DAOUsuario.php'; 
         require 'BD/DAOHilo.php'; 
@@ -30,27 +33,21 @@
         <div class="col-12">
             <form action="adminHilo.php" method="post" enctype="multipart/form-data" id="crearHiloForm">
                     
-                                <div class="form-group col-12">
-                                    <p class="text-center">Imagen del hilo</p>
-                                    <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>  
-                                    <input id="upload" name="archivo" id="image" type="file" onchange="readURL(this);" class="form-control border-0">
-                                    <label id="upload-label" for="upload" class="font-weight-light text-muted">Elija una imagen representativa del hilo</label>
-                                    
-                                </div>
-                                
+                        <div class="form-group col-12">
+                            <p class="text-center">Imagen del hilo</p>
+                            <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>  
+                            <input id="upload" name="archivo" id="image" type="file" onchange="readURL(this);" class="form-control border-0">
+                            <label id="upload-label" for="upload" class="">Elija una imagen representativa del hilo</label>
+                        </div>  
                         </div>
                         <div class="col-12">
-
                                 <div class="form-group col-12">
                                     <label for="tema">Tema: <?php echo $hilo['tema']; ?><i class="fas fa-user"></i></label>
                                     <input type="text" id="tema" name="tema" maxlength="99" class="form-control" placeholder="Enter User"> 
                                     <small id="avisoTema">El tema del que trata el hilo, maximo 100 caracteres</small>
                                 </div>
-
-
                         </div>
                         <div class="col-12">
-                            
                                 <div class="form-group col-12">
                                     <label for="descripcion">Descripcion <i class="fas fa-user"></i></label>
                                     <textarea class="form-control" id="descripcion" maxlength="199" name="descripcion" rows="3"><?php echo str_replace('</p>',"\n",str_replace('<p>', '', $hilo['descripcion'])); ?></textarea>
@@ -59,9 +56,7 @@
                                     <small id="avisoForm"></small>
                                 </div>
                         </div>
-                        
-                            <input type="submit" value="Modificar tema" name="crearHilo" class="btn btn-primary col-11 mx-auto">
-                          
+                        <input type="submit" value="Modificar tema" name="crearHilo" class="text-dark mb-1 col-11 mx-auto boton">   
             </form>
        
         </div>

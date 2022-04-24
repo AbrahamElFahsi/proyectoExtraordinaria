@@ -24,7 +24,7 @@
 
         
     ?>
-<div class="container forms">
+<div class="container forms mb-5">
     <div class="row"><h1 class="text-center col-12">Ingreso</h1></div>
     <div class="row">
         <div class="col-md-6">
@@ -139,7 +139,7 @@
                 
             </div>
             <div class="col-md-12">
-                <input type="submit" class="btn col-12 bg-info" value="Enviar" name="ingreso" id="formulario">
+                <input type="submit" class="btn col-12 boton" value="Enviar" name="ingreso" id="formulario">
                 <a href="" class="d-block col-12">Volver a Login</a>
                 
             </div>

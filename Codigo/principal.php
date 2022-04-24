@@ -13,14 +13,16 @@ $conexion=conectar(false);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
-<body>
+<body">
 <?php include 'nav.php'; ?>
 <! –– generamos un contenedor que va a estar compuesto por dos columnas–>
 <div class="container-fluid">
     <div class="row">
     <! ––Para las tarjetas con los hilos que va a tener nuestra pagina–>
-        <div class="col-md-9 bg-warning">
+        <div class="col-md-9">
             <div class="container-fluid">
                 <div class="row">
                 <h1 class="text-center col-12" class="col-12 text-center">Hilos para el cuidado de tus gatos</h1>
@@ -28,14 +30,14 @@ $conexion=conectar(false);
                 $hilos=todosHilos($conexion);
                     while($hilo = mysqli_fetch_assoc($hilos)){
                 ?>
-                <div class="card col-md-5 tarjetas p-3 m-3 text-center" >
+                <div class="card col-md-5 tarjetas bg-dark p-3 m-3 text-center" >
                     <img class="card-img-top" src="<?php echo $hilo['imagen']; ?>" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $hilo['tema']; ?></h5>
                         <div class="card-text" style="height:130px;"><?php echo $hilo['descripcion']; ?></div>
                         <form action="hilo.php" method="POST">
                             <input type="hidden" name="idHilo" value="<?php echo $hilo['idHilo']; ?>">
-                            <input type="submit" class="btn btn-primary" value="Mostrar Informacion" name="verHilo">
+                            <input type="submit" class="btn boton" value="Mostrar Informacion" name="verHilo">
                         </form>
                     </div>
                 </div>
@@ -45,7 +47,7 @@ $conexion=conectar(false);
     </div> 
     
     <! ––Para un carroussel que llevara 5 hilos y otro 15 articulos aleatorios–>
-    <div class="col-md-3 bg-primary">
+    <div class="col-md-3">
         <div class="container-fluid">
         <! ––Para un carroussel que llevara 5 hilos–>
             <div class="row">

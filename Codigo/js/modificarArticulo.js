@@ -30,38 +30,72 @@ function showFileName( event ) {
   var fileName = input.files[0].name;
   infoArea.textContent = 'File name: ' + fileName;
 }
+//Validar Envio imagen
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('modificarImagenArticulo').addEventListener('submit', modificarImagenArticulo); 
+  });
+  
+  function modificarImagenArticulo(evento) {
+    if(!introImagen){
+        
+        evento.preventDefault();
+        document.getElementById('avisoImagen').innerHTML="Seleccione una imagen antes de modificar";
+    }
+    }
 //Cabecera
 let cabecera=document.getElementById('cabecera');
 let cabeceraValidada=false;
 function validarCabecera(){
-  if (cabecera.value!=null && cabecera.value!=undefined) {
+  if (cabecera.value!=null && cabecera.value!=undefined && cabecera.value!="") {
       cabeceraValidada=true;
+      document.getElementById('avisocabecera').innerHTML=" ";
   }else{
       cabeceraValidada=false;
+      document.getElementById('avisocabecera').innerHTML="Rellene la cabecera para modificarla";
   }
 }
-
 cabecera.addEventListener('keyup',validarCabecera);
+//Validar Envio cabecera
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('modificarCabeceraArticulo').addEventListener('submit', modificarCabeceraArticulo); 
+  });
+  
+  function modificarCabeceraArticulo(evento) {
+    if(!cabeceraValidada){
+        evento.preventDefault();
+        document.getElementById('avisoEnvioCabecera').innerHTML="Rellene la cabecera";
+    }
+    }
+
 //Hilo
 let Hilo=document.getElementById('hilo');
 let hiloValidado=false;
 function validarHilo(){
   if (Hilo.value!=0) {
       hiloValidado=true;
-      console.log(Hilo.value);
   }else{
       hiloValidado=false;
-      console.log(Hilo.value);
   }
 }
-
 Hilo.addEventListener('change',validarHilo);
+//Validar Envio Hilo
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('modificarHilodeArticulo').addEventListener('submit', modificarHiloArticulo); 
+  });
+  
+  function modificarHiloArticulo(evento) {
+    if(!hiloValidado){
+        evento.preventDefault();
+        document.getElementById('avisoHilo').innerHTML="elija una opcion valida";
+    }
+    }
+
 //Cuerpo
 let cuerpo=document.getElementById('cuerpo');
 let cuerpoValidado;
 let cuerpoTratado;
 function validarCuerpo(){
-    if (cuerpo.value!="" || cuerpo.value!=undefined) {
+    if (cuerpo.value!="" || cuerpo.value!=undefined || cuerpo.value!=null) {
         let texto=cuerpo.value.split(/\r?\n/g);
         let saltos=texto.length;
         switch (saltos) {
@@ -88,15 +122,30 @@ function validarCuerpo(){
                 break;
         }
         cuerpoValidado=true;
+        document.getElementById('avisoCuerpo').innerHTML=" ";
         console.log(cuerpoTratado);
         
     }else{
         cuerpoValidado=false;
+        document.getElementById('avisoCuerpo').innerHTML="Rellene el campo para modificarlo ";
     }
 }
 
-cuerpo.addEventListener('keyup',validarCuerpo);
 cuerpo.addEventListener('keypress',validarCuerpo);
+//Validar Envio Cuerpo
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('modiCuerArticulo').addEventListener('submit', modificarCuerpoArticulo); 
+  });
+  
+  function modificarCuerpoArticulo(evento) {
+    if(!cuerpoValidado){
+        evento.preventDefault();
+        document.getElementById('avisoEnvioCuerpo').innerHTML="Debe rellenar correctamente el campo";
+    }else{
+        cuerpo.value=cuerpoTratado;
+    }
+    }
+
 //Pie de Post
 let pie=document.getElementById('pie');
 let pieValidado;
@@ -138,20 +187,19 @@ function validarPie(){
 
 pie.addEventListener('keyup',validarPie);
 pie.addEventListener('keypress',validarPie);
-//Validar Envio
+//Validar Envio pie
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById('crearArticuloForm').addEventListener('submit', envioArticulo); 
+    document.getElementById('modiPieForm').addEventListener('submit', envioPieArticulo); 
   });
   
-  function envioArticulo(evento) {
-    if(!cabeceraValidada || !cuerpoValidado || !pieValidado || !introImagen || Hilo.value==0){
+  function envioPieArticulo(evento) {
+    if(!pieValidado){
         
         evento.preventDefault();
-        document.getElementById('avisoForm').innerHTML="Debe ser rellenado correctamente antes de enviar";
+        document.getElementById('avisoenvioPie').innerHTML="Debe ser rellenado correctamente antes de enviar";
     }else{
-        cuerpo.value=cuerpoTratado;
+      
         pie.value=pieTratado;
     }
     }
     
-//Cambiar parrafos html a usuario si aparece

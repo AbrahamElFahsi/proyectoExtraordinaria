@@ -1,6 +1,7 @@
 <?php
 require 'ConectorBD.php';
 require 'BD/DAOHilo.php';
+require 'BD/DAOArticulo.php';
 $conexion=conectar(false);
 ?>
 <!DOCTYPE html>
@@ -22,8 +23,8 @@ $conexion=conectar(false);
     ?>
 <div class="container forms">
 <?php
- if (isset($_POST['eliminarHilo'])) {
-     $_SESSION['hiloElim']=$_POST['idHiloElim'];
+ if (isset($_POST['eliminarArticulo'])) {
+     $_SESSION['idArticuloElimninar']=$_POST['idArticuloElim'];
  }
 ?>
     <div class="row"><h1 class="text-center col-12">Eliminar usuario</h1></div>
@@ -32,18 +33,15 @@ $conexion=conectar(false);
             <div class="container">
                 <h1 class="display-4">¿Esta seguro?</h1>
                 
-                <a href="adminHilo.php" class="btn btn-primary col-11 mx-auto mb-3" role="button">Volver al administrador de hilos</a>
-                <?php
-                if (empty($_POST['eliminarHiloCambio'])) {
-                ?>
-                <p class="lead">Eliminar junto a todos sus articulo tambien</p>
-                <form action="eliminarHilo.php" method="POST">
-                    <input type="submit" value="Eliminar Hilo articulos" class="btn btn-danger col-11 mx-auto mb-3" name="EliminarHiloArticulo">
+                <a href="adminArticulo.php" class="btn btn-primary col-11 mx-auto mb-3" role="button">Volver al administrador de articulos</a>
+                <hr>
+                <h3>Con este paso se eliminara permanente mente</h3>
+                <form action="eliminarArticulo.php" method="POST">
+                    <input type="submit" value="Eliminar Articulo" class="btn btn-danger col-11 mx-auto mb-3" name="EliminarArticulo">
                 </form>
-                <?php } ?>
                 <?php
-                if (isset($_POST['EliminarHiloArticulo'])) {
-                    $resultadoEliminar=eliminarHilosArticulos($conexion,$_SESSION['hiloElim']);
+                if (isset($_POST['EliminarArticulo'])) {
+                    $resultadoEliminar=eliminarArticulo($conexion,$_SESSION['idArticuloElimninar']);
                     if ($resultadoEliminar) {
                         ?>
                         <p class="lead">Se elimino correctamente</p>
@@ -72,7 +70,7 @@ $conexion=conectar(false);
                             
                         
                             while ($hilos=mysqli_fetch_assoc($hilosCambio)) {
-                                if ($hilos['idHilo']!=$_SESSION['hiloElim']) {   
+                                if ($hilos['idHilo']!=$_SESSION['idArticuloElimninar']) {   
                                     ?>
                                     <option value="<?php echo $hilos['idHilo']; ?>"><?php echo $hilos['idHilo']."-".$hilos['tema']; ?></option>
                                     <?php
@@ -86,7 +84,7 @@ $conexion=conectar(false);
                     }
                 }
                 if (isset($_POST['eliminarHiloCambio'])) {
-                    $resulEliminarHilo=eliminarHiloConCambioDeArticulos($conexion,$_SESSION['hiloElim'],$_POST['hiloNuevo']);
+                    $resulEliminarHilo=eliminarHiloConCambioDeArticulos($conexion,$_SESSION['idArticuloElimninar'],$_POST['hiloNuevo']);
                     if ($resulEliminarHilo) {
                         echo "Se modifico el hilo de los articulos de la seccion de id".$_SESSION['hiloElim']." y se elimino el hilo";
                     }else{

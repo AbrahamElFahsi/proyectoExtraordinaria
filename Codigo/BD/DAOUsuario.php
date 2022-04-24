@@ -26,7 +26,7 @@ function consultaUsuario($conexion,$usuario){
 }
 //Modificar campo
 function modificarUsuario($conexion,$idUsuario,$campo,$nuevoValor){
-    $consulta = "UPDATE `usuario` SET `$campo` = '$nuevoValor' WHERE `idUsuario` = $idUsuario;";
+    $consulta = "UPDATE usuario SET $campo = '$nuevoValor' WHERE idUsuario = $idUsuario;";
     $resultado = mysqli_query($conexion,$consulta);
     return $resultado;
 }

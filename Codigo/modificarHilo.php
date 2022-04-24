@@ -33,12 +33,12 @@ $conexion=conectar(false);
                 <form action="ModificarHilo.php" method="post" enctype="multipart/form-data">
                     <div class="form-group col-12">
                         <p class="text-center">Modificar imagen</p>
-                        <div class="image-area mt-4"><img id="imageResult" src="<?php echo $hilo['imagen'] ?>" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>  
+                        <div class="image-area mt-4"><img id="imageResult" src="<?php echo $hilo['imagen'] ?>" alt="" class="col-12 rounded shadow-sm mx-auto d-block"></div>  
                         <input id="upload" name="archivo" type="file" onchange="readURL(this);" class="form-control border-0">
-                        <label id="upload-label" for="upload" class="font-weight-light text-muted">Elija una imagen del producto</label>
+                        <label id="upload-label" for="upload">Elija una imagen del producto</label>
                         
                     </div>
-                    <input type="submit" value="Modificar Imagen" name="modificarImagenHilo" class="btn btn-primary">
+                    <input type="submit" value="Modificar Imagen" name="modificarImagenHilo" class="btn boton col-12 mx-auto">
                 </form>
                     <?php
                                 if (isset($_POST['modificarImagenHilo'])) {
@@ -94,15 +94,15 @@ $conexion=conectar(false);
                         <input type="text" id="tema" name="tema" maxlength="99" class="form-control" placeholder="Enter User"> 
                         <small id="avisoTema">El tema del que trata el hilo, maximo 100 caracteres</small>
                     </div>
-                    <input type="submit" value="Modificar tema" name="modificarTemaHilo" class="btn btn-primary">
+                    <input type="submit" value="Modificar tema" name="modificarTemaHilo" class="btn boton col-12 mx-auto">
                 </form>
                 <?php
                     if (isset($_POST['modificarTemaHilo'])) {
                         $resulModificarDescripcion=modificarHilo($conexion,$_SESSION['hiloAModificar'],"tema",$_POST['tema']);
                         if ($resulModificarDescripcion) {
-                            echo "Se modifico correctamente el tema</br>".$_POST['tema'];
+                            echo "<p>Se modifico correctamente el tema</p></br>".$_POST['tema'];
                         }else{
-                            echo "No se consigio intentelo de nuevo";
+                            echo "<p>No se consigio intentelo de nuevo</p>";
                         }
                     }
                 ?>
@@ -116,15 +116,16 @@ $conexion=conectar(false);
                         <small id="avisoDescripcion">El Descripcion del que trata el hilo, maximo 200 caracteres</small>
                         
                     </div>
-                    <input type="submit" value="Modificar tema" name="modificarDescripHilo" class="btn btn-primary">
+                    <input type="submit" value="Modificar descripción" name="modificarDescripHilo" class="btn boton col-12 mx-auto mb-2">
                 </form>
+                 
                 <?php
                     if (isset($_POST['modificarDescripHilo'])) {
                         $resulModificarDescripcion=modificarHilo($conexion,$_SESSION['hiloAModificar'],"descripcion",$_POST['descripcion']);
                         if ($resulModificarDescripcion) {
-                            echo "Se modifico correctamente la descripcion</br>".$_POST['descripcion'];
+                            echo "<p>Se modifico correctamente la descripcion</p></br>".$_POST['descripcion'];
                         }else{
-                            echo "No se consigio intentelo de nuevo";
+                            echo "<p>No se consigio intentelo de nuevo</p>";
                         }
                     }
                 ?>

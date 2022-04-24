@@ -19,7 +19,10 @@ $conexion=conectar(false);
 <div class="container forms">
 <?php
  if (isset($_POST['eliminarUsuAdmin'])) {
-     $_SESSION['accion']="administrador";
+   if ($_SESSION['Rol']=="adminnistrador") {
+    $_SESSION['accion']="administrador";
+   }
+     
      $_SESSION['usuarioMo']=$_POST['idUsuElim'];
  }
 ?>
@@ -43,7 +46,7 @@ $conexion=conectar(false);
                   <hr class="my-4">
                   <p>Recuerde que si elimina su cuenta perderá lo que reste de su suscripcion </p>
                   <p class="lead">
-                  <input type="hidden" name="idUsuElim" value="<?php echo $usuElim['idUsuario']; ?>">
+                  <input type="hidden" name="idUsuElim" value="<?php echo $_SESSION['usuarioMo']; ?>">
                   <input type="submit" value="eliminarUsuario" name="eliminarUsu" class="btn btn-danger">
                 </form>
                 <hr class="my-4">
@@ -62,7 +65,7 @@ $conexion=conectar(false);
                 <h1 class="display-4">¿Esta seguro?</h1>
                 <p class="lead">Con este paso <?php echo $usuElim['usuario']; ?> no tendra acceso a todos los articulos</p>
                 <form action="eliminarUsuario.php" method="POST">
-                  <input type="hidden" name="idUsuElim" value="<?php echo $usuElim['idUsuario']; ?>">
+                  <input type="hidden" name="idUsuElim" value="<?php echo $_SESSION['usuarioMo']; ?>">
                   <input type="submit" value="eliminarUsuario" name="eliminarUsu" class="btn btn-danger">
                 </form>
                 <hr class="my-4">
@@ -72,7 +75,7 @@ $conexion=conectar(false);
 
 <?php
               }
-      }else {
+      }else{
         
         if ($_SESSION['Rol']=="usuario") {
       
@@ -99,6 +102,21 @@ $conexion=conectar(false);
 
           <?php
 
+                }else {
+                  ?>
+                  <div class="jumbotron col-12">
+                    <h1 class="display-4">¿Esta seguro?</h1>
+                    <p class="lead txt-danger">Con este paso perdera <?php echo $_SESSION['usuario']; ?> acceso a todos los articulos</p>
+                    <form action="eliminarUsuario.php" method="POST">
+                      <input type="hidden" name="idUsuElim" value="<?php echo $_SESSION['idUsuario']; ?>">
+                      <input type="submit" value="eliminarUsuario" name="eliminarUsu" class="btn btn-danger">
+                    </form>
+                    <hr class="my-4">
+                    <p class="lead">Elija esta opcion para volver a la pagina principal</p>
+                    <a href="principal.php" class="btn btn-primary">Volver a la página principal</a>
+                  </div>
+
+    <?php
                 }
               }
               else
@@ -127,7 +145,7 @@ $conexion=conectar(false);
     <div class="row">
     <?php
       if (isset($_POST['eliminarUsu'])) {
-        $resultadoEliminar=eliminarUsuario($conexion,$_SESSION['usuarioMo']);
+        $resultadoEliminar=eliminarUsuario($conexion,$_POST['idUsuElim']);
         if ($resultadoEliminar) {
           ?>
             <div class="jumbotron col-12">
@@ -136,6 +154,12 @@ $conexion=conectar(false);
               if ($_SESSION['Rol']=="administrador") {
                 ?>
                 <a href="adminUsuario.php" class="btn btn-primary">Administrador de usuario</a>
+                            
+                <?php
+              }else {
+                session_destroy();
+                ?>
+                <a href="principal.php" class="btn btn-primary">pagina principal</a>
                             
                 <?php
               }

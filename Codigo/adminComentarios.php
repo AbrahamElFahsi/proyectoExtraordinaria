@@ -1,6 +1,6 @@
 <?php
 require 'ConectorBD.php';
-require 'BD/DAOHilo.php';
+require 'BD/DAOComentarios.php';
 $conexion=conectar(false);
 ?>
 <!DOCTYPE html>
@@ -26,34 +26,27 @@ $conexion=conectar(false);
             <table class="table table-responsive table-striped">
                 <thead>
                     <tr>
-                    <th scope="col">Id Hilo</th>
-                    <th scope="col">Tema del Hilo</th>
-                    <th scope="col">Descripcion del hilo</th>
-                    <th scope="col">Imagen</th>
-                    <th scope="col">Usuario creador</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">dni</th>
+                    <th scope="col">Id Comentario</th>
+                    <th scope="col">Id Usuario</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Comentario</th>
+                    <th scope="col">Cabecera Articulo</th>
                     <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                        $hilo=consultaHilos($conexion);
+                        $hilo=todosComentarios($conexion);
                         While($hiloMostrar=mysqli_fetch_assoc($hilo)){
                     ?>
                     <tr>
-                    <th scope="row"><?php echo $hiloMostrar['idHilo']; ?></th>
-                    <td><?php echo $hiloMostrar['tema']; ?></td>
-                    <td><?php echo $hiloMostrar['descripcion']; ?></td>
-                    <td><img src="<?php echo $hiloMostrar['imagen']; ?>"></td>
+                    <th scope="row"><?php echo $hiloMostrar['idComentario']; ?></th>
+                    <td><?php echo $hiloMostrar['idUsuario']; ?></td>
                     <td><?php echo $hiloMostrar['usuario']; ?></td>
-                    <td><?php echo $hiloMostrar['nombre']; ?></td>
-                    <td><?php echo $hiloMostrar['apellidos']; ?></td>
-                    <td><?php echo $hiloMostrar['dni']; ?></td>
+                    <td><?php echo $hiloMostrar['contenido']; ?></td>
+                    <td><?php echo $hiloMostrar['cabecera']; ?></td>
                     <td>
-                        <form action="modificarHilo.php" method="POST" class="row"><input type="hidden" name="idHiloModi" value="<?php echo $hiloMostrar['idHilo']; ?>"><input type="submit" value="modificar" name="modificarHilo" class="btn btn-primary col-12"></form>
-                        <form action="eliminarHilo.php" method="POST" class="row"><input type="hidden" name="idHiloElim" value="<?php echo $hiloMostrar['idHilo']; ?>"><input type="submit" value="Eliminar" name="eliminarHilo" class="btn btn-danger col-12"></form>
+                        <form action="panelModeracion.php" method="POST" class="row"><input type="hidden" name="idComent" value="<?php echo $hiloMostrar['idComentario']; ?>"><input type="submit" value="modificar" name="moderador" class="btn btn-primary col-12"></form>
                     </td>
                     </tr>
                     <?php
