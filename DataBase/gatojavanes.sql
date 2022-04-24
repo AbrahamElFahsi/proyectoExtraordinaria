@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 24, 2022 at 01:14 PM
+-- Generation Time: Apr 24, 2022 at 04:50 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -35,19 +35,48 @@ CREATE TABLE `articulo` (
   `cuerpo` longtext,
   `pie` longtext,
   `cabecera` varchar(200) DEFAULT NULL,
-  `idUsuario` int(11) NOT NULL
+  `idUsuario` int(11) NOT NULL,
+  `premium` bit(1) DEFAULT NULL,
+  `estado` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `articulo`
 --
 
-INSERT INTO `articulo` (`idArticulo`, `image`, `idHilo`, `cuerpo`, `pie`, `cabecera`, `idUsuario`) VALUES
-(1, 'images/descarga.jpg', 1, '<p>Lo mejor en cuanto a cuidados de tu gato , en este peour e ehfbr </p><p>aaa aaaaaaaaa aaaaaa aaaaaa aaaaa</p>', 'pie', 'cabecera', 2),
-(2, 'images/descarga.jpg', 1, '<p>Lo mejor en cuanto a cuidados de tu gato , en este peour e ehfbr </p><p>aaa aaaaaaaaa aaaaaa aaaaaa aaaaa</p>', 'pie', 'cabecera', 2),
-(3, 'images/descarga.jpg', 1, '<p>Lo mejor en cuanto a cuidados de tu gato , en este peour e ehfbr </p><p>aaa aaaaaaaaa aaaaaa aaaaaa aaaaa</p>', 'pie', 'cabecera', 2),
-(4, 'images/descarga.jpg', 1, '<p>Lo mejor en cuanto a cuidados de tu gato , en este peour e ehfbr </p><p>aaa aaaaaaaaa aaaaaa aaaaaa aaaaa</p>', 'pie', 'cabecera', 2),
-(5, 'images/descarga.jpg', 1, '<p>Lo mejor en cuanto a cuidados de tu gato , en este peour e ehfbr </p><p>aaa aaaaaaaaa aaaaaa aaaaaa aaaaa</p>', 'pie', 'cabecera', 2);
+INSERT INTO `articulo` (`idArticulo`, `image`, `idHilo`, `cuerpo`, `pie`, `cabecera`, `idUsuario`, `premium`, `estado`) VALUES
+(1, 'images/descarga.jpg', 2, '<p>Lo mejor en cuanto a cuidados de tu gato , en este peour e ehfbr </p><p>aaa aaaaaaaaa aaaaaa aaaaaa aaaaahhhhh</p><p></p>', 'pie', 'cabecera', 2, b'0', 'null'),
+(2, 'images/descarga.jpg', 1, '<p>Lo mejor en cuanto a cuidados de tu gato , en este peour e ehfbr </p><p>aaa aaaaaaaaa aaaaaa aaaaaa aaaaa</p>', 'pie', 'cabecera', 2, b'0', 'eliminado'),
+(3, 'images/descarga.jpg', 1, '<p>Lo mejor en cuanto a cuidados de tu gato , en este peour e ehfbr </p><p>aaa aaaaaaaaa aaaaaa aaaaaa aaaaa</p>', 'pie', 'cabecera', 2, b'0', 'eliminado'),
+(4, 'images/descarga.jpg', 1, '<p>Lo mejor en cuanto a cuidados de tu gato , en este peour e ehfbr </p><p>aaa aaaaaaaaa aaaaaa aaaaaa aaaaa</p>', 'pie', 'cabecera', 2, b'1', NULL),
+(5, 'images/descarga.jpg', 1, '<p>Lo mejor en cuanto a cuidados de tu gato , en este peour e ehfbr </p><p>aaa aaaaaaaaa aaaaaa aaaaaa aaaaa</p>', 'pie', 'cabecera', 2, b'1', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `idComentario` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  `idRespuesta` int(11) NOT NULL,
+  `fecha` datetime DEFAULT NULL,
+  `contenido` varchar(180) DEFAULT NULL,
+  `idArticulo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `comentarios`
+--
+
+INSERT INTO `comentarios` (`idComentario`, `idUsuario`, `idRespuesta`, `fecha`, `contenido`, `idArticulo`) VALUES
+(48, 2, 0, '2022-04-16 15:34:17', 'Holaaaaaaaaa', 1),
+(49, 4, 0, '2022-04-16 15:34:58', 'asasas', 3),
+(50, 4, 0, '2022-04-16 15:35:01', 'asasasasa', 3),
+(52, 10, 0, '2022-04-19 14:17:42', 'Hola, soy nuevo necesito ayuda con el pelaje de mi gato', 1),
+(53, 10, 0, '2022-04-19 14:20:03', 'si alguien me responde', 1),
+(54, 1, 0, '2022-04-23 17:54:49', 'Hola chavales iwa', 1);
 
 -- --------------------------------------------------------
 
@@ -92,21 +121,22 @@ CREATE TABLE `usuario` (
   `Rol` varchar(15) DEFAULT NULL,
   `gmail` varchar(50) DEFAULT NULL,
   `telefono` varchar(9) DEFAULT NULL,
-  `fechaSuscripcion` datetime DEFAULT NULL
+  `fechaSuscripcion` datetime DEFAULT NULL,
+  `banner` datetime DEFAULT NULL,
+  `perBanned` bit(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `usuario`
 --
 
-INSERT INTO `usuario` (`idUsuario`, `nombre`, `apellidos`, `usuario`, `pass`, `dni`, `direccion`, `comunidad`, `provincia`, `cp`, `Rol`, `gmail`, `telefono`, `fechaSuscripcion`) VALUES
-(1, 'nombre', 'apellidos', 'Elleon', 'aaaaaaaa', 'dni', 'direccion', 'comunidad', 'provincia', 'cp', 'usuario', 'sasa@gmail.com', '777777777', NULL),
-(2, '', 'asdf fadfa asfsf', 'elgatillo', 'Fasi123@', '20481142X', 'dasde', 'Baleares', 'Baleares', '07015', 'administrador', 'EFESFSDFE@UYIBHEFC.ES', '654456456', '2022-09-14 10:24:32'),
-(4, 'nombre', 'apellidos', 'gatillo', 'aaaaaaaa', 'dni', 'direccion', 'comunidad', 'provincia', 'cp', 'usuario', 'sasa@gmail.com', '777777777', NULL),
-(5, 'Mohamed', 'Mohamed', 'Fasias', 'eLFAZZIO123@', '20481142x', 'C/ Castellon de la plana', 'Cantabria', 'Cantabria', '39009', 'usuario', 'fasi@gmail.com', '666666666', NULL),
-(6, 'Abraham', 'Mohamed', 'Fasilo', 'Pasi123@', '20481142X', 'C/ Castellon de la plana', 'Cantabria', 'Cantabria', '39004', 'adminnistrador', 'fasi@gmail.com', '654654654', NULL),
-(8, 'Lucia', 'Reyes', 'bugato', 'Sasi@123', '20481142X', 'C/ Castellon de la plana', 'andalucia', 'Huelva', '21003', 'usuario', 'Lucia@gmail.com', '666666666', NULL),
-(10, 'Hasan', 'El Fahsi', 'gatuso', 'Gatuso1@', '20481142X', 'C/ Castellon de la plana', 'andalucia', 'almería', '04000', 'usuario', 'Hasan@gmail.com', '654987987', NULL);
+INSERT INTO `usuario` (`idUsuario`, `nombre`, `apellidos`, `usuario`, `pass`, `dni`, `direccion`, `comunidad`, `provincia`, `cp`, `Rol`, `gmail`, `telefono`, `fechaSuscripcion`, `banner`, `perBanned`) VALUES
+(1, 'nombre', 'apellidos', 'Elleon', 'aaaaaaaa', 'dni', 'direccion', 'comunidad', 'provincia', 'cp', 'usuario', 'sasa@gmail.com', '777777777', '2022-06-29 02:08:16', '2022-06-29 02:08:16', NULL),
+(2, '', 'asdf fadfa asfsf', 'elgatillo', 'Fasi123@', '20481142X', 'dasde', 'Baleares', 'Baleares', '07015', 'adminnistrador', 'EFESFSDFE@UYIBHEFC.ES', '654456456', '2022-09-14 10:24:32', '2022-06-29 02:08:16', b'0'),
+(4, 'nombre', 'apellidos', 'gatillo', 'aaaaaaaa', 'dni', 'direccion', 'comunidad', 'provincia', 'cp', 'usuario', 'sasa@gmail.com', '777777777', NULL, NULL, NULL),
+(6, 'Abraham', 'Mohamed', 'Fasilo', 'Pasi123@', '20481142X', 'C/ Castellon de la plana', 'Cantabria', 'Cantabria', '39004', 'administrador', 'fasi@gmail.com', '654654654', NULL, NULL, NULL),
+(8, 'Lucia', 'Reyes', 'bugato', 'Sasi@123', '20481142X', 'C/ Castellon de la plana', 'andalucia', 'Huelva', '21003', 'usuario', 'Lucia@gmail.com', '666666666', NULL, NULL, NULL),
+(10, 'Hasan', 'El Fahsi', 'gatuso', 'Gatuso1@', '20481142X', 'C/ Castellon de la plana', 'andalucia', 'almería', '04000', 'usuario', 'Hasan@gmail.com', '654987987', NULL, '2022-04-29 20:51:00', b'0');
 
 --
 -- Indexes for dumped tables
@@ -119,6 +149,14 @@ ALTER TABLE `articulo`
   ADD PRIMARY KEY (`idArticulo`),
   ADD KEY `idHilo` (`idHilo`),
   ADD KEY `idUsuario` (`idUsuario`);
+
+--
+-- Indexes for table `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`idComentario`),
+  ADD KEY `idUsuario` (`idUsuario`),
+  ADD KEY `idArticulo` (`idArticulo`);
 
 --
 -- Indexes for table `hilo`
@@ -144,6 +182,12 @@ ALTER TABLE `articulo`
   MODIFY `idArticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `idComentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+
+--
 -- AUTO_INCREMENT for table `hilo`
 --
 ALTER TABLE `hilo`
@@ -165,6 +209,14 @@ ALTER TABLE `usuario`
 ALTER TABLE `articulo`
   ADD CONSTRAINT `articulo_ibfk_1` FOREIGN KEY (`idHilo`) REFERENCES `hilo` (`idHilo`),
   ADD CONSTRAINT `articulo_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`);
+
+--
+-- Constraints for table `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`),
+  ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`),
+  ADD CONSTRAINT `comentarios_ibfk_3` FOREIGN KEY (`idArticulo`) REFERENCES `articulo` (`idArticulo`);
 
 --
 -- Constraints for table `hilo`
