@@ -12,6 +12,8 @@ $conexion=conectar(false);
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
     
 </head>
 <body>
@@ -22,7 +24,11 @@ $conexion=conectar(false);
    if ($_SESSION['Rol']=="adminnistrador") {
     $_SESSION['accion']="administrador";
    }
-     
+   $fecha = date("Y-m-d H:i:00",time());
+   $baneo = $_SESSION['banner'];
+if ($fecha<$baneo || $_SESSION['perBanned']==1) {
+header('Location: principal.php');
+}
      $_SESSION['usuarioMo']=$_POST['idUsuElim'];
  }
 ?>
@@ -39,7 +45,7 @@ $conexion=conectar(false);
           if($fecha_actual > $fecha_entrada)
             {
       ?>
-              <div class="jumbotron col-12">
+              <div class="jumbotron-fluid col-12 mb-5 ml-2">
                 <h1 class="display-4">¿Esta seguro?</h1>
                 <p class="lead">La suscripcion de <?php echo $usuElim['usuario']; ?> termina el <?php echo date("d-m-Y", strtotime($usuElim['fechaSuscripcion'])); ?></p>
                 <form action="eliminarUsuario.php" method="POST">
@@ -47,11 +53,11 @@ $conexion=conectar(false);
                   <p>Recuerde que si elimina su cuenta perderá lo que reste de su suscripcion </p>
                   <p class="lead">
                   <input type="hidden" name="idUsuElim" value="<?php echo $_SESSION['usuarioMo']; ?>">
-                  <input type="submit" value="eliminarUsuario" name="eliminarUsu" class="btn btn-danger">
+                  <input type="submit" value="eliminarUsuario" name="eliminarUsu" class="btn botonElim">
                 </form>
                 <hr class="my-4">
                 <p class="lead">Elija esta opcion para volver a la pagina principal</p>
-                <a href="principal.php" class="btn btn-primary">Volver a la página principal</a>
+                <a href="principal.php" class="btn boton">Volver a la página principal</a>
               </div>
 
       <?php
@@ -61,16 +67,16 @@ $conexion=conectar(false);
           else
               {
 ?>
-              <div class="jumbotron col-12">
+              <div class="jumbotron-fluid col-12 mb-5 ml-2">
+                <h1 class="lead">Elija esta opcion para volver a la pagina principal</h1>
+                <a href="principal.php" class="btn boton">Volver a la página principal</a>
+                <hr class="my-4">
                 <h1 class="display-4">¿Esta seguro?</h1>
                 <p class="lead">Con este paso <?php echo $usuElim['usuario']; ?> no tendra acceso a todos los articulos</p>
                 <form action="eliminarUsuario.php" method="POST">
                   <input type="hidden" name="idUsuElim" value="<?php echo $_SESSION['usuarioMo']; ?>">
-                  <input type="submit" value="eliminarUsuario" name="eliminarUsu" class="btn btn-danger">
+                  <input type="submit" value="eliminarUsuario" name="eliminarUsu" class="btn botonElim">
                 </form>
-                <hr class="my-4">
-                <p class="lead">Elija esta opcion para volver a la pagina principal</p>
-                <a href="principal.php" class="btn btn-primary">Volver a la página principal</a>
               </div>
 
 <?php
@@ -85,35 +91,37 @@ $conexion=conectar(false);
               if($fecha_actual > $fecha_entrada)
                 {
           ?>
-                  <div class="jumbotron col-12">
+                  <div class="jumbotron-fluid col-12 mb-5 ml-2">
+                    <h1>Elija esta opcion para volver a la pagina principal</h1h1>
+                    <a href="principal.php" class="btn boton">Volver a la página principal</a>
+                    <hr class="my-4">
                     <h1 class="display-4">¿Esta seguro?</h1>
                     <p class="lead">Su suscripcion termina el <?php echo date("d-m-Y", strtotime($_SESSION['fechaSuscripcion'])); ?></p>
+                    <p class="lead">¿Desea anular su suscripción antes?</p>
+                    <a href="pago.php" class="boton">Anular</a>
                     <form action="eliminarUsuario.php" method="POST">
                       <hr class="my-4">
                       <p>Recuerde que si elimina su cuenta perderá lo que reste de su suscripcion </p>
                       <p class="lead">
                       <input type="hidden" name="idUsuElim" value="<?php echo $_SESSION['idUsuario']; ?>">
-                      <input type="submit" value="eliminarUsuario" name="eliminarUsu" class="btn btn-danger">
+                      <input type="submit" value="eliminarUsuario" name="eliminarUsu" class="btn botonElim">
                     </form>
-                    <hr class="my-4">
-                    <p class="lead">Elija esta opcion para volver a la pagina principal</p>
-                    <a href="principal.php" class="btn btn-primary">Volver a la página principal</a>
                   </div>
 
           <?php
 
                 }else {
                   ?>
-                  <div class="jumbotron col-12">
+                  <div class="jumbotron-fluid col-12 mb-5 ml-2">
+                    <h1>Elija esta opcion para volver a la pagina principal</h1>
+                    <a href="principal.php" class="btn boton">Volver a la página principal</a>
+                    <hr class="my-4">
                     <h1 class="display-4">¿Esta seguro?</h1>
                     <p class="lead txt-danger">Con este paso perdera <?php echo $_SESSION['usuario']; ?> acceso a todos los articulos</p>
                     <form action="eliminarUsuario.php" method="POST">
                       <input type="hidden" name="idUsuElim" value="<?php echo $_SESSION['idUsuario']; ?>">
-                      <input type="submit" value="eliminarUsuario" name="eliminarUsu" class="btn btn-danger">
+                      <input type="submit" value="eliminarUsuario" name="eliminarUsu" class="btn botonElim">
                     </form>
-                    <hr class="my-4">
-                    <p class="lead">Elija esta opcion para volver a la pagina principal</p>
-                    <a href="principal.php" class="btn btn-primary">Volver a la página principal</a>
                   </div>
 
     <?php
@@ -122,16 +130,16 @@ $conexion=conectar(false);
               else
                   {
     ?>
-                  <div class="jumbotron col-12">
+                  <div class="jumbotron-fluid col-12 mb-5 ml-2">
+                    <h1 class="lead">Elija esta opcion para volver a la pagina principal</h1>
+                    <a href="principal.php" class="btn boton">Volver a la página principal</a>
+                    <hr class="my-4">
                     <h1 class="display-4">¿Esta seguro?</h1>
                     <p class="lead txt-danger">Con este paso perdera <?php echo $_SESSION['usuario']; ?> acceso a todos los articulos</p>
                     <form action="eliminarUsuario.php" method="POST">
                       <input type="hidden" name="idUsuElim" value="<?php echo $_SESSION['idUsuario']; ?>">
-                      <input type="submit" value="eliminarUsuario" name="eliminarUsu" class="btn btn-danger">
+                      <input type="submit" value="eliminarUsuario" name="eliminarUsu" class="btn botonElim">
                     </form>
-                    <hr class="my-4">
-                    <p class="lead">Elija esta opcion para volver a la pagina principal</p>
-                    <a href="principal.php" class="btn btn-primary">Volver a la página principal</a>
                   </div>
 
     <?php
@@ -148,7 +156,7 @@ $conexion=conectar(false);
         $resultadoEliminar=eliminarUsuario($conexion,$_POST['idUsuElim']);
         if ($resultadoEliminar) {
           ?>
-            <div class="jumbotron col-12">
+            <div class="jumbotron-fluid col-12 mb-5">
               <h3 class="display-5">Se elimino correctamente</h3>
               <?php
               if ($_SESSION['Rol']=="administrador") {

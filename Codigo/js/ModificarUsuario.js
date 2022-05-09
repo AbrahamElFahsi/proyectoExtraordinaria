@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function() {
   function validarFormularioUsu(evento) {
     
     if(!inputValidado.Usuario){
-        avisoUsuaM.innerHTML="Debe rellenar el campo usuario antes de enviar";
         evento.preventDefault();
     }
     
@@ -341,10 +340,10 @@ document.addEventListener("DOMContentLoaded", function() {
     let comunidad=document.getElementById('comunidad');
     let provincia=document.getElementById('provincia');
     let cp=document.getElementById('cp');
-    let avisoCPC=document.getElementById('avisoCPC');
+    let avisoCPC=document.getElementById('avisoComunidad');
     let CPCValidado=false;
 function validarCPC(){
-    if(comunidad.value!="" || comunidad.value!=undefined || comunidad.value!=0 || provincia.value!="" || provincia.value!=undefined || provincia.value!=0 || cp.value!="" || cp.value!=undefined || cp.value!=0){
+    if(comunidad.value!="" && comunidad.value!=undefined && comunidad.value!=0 && provincia.value!="" && provincia.value!=undefined && provincia.value!=0 && cp.value!="" && cp.value!=undefined && cp.value!=0){
         comunidad.classList.remove('is-invalid');
         comunidad.classList.add('is-valid');
         provincia.classList.remove('is-invalid');

@@ -10,7 +10,7 @@ $conexion=conectar(false);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Administrador articulos</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -19,29 +19,29 @@ $conexion=conectar(false);
 <body>
     <?php   include 'nav.php';
             if ($_SESSION['Rol']!="adminnistrador") {
-                header('Location: principal.php');
+                header('Location: cerrarSesion.php');
             }
     ?>
 <div class="container-fluid forms">
-    <div class="row"><h1 class="text-center col-12">Panel de administrador de usuario</h1></div>
+    <div class="row"><h1 class="text-center col-12">Panel de administrador de Articulo</h1></div>
         <div class="row">  
-            <table class="table table-responsive table-striped">
+            <table class="table table-responsive table-striped col-12">
                 <thead>
                     <tr>
-                    <th scope="col">Id ARTICULO</th>
-                    <th scope="col">Cabecera</th>
-                    <th scope="col">cuerpo</th>
-                    <th scope="col">pie</th>
-                    <th scope="col">Usuario creador</th>
-                    <th scope="col">Imagen del articulo</th>
-                    <th scope="col">idHilo</th>
-                    <th scope="col">tema</th>
-                    <th scope="col">Imagen hilo</th>
-                    <th scope="col">descripcion</th>
-                    <th scope="col">Creador Hilo</th>
-                    <th scope="col">Id creador Hilo</th>
-                    <th scope="col">estado</th>
-                    <th scope="col">Acciones</th>
+                    <th scope="col"><p>Id ARTICULO</p></th>
+                    <th scope="col"><p>Cabecera</p></th>
+                    <th scope="col"><p>cuerpo</p></th>
+                    <th scope="col"><p>pie</p></th>
+                    <th scope="col"><p>Usuario creador</p></th>
+                    <th scope="col"><p>Imagen del articulo</p></th>
+                    <th scope="col"><p>idHilo</p></th>
+                    <th scope="col"><p>tema</p></th>
+                    <th scope="col"><p>Imagen hilo</p></th>
+                    <th scope="col"><p>descripcion</p></th>
+                    <th scope="col"><p>Creador Hilo</p></th>
+                    <th scope="col"><p>Id creador Hilo</p></th>
+                    <th scope="col"><p>estado</p></th>
+                    <th scope="col"><p>Acciones</p></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,26 +50,26 @@ $conexion=conectar(false);
                         While($articuloMostrar=mysqli_fetch_assoc($articulos)){
                     ?>
                     <tr>
-                    <th style="color: #fcffb4;" scope="row"><?php echo $articuloMostrar['idArticulo']; ?></th>
-                    <td style="color: #fcffb4;"><?php echo $articuloMostrar['cabecera']; ?></td>
-                    <td style="color: #fcffb4;"><?php echo $articuloMostrar['cuerpo']; ?></td>
-                    <td style="color: #fcffb4;"><?php echo $articuloMostrar['pie']; ?></td>
-                    <td style="color: #fcffb4;"><?php echo $articuloMostrar['idCreadorArticulo']; ?></td>
+                    <th scope="row"><p><?php echo $articuloMostrar['idArticulo']; ?></p></th>
+                    <td><p><?php echo $articuloMostrar['cabecera']; ?></p></td>
+                    <td><p><?php echo $articuloMostrar['cuerpo']; ?></p></td>
+                    <td><p><?php echo $articuloMostrar['pie']; ?></p></td>
+                    <td><p><?php echo $articuloMostrar['idcreadorArticulo']; ?></p></td>
                     <td><img src="<?php echo $articuloMostrar['imagenArticulo']; ?>"></td>
-                    <td style="color: #fcffb4;"><?php echo $articuloMostrar['idHilo']; ?></td>
-                    <td style="color: #fcffb4;"><?php echo $articuloMostrar['tema']; ?></td>
+                    <td><p><?php echo $articuloMostrar['idHilo']; ?></p></td>
+                    <td><p><?php echo $articuloMostrar['tema']; ?></p></td>
                     <td><img src="<?php echo $articuloMostrar['imagenHilo']; ?>"></td>
-                    <td style="color: #fcffb4;"><?php echo $articuloMostrar['descripcion']; ?></td>
-                    <td style="color: #fcffb4;"><?php echo $articuloMostrar['creadorHilo']; ?></td>
-                    <td style="color: #fcffb4;"><?php echo $articuloMostrar['idCreadorHilo']; ?></td>
-                    <td style="color: #fcffb4;"><?php if ($articuloMostrar['estado']!="eliminado") {
+                    <td><p><?php echo $articuloMostrar['descripcion']; ?></p></td>
+                    <td><p><?php echo $articuloMostrar['creadorHilo']; ?></p></td>
+                    <td><p><?php echo $articuloMostrar['idCreadorHilo']; ?></p></td>
+                    <td><?php if ($articuloMostrar['estado']!="eliminado") {
                         ?>  
-                        <form action="adminArticulo.php" method="post"><input type="hidden" name="idArticuloMarcar" value="<?php echo $articuloMostrar['idArticulo']; ?>"> <input type="submit" class="text-danger" name="MarcarArticuEliminado" value="Marcar como eliminado"></form>
+                        <form action="adminArticulo.php" method="post"><input type="hidden" name="idArticuloMarcar" value="<?php echo $articuloMostrar['idArticulo']; ?>"> <input type="submit" class="text-danger boton" name="MarcarArticuEliminado" value="Marcar como eliminado"></form>
                         <?php
 
                     }else {
                         ?>
-                        <form action="adminArticulo.php" method="post"><input type="hidden" name="idArticuloQuitarMarcar" value="<?php echo $articuloMostrar['idArticulo']; ?>"> <input type="submit" class="text-danger" name="QuitarMarcaArticuEliminado" value="Quitar de eliminado"></form>
+                        <form action="adminArticulo.php" method="post"><input type="hidden" name="idArticuloQuitarMarcar" value="<?php echo $articuloMostrar['idArticulo']; ?>"> <input type="submit" class="text-danger boton" name="QuitarMarcaArticuEliminado" value="Quitar de eliminado"></form>
                         <?php
                     }
                      
@@ -90,8 +90,8 @@ $conexion=conectar(false);
                     }
                      echo $articuloMostrar['estado']; ?></td>
                     <td>
-                        <form action="modificarArticulo.php" method="POST" class="row"><input type="hidden" name="idArticuloModi" value="<?php echo $articuloMostrar['idArticulo']; ?>"><input type="submit" style="color: #fcffb4;" value="modificar" name="modificarArticulo" class="btn btn-primary col-12"></form>
-                        <form action="eliminarArticulo.php" method="POST" class="row"><input type="hidden" name="idArticuloElim" value="<?php echo $articuloMostrar['idArticulo']; ?>"><input type="submit" style="color: #fcffb4;" value="Eliminar" name="eliminarArticulo" class="btn btn-danger col-12"></form>
+                        <form action="modificarArticulo.php" method="POST" class="row"><input type="hidden" name="idArticuloModi" value="<?php echo $articuloMostrar['idArticulo']; ?>"><input type="submit" value="modificar" name="modificarArticulo" class="btn boton col-12"></form>
+                        <form action="eliminarArticulo.php" method="POST" class="row"><input type="hidden" name="idArticuloElim" value="<?php echo $articuloMostrar['idArticulo']; ?>"><input type="submit" value="Eliminar" name="eliminarArticulo" class="btn botonElim col-12"></form>
                     </td>
                     </tr>
                     <?php
@@ -100,9 +100,9 @@ $conexion=conectar(false);
                 </tbody>
             </table>
         </div>
-        <div class="row v-center">
-            <a href="crearArticulo.php" class="btn btn-primary col-11 mx-auto mb-3" role="button">Crear Articulo</a>
-        </div>
+        <form action="ingreso.php" method="post">
+            <input type="submit" value="Crear articulo" name="crearArticulo" class="mb-1 col-12 mx-auto boton">
+        </form>
         <div class="row">
         <?php
                                             if (isset($_POST['crearArticulo'])) {

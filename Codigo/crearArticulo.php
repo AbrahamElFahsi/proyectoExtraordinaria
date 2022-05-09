@@ -70,7 +70,7 @@
                     <small id="avisoForm"></small> 
                 </div>
                 <div class="form-group col-12">
-                    <input type="submit" value="Modificar tema" name="crearArticulo" class="btn btn-primary col-12 mx-auto">   
+                    <input type="submit" value="Crear articulo" name="crearArticulo" class="mb-1 col-11 mx-auto boton">   
                 </div>
             </form>
         </div>

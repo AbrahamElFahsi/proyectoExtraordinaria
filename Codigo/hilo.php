@@ -22,6 +22,11 @@ $conexion=conectar(false);
 <! –– generamos un contenedor que va a estar compuesto por dos columnas–>
 <div class="container-fluid">
     <?php
+                $fecha = date("Y-m-d H:i:00",time());
+                $baneo = $_SESSION['banner'];
+        if ($fecha<$baneo || $_SESSION['perBanned']==1) {
+            header('Location: principal.php');
+        }
     if ($_POST['verHilo']) {
         $_SESSION['verHilo']=$_POST['idHilo'];
     }
@@ -32,7 +37,7 @@ $conexion=conectar(false);
 
 
     <div class="row">
-        <h1 class="text-center col-12" class="col-12 text-center">Articulos de <?php echo $tema['tema']; ?></h1>
+        <h1 class="text-center col-12 titulo mt-2" class="col-12 text-center">Articulos de <?php echo $tema['tema']; ?></h1>
     <! ––Para las tarjetas con los hilos que va a tener nuestra pagina–>
        
 <?php
@@ -46,8 +51,8 @@ $conexion=conectar(false);
                     <img class="card-img-top" src="<?php echo $articulo['imagenArticulo']; ?>" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $articulo['cabecera']; ?></h5>
-                            <div id="elipsis">
-                            <?php echo $articulo['cuerpo']; ?>
+                            <div class="col-12">
+                            <p><?php echo $articulo['cuerpo']; ?></p>
                             </div>
                             <form action="articulo.php" method="post">
                                     <input type="hidden" name="idArticulo" value="<?php echo $articulo['idArticulo']; ?>">
@@ -64,8 +69,8 @@ $conexion=conectar(false);
                                 <div class="card-body" style="filter: blur(5px);">
                                     <h5 class="card-title"><?php echo $articulo['cabecera']; ?></h5>
                                     <p><?php echo $articulo['estado']; ?></p>
-                                        <div id="elipsis">
-                                        <?php echo $articulo['cuerpo']; ?>
+                                        <div class="col-12">
+                                        <p><?php echo $articulo['cuerpo']; ?></p>
                                         </div>
                                 </div>
                                 
@@ -73,12 +78,12 @@ $conexion=conectar(false);
                                         <?php
                         }elseif (!$articulo['premium'] && $_SESSION['fechaSuscripcion']<$fechaHoy && $articulo['estado']!="eliminado") {
                             ?>
-                            <div class="card tarjetas bg-dark col-lg-11 col-xl-5  p-3 m-5 text-center" style="background-color: rgba(0, 0, 0, .5);">
+                            <div class="card tarjetas col-lg-11 col-xl-5  p-3 m-5 text-center" style="background-color: rgba(0, 0, 0, .5);">
                                 <img class="card-img-top" src="<?php echo $articulo['imagenArticulo']; ?>" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo $articulo['cabecera']; ?></h5>
-                                        <div id="elipsis">
-                                        <?php echo $articulo['cuerpo']; ?>
+                                        <div class="col-12">
+                                        <p><?php echo $articulo['cuerpo']; ?></p>
                                         </div>
                                         <form action="articulo.php" method="post">
                                                 <input type="hidden" name="idArticulo" value="<?php echo $articulo['idArticulo']; ?>">
@@ -95,8 +100,8 @@ $conexion=conectar(false);
                                 <img class="card-img-top" src="<?php echo $articulo['imagenArticulo']; ?>" alt="Card image cap">
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo $articulo['cabecera']; ?></h5>
-                                        <div id="elipsis">
-                                        <?php echo $articulo['cuerpo']; ?>
+                                        <div class="col-12">
+                                        <p><?php echo $articulo['cuerpo']; ?></p>
                                         </div>
                                         <form action="articulo.php" method="post">
                                                 <input type="hidden" name="idArticulo" value="<?php echo $articulo['idArticulo']; ?>">
@@ -124,9 +129,9 @@ $conexion=conectar(false);
         $respuesComentario=responderAComentario($conexion,$_POST['comentario'],$_SESSION['idUsuario'],"0",$fechaactual,$_SESSION['idVerArticulo']);
         if ($respuesComentario) {
             header('Location: articulo.php');
-            echo "Se comento correctamente";
+            echo "<p>Se comento correctamente</p>";
         }else{
-            echo "No se consiguio comentar intentelo de nuevo";
+            echo "<p>No se consiguio comentar intentelo de nuevo</p>";
         }
     }
    
@@ -136,10 +141,10 @@ $conexion=conectar(false);
         //responderAComentario($conexion,$contenido,$idUsuario,$idRespuesta,$fecha,$idArticulo)
         $respuesComentario=responderAComentario($conexion,$_POST['contenido'],$_SESSION['idUsuario'],$_POST['idComen'],$fecha_actual,$_SESSION['idVerArticulo']);
         if ($respuesComentario) {
-            echo "Se comento correctamente";
+            echo "<p>Se comento correctamente</p>";
             header('Location: articulo.php');
         }else{
-            echo "No se consiguio comentar intentelo de nuevo";
+            echo "<p>No se consiguio comentar intentelo de nuevo</p>";
         }
     }
     

@@ -27,18 +27,7 @@ $conexion=conectar(false);
        if(mysqli_num_rows($existeSoloUsuario)==1){
            //echo "contraseña incorrecta";
            $fila = mysqli_fetch_assoc($existeSoloUsuario);
-           /*
-           foreach($fila as $atributo=>$valor){
-               echo $atributo." : ".$valor." <br>";
-           }
-           */
            crearSesion($fila);
-           $url ="recuperar_pass.php";
-           $texto= "recuperar la contraseña";
-           echo "<a href=$url>$texto</a><br>";
-           $url1 ="Login.html";
-           $texto1= "volver al login";
-           echo "<a href=$url1>$texto1</a>";
            header('Location: login.php');
        }else{
            echo "<p> El usuario no existe </p>";

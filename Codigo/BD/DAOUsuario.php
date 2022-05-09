@@ -9,6 +9,11 @@ function campoUsuario($conexion,$campo,$id){
     $resultado = mysqli_query($conexion,$consulta);
     return $resultado;
 }
+function buscarUsuarioEmail($conexion,$gmail,$dni){
+    $consulta = "select * FROM usuario WHERE dni='$dni' AND gmail='$gmail'";
+    $resultado = mysqli_query($conexion,$consulta);
+    return $resultado;
+}
 function usuarioPorId($conexion,$id){
     $consulta = "Select * from usuario where idUsuario=$id";
     $resultado = mysqli_query($conexion,$consulta);
@@ -44,7 +49,7 @@ function eliminarUsuario($conexion,$idUsuario){
 }
 function crearSesion($usuario){
     //Queremos que el id de session sea su dni
-    session_id($usuario['usuario']);
+    session_id($usuario['dni']);
     //Creamos la session
     session_start();
     //Almacenamos en la session los datos del usuario

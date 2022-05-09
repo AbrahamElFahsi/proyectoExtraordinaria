@@ -13,14 +13,16 @@ $conexion=conectar(false);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
 <?php   include 'nav.php';
             if ($_SESSION['Rol']!="adminnistrador") {
-                header('Location: principal.php');
+                header('Location: cerrarSesion.php');
             }
     ?>
-<div class="container forms">
+<div class="containerfluid forms">
     <div class="row"><h1 class="text-center col-12">Panel de administrador de usuario</h1></div>
         <div class="row">  
             <table class="table table-responsive table-striped">
@@ -52,8 +54,8 @@ $conexion=conectar(false);
                     <td><?php echo $hiloMostrar['apellidos']; ?></td>
                     <td><?php echo $hiloMostrar['dni']; ?></td>
                     <td>
-                        <form action="modificarHilo.php" method="POST" class="row"><input type="hidden" name="idHiloModi" value="<?php echo $hiloMostrar['idHilo']; ?>"><input type="submit" value="modificar" name="modificarHilo" class="btn btn-primary col-12"></form>
-                        <form action="eliminarHilo.php" method="POST" class="row"><input type="hidden" name="idHiloElim" value="<?php echo $hiloMostrar['idHilo']; ?>"><input type="submit" value="Eliminar" name="eliminarHilo" class="btn btn-danger col-12"></form>
+                        <form action="modificarHilo.php" method="POST" class="row"><input type="hidden" name="idHiloModi" value="<?php echo $hiloMostrar['idHilo']; ?>"><input type="submit" value="modificar" name="modificarHilo" class="btn boton col-12"></form>
+                        <form action="eliminarHilo.php" method="POST" class="row"><input type="hidden" name="idHiloElim" value="<?php echo $hiloMostrar['idHilo']; ?>"><input type="submit" value="Eliminar" name="eliminarHilo" class="btn botonElim col-12"></form>
                     </td>
                     </tr>
                     <?php
@@ -62,9 +64,9 @@ $conexion=conectar(false);
                 </tbody>
             </table>
         </div>
-        <div class="row v-center">
-            <a href="crearHilo.php" class="btn btn-primary col-11 mx-auto mb-3" role="button">Crear usuario</a>
-        </div>
+        <form action="crearHilo.php" method="post">
+            <input type="submit" value="Crear hilo" name="crearArticulo" class="mb-1 col-12 mx-auto boton">
+        </form>
         <?php
                                             if (isset($_POST['crearHilo'])) {
                                             

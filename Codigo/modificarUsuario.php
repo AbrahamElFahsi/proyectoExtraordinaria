@@ -46,11 +46,11 @@ $conexion=conectar(false);
                         }
                     ?>
                     
-                    <input type="text" id="usuarioM" name="usuario" class="form-control" placeholder="Enter User"> 
+                    <input type="text" id="usuarioM" maxlength="40" name="usuario" class="form-control" placeholder="Enter User"> 
                     <small id="avisoUsuario">Almenos 6 caracteres y puede incluir digitos</small>
                 </div>
-                <div class="form-group col-4">
-                    <input type="submit" value="Modificar Usuario" name="envioModificarUsuario" class="btn btn-primary">
+                <div class="form-group col-12">
+                    <input type="submit" value="Modificar Usuario" name="envioModificarUsuario" class="btn boton col-12 mb-2">
                 </div>
 
 
@@ -89,7 +89,7 @@ $conexion=conectar(false);
                 <div class="form-group col-12">
                     <label for="password">contraseña <i class="fas fa-lock"></i></label>
                     <?php
-                        if ($_SESSION['accion']=="administrador") {
+                        if ($_SESSION['accion']=="adminnistrador") {
                             $passModificar=campoUsuario($conexion,"pass",$_SESSION['usuarioMo']);
                             $usuAModificarPass=mysqli_fetch_assoc($passModificar);
                             ?>
@@ -106,11 +106,11 @@ $conexion=conectar(false);
                 </div>
                 <div class="form-group col-12">
                     <label for="password1">Vuelva a escribir la contraseña <i class="fas fa-lock"></i></label>
-                    <input type="password" id="pass1" name="password1" class="form-control" placeholder="Enter password">
+                    <input type="password" id="pass1" maxlength="40" name="password1" class="form-control" placeholder="Enter password">
                     <small id="avisoPass1"></small>
                 </div>
-                <div class="form-group col-4">
-                    <input type="submit" value="Modificar Contraseña" name="modificarPass" class="btn btn-primary">
+                <div class="form-group col-12">
+                    <input type="submit" value="Modificar Contraseña" name="modificarPass" class="btn boton col-12 mb-2">
                 </div>
                 
                 
@@ -160,11 +160,11 @@ $conexion=conectar(false);
                         }
                     ?>
                    
-                    <input type="text" id="email" name="email" class="form-control" placeholder="Enter User"> 
+                    <input type="text" id="email" maxlength="50" name="email" class="form-control" placeholder="Enter User"> 
                     <small id="avisoEmail"></small>
                 </div>
-                <div class="form-group col-4">
-                    <input type="submit" value="Modificar Usuario" name="modificarEmail" class="btn btn-primary">
+                <div class="form-group col-12">
+                    <input type="submit" value="Modificar correo" name="modificarEmail" class="btn boton col-12 mb-2">
                 </div>
 
             </form>
@@ -214,11 +214,11 @@ $conexion=conectar(false);
                         }
                     ?>
                     
-                    <input type="text" id="telefonoM" name="telefono" class="form-control" placeholder="Enter User"> 
+                    <input type="text" id="telefonoM" maxlength="9" name="telefono" class="form-control" placeholder="Enter User"> 
                     <small id="avisoTel"></small>
                 </div>
-                <div class="form-group col-4">
-                    <input type="submit" value="Modificar Usuario" name="modificarT" class="btn btn-primary">
+                <div class="form-group col-12">
+                    <input type="submit" value="Modificar telefono" name="modificarT" class="btn boton col-12 mb-2">
                 </div>
             </form>
                     <?php
@@ -266,11 +266,11 @@ $conexion=conectar(false);
                             <?php
                         }
                     ?> 
-                    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="ej ->Alberto">
+                    <input type="text" id="nombre" maxlength="40" name="nombre" class="form-control" placeholder="ej ->Alberto">
                     <small id="avisoNombre"></small>                
                 </div>
-                <div class="form-group col-4">
-                    <input type="submit" value="Modificar Usuario" name="modificarN" class="btn btn-primary">
+                <div class="form-group col-12">
+                    <input type="submit" value="Modificar nombre" name="modificarN" class="btn boton col-12 mb-2">
                 </div>
             </form>
             <?php
@@ -321,11 +321,11 @@ $conexion=conectar(false);
                         }
                     ?> 
                     
-                    <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="ej ->Hernandez">
+                    <input type="text" id="apellidos" maxlength="80" name="apellidos" class="form-control" placeholder="ej ->Hernandez">
                     <small id="avisoApellidos"></small>
                 </div>
-                <div class="form-group col-4">
-                    <input type="submit" value="Modificar Usuario" name="modificarP" class="btn btn-primary">
+                <div class="form-group col-12">
+                    <input type="submit" value="Modificar apellidos" name="modificarP" class="btn boton col-12 mb-2">
                 </div>
             </form>
             <?php
@@ -375,11 +375,11 @@ $conexion=conectar(false);
                         }
                     ?>                            
                     
-                    <input type="text" id="dni" name="dni" class="form-control" placeholder="ej ->Alberto">
+                    <input type="text" id="dni" name="dni" maxlength="9" class="form-control" placeholder="ej ->Alberto">
                     <small id="avisoDNI"></small>
                 </div>
-                <div class="form-group col-4">
-                    <input type="submit" value="Modificar Usuario" name="modificarD" class="btn btn-primary">
+                <div class="form-group col-12">
+                    <input type="submit" value="Modificar DNI" name="modificarD" class="btn boton col-12 mb-2">
                 </div>
             </form>
             <?php
@@ -428,48 +428,53 @@ $conexion=conectar(false);
                         }
                     ?>         
                                                                      
-                    <div class="control_label">
-                        <label for="vacante">Comunidad</label>                           
-                        <div class="control_input">
-                            <select name="comunidad" id="comunidad">
-                                <option value="0">Seleccione una opción</option>
-                                <option value="andalucia">Andalucia</option>
-                                <option value="Aragón">Aragón</option>
-                                <option value="Asturias">Asturias</option>
-                                <option value="Baleares">Baleares</option>
-                                <option value="Cantabria">Cantabria</option>
-                                <option value="PaísVasco">PaísVasco</option>
-                                <option value="CastillayLeón">CastillayLeón</option>
-                                <option value="cataluña">cataluña</option>
-                                <option value="CValenciana">C.Valenciana</option>
-                                <option value="Galicia">Galicia</option>
-                                <option value="Madrid">Madrid</option>
-                                <option value="Navarra">Navarra</option>
-                                <option value="Rioja">Rioja</option>
-                                <option value="Extremadura">Extremadura</option>
-                                <option value="Ceuta">Ceuta</option>
-                                <option value="Madrid">Melilla</option>
-                            </select>
-                        </div>
-                        <div class="control_label box--oculto col-12">
-                            <label for="provincia">Provincia</label>
-                        </div>
-                        <div class="control_input box--oculto col-12">
-                            <select name="provincia" id="provincia">
-                            </select>
-                        </div>
-                        <div class="control_label box--oculto">
-                            <label for="provincia">Codigo Postal</label>
-                        </div>
-                        <div class="control_input box--oculto">
-                            <select name="cp" id="cp">
-                            </select>
-                        </div>
-                    </div>
-                    <small id="avisoCPC"> </small>                 
+                                                                     <div class="form-group col-12">
+                                    <div class="control_label">
+                                        <label for="vacante">Comunidad <i class="fa-solid fa-location-dot"></i></label>
+                                    </div>
+                                    <div class="control_input">
+                                        <select name="comunidad" id="comunidad" class="form-select col-12" aria-label="Default select example">
+                                            <option value="0">Seleccione una opción</option>
+                                            <option value="andalucia">Andalucia</option>
+                                            <option value="Aragon">Aragón</option>
+                                            <option value="Asturias">Asturias</option>
+                                            <option value="Baleares">Baleares</option>
+                                            <option value="Cantabria">Cantabria</option>
+                                            <option value="PaisVasco">PaísVasco</option>
+                                            <option value="CastillayLeon">Castilla y León</option>
+                                            <option value="cataluña">cataluña</option>
+                                            <option value="CValenciana">C.Valenciana</option>
+                                            <option value="Galicia">Galicia</option>
+                                            <option value="Madrid">Madrid</option>
+                                            <option value="Navarra">Navarra</option>
+                                            <option value="Rioja">Rioja</option>
+                                            <option value="Extremadura">Extremadura</option>
+                                            <option value="Ceuta">Ceuta</option>
+                                            <option value="Melilla">Melilla</option>
+                                            
+                                        </select>
+                                        </div>
+                                        <div class="control_label box--oculto">
+                                        <label for="provincia">Provincia <i class="fa-solid fa-location-dot"></i></label>
+                                        </div>
+                                        <div class="control_input box--oculto">
+                                        <select name="provincia" id="provincia" class="form-select col-12" aria-label="Default select example">
+                                            <option value="0">Seleccione una opción</option>
+                                        </select>
+                                    </div>
+                                    <div class="control_label box--oculto">
+                                        <label for="provincia">Codigo Postal <i class="fa-solid fa-envelopes-bulk"></i></label>
+                                    </div>
+                                    <div class="control_input box--oculto">
+                                        <select name="cp" id="cp" class="form-select col-12" aria-label="Default select example">
+                                            <option value="0">Seleccione una opción</option>
+                                        </select>
+                                        
+                                    </div>
+                                    <small id="avisoComunidad"></small>
                 </div>
-                <div class="form-group col-4">
-                    <input type="submit" value="Modificar Usuario" name="modificarCPC" class="btn btn-primary">
+                <div class="form-group col-12">
+                    <input type="submit" value="Modificar Comunidad" name="modificarCPC" class="btn boton col-12 mb-2">
                 </div>
             </form>
             <?php
@@ -522,11 +527,11 @@ $conexion=conectar(false);
                         }
                     ?>
                     
-                    <input type="text" id="direccion" name="direccion" class="form-control" placeholder="C/ Casanova, 8">
+                    <input type="text" id="direccion" maxlength="40" name="direccion" class="form-control" placeholder="C/ Federico Lorca, 8">
                     <small id="avisoDirec"></small>
                 </div>
-                <div class="form-group col-4">
-                    <input type="submit" value="Modificar Usuario" name="modificarDir" class="btn btn-primary">
+                <div class="form-group col-12">
+                    <input type="submit" value="Modificar Direccion" name="modificarDir" class="btn boton col-12 mb-2">
                 </div>
             </form>
             <?php
@@ -577,7 +582,7 @@ $conexion=conectar(false);
                         </div>
                
                 <div class="form-group col-4">
-                    <input type="submit" value="Modificar Usuario" name="modificarR" class="btn btn-primary">
+                    <input type="submit" value="Modificar Rol" name="modificarR" class="btn boton col-12 mb-2">
                 </div>
             </form>
             <?php
@@ -594,6 +599,7 @@ $conexion=conectar(false);
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b57da3fc72.js" crossorigin="anonymous"></script>
+    <script src="js/modificarUsuario.js"></script>
     <script src="js/script.js"></script>
 
 </body>

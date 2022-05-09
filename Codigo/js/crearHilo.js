@@ -42,22 +42,22 @@ function validarDescripcion(){
         let saltos=texto.length;
         switch (saltos) {
             case 1:
-                descri="<p>"+texto[0]+"</p>";
+                descri=texto[0]+"<br>";
                 break;
                 case 2:
-                descri="<p>"+texto[0]+"</p><p>"+texto[1]+"</p>";
+                descri=texto[0]+"<br>"+texto[1];
                 break;
                 case 3:
-                descri="<p>"+texto[0]+"</p><p>"+texto[1]+"</p><p>"+texto[2]+"</p>";
+                descri=texto[0]+"<br>"+texto[1]+"<br>"+texto[2];
                 break;
                 case 4:
-                descri="<p>"+texto[0]+"</p><p>"+texto[1]+"</p><p>"+texto[2]+"</p><p>"+texto[3]+"</p>";
+                descri=texto[0]+"<br>"+texto[1]+"<br>"+texto[2]+"<br>"+texto[3];
                 break;
                 case 5:
-                descri="<p>"+texto[0]+"</p><p>"+texto[1]+"</p><p>"+texto[2]+"</p><p>"+texto[3]+"</p><p>"+texto[4]+"</p>";
+                descri=texto[0]+"<br><br>"+texto[1]+"<br>"+texto[2]+"<br>"+texto[3]+"<br>"+texto[4];
                 break;
                 case 6:
-                descri="<p>"+texto[0]+"</p><p>"+texto[1]+"</p><p>"+texto[2]+"</p><p>"+texto[3]+"</p><p>"+texto[4]+"</p><p>"+texto[5]+"</p>";
+                descri=texto[0]+"<br>"+texto[1]+"<br>"+texto[2]+"<br>"+texto[3]+"<br>"+texto[4]+"<br>"+texto[5];
                 break;
         
             default:

@@ -40,21 +40,27 @@ if ($_SESSION['Rol']!="adminnistrador") {
             
             
             ?>
-        <div class="jumbotron col-12 bg-dark"> 
+        <div class="jumbotron col-12"> 
             <div class="col-12">
                 <h5 class="col-5"><?php echo $moderador['usuario']; ?></h5>
                 <small class="float col-2 mr-3"><?php $fecha = new DateTime($moderador['fecha']); echo date_format($fecha,"d/m/Y H:i"); ?></small>
             </div>
             <form action="panelModeracion.php" method="post" class="ml-3 col-12"> 
                     <input type="hidden" name="idComen" value="<?php echo $moderador['idComentario']; ?>">
-                    <input type="text" name="contenido" class="col-12 bg-dark" value="<?php echo $moderador['contenido']; ?>">
+                    <input type="text" name="contenido" class="col-12" value="<?php echo $moderador['contenido']; ?>">
                     <input type="submit" value="Modificar" name="modificarComen" class="btn btn-primary col-12">
             </form>
+            
             <hr>
             <h3 class="col-12">¿Eliminar comentario?</h3>
             <form method="post" class="ml-3 col-12"> 
                     <input type="submit" value="Eliminar" name="eliminarComentar" class="btn btn-danger col-12">
             </form>
+            <?php
+if ($moderador['idUsuario']!=$_SESSION['idUsuario']) {
+    
+
+            ?>
             <hr>
             <h3 class="col-12">¿Bannear a <?php echo $moderador['usuario']; ?> ?</h3>
             <form method="post" class="ml-3 col-12"> 
@@ -72,12 +78,19 @@ if ($_SESSION['Rol']!="adminnistrador") {
                 </label>
                 <div id="content" style="display: none;">
                 <?php $fechaymd = date("Y-m-d"); $fechahis = date("H:i");?>
-                        <input type="datetime-local" class="bg-dark" min="<?php echo $fechaymd."T".$fechahis; ?>" name="fechaBaneo" id="">
+                        <input type="datetime-local" class="" min="<?php echo $fechaymd."T".$fechahis; ?>" name="fechaBaneo" id="">
                 </div>
             </div>
                    
                     <input type="submit" value="Banear" name="banneado" class="btn btn-warning col-12">
             </form>
+            <?php
+}else {
+    ?>
+<h4 class="col-12"><?php echo $moderador['usuario']; ?> Es su usuario no lo puede banear</h4>
+    <?php
+}
+            ?>
             <?php
 if (isset($_POST['banneado'])) {
     if ($_POST['bannear']==0) {
@@ -95,9 +108,10 @@ if (isset($_POST['banneado'])) {
         }
     }else{
         $fecha = date("Y-m-d H:i:s", strtotime($_POST['fechaBaneo']));
+        $bannear2=modificarUsuario($conexion,$moderador['idUsuario'],"perBanned",0);
         echo $fecha;
         $bannear3=modificarUsuario($conexion,$moderador['idUsuario'],"banner","$fecha");
-        if ($bannear3) {
+        if ($bannear3 && $bannear2) {
             ?>
 <div class="jumbotron col-12">
                             <h1 class="display-5">Se banneo correctamente el usuario <?php echo $moderador['usuario']; ?> hasta</h1>

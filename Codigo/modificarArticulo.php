@@ -102,7 +102,7 @@
                 <div class="form-group col-12">
                     <label for="hilo">Hilo del articulo <i class="fa-solid fa-arrows-to-dot"></i></i> Actual:<?php echo $articulo['tema']; ?></label>
                     <select name="hilo" id="hilo" class="col-12">
-                        <option value=0>Seleccione un Hilo</option>
+                        <option value=<?php echo $articulo['idHilo']; ?>><?php echo $articulo['tema']; ?></option>
                         <?php
                         $hilo=consultaSoloHilos($conexion);
                         
@@ -167,7 +167,7 @@
             <form action="modificarArticulo.php" method="POST" enctype="multipart/form-data" id="modiCuerArticulo">
                 <div class="form-group col-12">
                     <label for="cuerpo">Cuerpo <i class="fa-solid fa-align-justify"></i></i></i></label>
-                    <textarea class="form-control" id="cuerpo" maxlength="20000" name="cuerpo" rows="20"><?php echo str_replace('</p>',"\n",str_replace('<p>', '', $articulo['cuerpo'])); ?></textarea> 
+                    <textarea class="form-control" id="cuerpo" maxlength="20000" name="cuerpo" rows="20"><?php echo str_replace('<br>',"\n", $articulo['cuerpo']); ?></textarea> 
                     <small id="avisoCuerpo"> </small>
                 </div>
                 <div class="form-group col-12">
@@ -194,7 +194,7 @@
             <form action="modificarArticulo.php" method="post" enctype="multipart/form-data" id="modiPieForm">
                 <div class="form-group col-12">
                     <label for="pie">pie <i class="fa-solid fa-arrow-down"></i></label>
-                    <textarea class="form-control" id="pie" maxlength="150" name="pie" rows="8"><?php echo str_replace('</p>',"\n",str_replace('<p>', '', $articulo['pie'])); ?></textarea> 
+                    <textarea class="form-control" id="pie" maxlength="150" name="pie" rows="8"><?php echo str_replace('<br>',"\n", $articulo['pie']); ?></textarea> 
                     <small id="avisopie">El tema del que trata el hilo, maximo 100 caracteres</small> 
                 </div>
                 <div class="form-group col-12">

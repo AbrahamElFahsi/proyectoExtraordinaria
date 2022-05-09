@@ -56,7 +56,7 @@
                                     <small id="avisoForm"></small>
                                 </div>
                         </div>
-                        <input type="submit" value="Modificar tema" name="crearHilo" class="text-dark mb-1 col-11 mx-auto boton">   
+                        <input type="submit" value="Crear hilo" name="crearHilo" class="mb-1 col-11 mx-auto boton">   
             </form>
        
         </div>

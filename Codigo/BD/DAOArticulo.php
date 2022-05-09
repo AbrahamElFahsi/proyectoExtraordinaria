@@ -45,7 +45,7 @@ function eliminarArticulo($conexion,$idArticulo){
     return $resultado;
 }
 function articulosAleatorios($conexion){
-    $consulta = "SELECT * FROM articulo ORDER BY rand() LIMIT 10";
+    $consulta = "SELECT * FROM articulo ORDER BY rand() LIMIT 5";
     $resultado = mysqli_query($conexion,$consulta);
     return $resultado;
 }

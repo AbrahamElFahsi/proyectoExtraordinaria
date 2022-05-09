@@ -32,13 +32,13 @@ $conexion=conectar(false);
             <div class="container">
                 <h1 class="display-4">¿Esta seguro?</h1>
                 
-                <a href="adminHilo.php" class="btn btn-primary col-11 mx-auto mb-3" role="button">Volver al administrador de hilos</a>
+                <a href="adminHilo.php" class="mb-1 col-11 mx-auto boton" role="button">Volver al administrador de hilos</a>
                 <?php
                 if (empty($_POST['eliminarHiloCambio'])) {
                 ?>
                 <p class="lead">Eliminar junto a todos sus articulo tambien</p>
                 <form action="eliminarHilo.php" method="POST">
-                    <input type="submit" value="Eliminar Hilo articulos" class="btn btn-danger col-11 mx-auto mb-3" name="EliminarHiloArticulo">
+                    <input type="submit" value="Eliminar Hilo articulos" class="mb-1 col-11 mx-auto botonElim" name="EliminarHiloArticulo">
                 </form>
                 <?php } ?>
                 <?php
@@ -80,7 +80,7 @@ $conexion=conectar(false);
                             }
                         ?>
                     </select>
-                    <input type="submit" value="Eliminar Hilo cambiando articulos" class="btn btn-danger" name="eliminarHiloCambio">
+                    <input type="submit" value="Eliminar Hilo cambiando articulos" class="mb-1 col-11 mx-auto botonElim" name="eliminarHiloCambio">
                 </form>
                 <?php
                     }

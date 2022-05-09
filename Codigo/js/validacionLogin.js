@@ -1,4 +1,13 @@
-//Validacion del usuario del login
+//Validacion del usuario del 
+function primeraLetraMa(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+//Ingreso
+const expr={telefono:/[0-9]{9}/, usuario:/[a-zA-ZáéíóúÁÉÍÓÚ]{6,45}/, dni:/^[0-9]{8}[a-zA-Z]$/, email:/^[A-Za-z]{1,15}[@]{1}[A-Za-z]{1,15}[.]{1}[A-Za-z]{1,5}$/, pass:/(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,40}/, nombre:/^[A-Za-záéíóúÁÉÍÓÚ]+[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ]+[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ]{2,}?$/, direccion:/^([A-Za-záéíóúÁÉÍÓÚ/,0-9]{1,}[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ/,0-9]*[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ/,0-9]*[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ/,0-9]*[ ]{0,1}){0,50}?$/}
+//el array input validado, es para controlar si ha sido validado todos los campos antes de enviarlo
+let inputValidadoIng=[false, false, false, false, false,false,false,false,false,false];
+
 let usu=document.getElementById('usuario');
 let avisoUsu=document.getElementById('avisoUsuario');
 const inputValidado={Usuario:false, Pass:false}
@@ -15,25 +24,25 @@ function validarUsuario(){
             //vaciamos el aviso 
             avisoUsu.innerHTML=" ";
         }else{
-            usu.classList.remove('is-valid');
-            usu.classList.add('is-invalid');
-            avisoUsu.innerHTML=" ";
-            //no sigue la expresion borde rojo, metemos el mensaje
-            
             inputValidado.Usuario=false;
             inputValidadoIng[0]=false;
-            avisoUsu.innerHTML="El usuario de contener al menos 6 carecteres";
+                usu.classList.remove('is-valid');
+                usu.classList.add('is-invalid');
+               
+                avisoUsu.innerHTML="El usuario de contener al menos 6 carecteres";
+            
         }            
     }else{
-        avisoUsu.innerHTML="Debe rellenar el campo usuario";
-        usu.classList.remove('is-valid');
-        usu.classList.add('is-invalid');
-        inputValidado.Usuario=false;
-        inputValidadoIng[0]=false;
-        
+            avisoUsu.innerHTML=" ";
+            usu.classList.remove('is-valid');
+            usu.classList.add('is-invalid');
+            inputValidado.Usuario=false;
+            inputValidadoIng[0]=false;
+
     }
 }
 usu.addEventListener('keyup',validarUsuario);
+
 //Validacion contraseña login
 let pass=document.getElementById('pass');
 let avisoPass=document.getElementById('avisoPass');
@@ -67,10 +76,6 @@ pass.addEventListener('keyup',validarPass);
 
 
 
-//Ingreso
-const expr={telefono:/[0-9]{9}/, usuario:/[a-zA-ZáéíóúÁÉÍÓÚ]{6,45}/, dni:/^[0-9]{8}[a-zA-Z]$/, email:/^[A-Za-z]{1,15}[@]{1}[A-Za-z]{1,15}[.]{1}[A-Za-z]{1,5}$/, pass:/(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,40}/, nombre:/^[A-Za-záéíóúÁÉÍÓÚ]+[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ]+[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ]{2,}?$/, direccion:/^([A-Za-záéíóúÁÉÍÓÚ/,0-9]{1,}[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ/,0-9]*[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ/,0-9]*[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ/,0-9]*[ ]{0,1}){0,50}?$/}
-//el array input validado, es para controlar si ha sido validado todos los campos antes de enviarlo
-let inputValidadoIng=[false, false, false, false, false,false,false,false,false,false];
 
 
 let DNI=document.getElementById('dni');
@@ -261,9 +266,11 @@ direccion.addEventListener('keyup',validarDireccion);
 
 //comunidad
 let comunidad=document.getElementById('comunidad');
+let provincia=document.getElementById('provincia');
+let cp=document.getElementById('cp');
 let avisoComunidad=document.getElementById('avisoComunidad');
 function validarDireccion(){
-    if(comunidad.value!="0" && comunidad.value!=undefined){
+    if(comunidad.value!="0" && comunidad.value!=undefined && provincia.value!="0" && provincia.value!=undefined && cp.value!="0" && cp.value!=undefined){
             comunidad.classList.remove('is-invalid');
             comunidad.classList.add('is-valid');
             avisoComunidad.innerHTML=" ";
@@ -279,6 +286,8 @@ function validarDireccion(){
 }
 
 comunidad.addEventListener('change',validarDireccion);
+provincia.addEventListener('change',validarDireccion);
+cp.addEventListener('change',validarDireccion);
 //nombre
 
 let nombre=document.getElementById('nombre');
@@ -291,9 +300,11 @@ function validarNombre(){
             nombre.classList.add('is-valid');
             avisoNombre.innerHTML=" ";
             inputValidadoIng[9]=true;
+            nombre.value=primeraLetraMa(nombre.value);
         }else{
             nombre.classList.remove('is-valid');
             nombre.classList.add('is-invalid');
+            
             avisoNombre.innerHTML="Formato de nombre no valido";
             inputValidadoIng[9]=false;
         } 
@@ -313,7 +324,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("alta").addEventListener('submit', validarFormulario, false); 
   });
   function validarFormulario(evento) {
-   
+    
     let contador=0;
     for(let i=0;i<inputValidadoIng.length;i++){
         if(inputValidadoIng[i]){
@@ -321,31 +332,17 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log(contador);
         }
     }
-    if(contador>6){
+    if(contador==9){
         document.getElementById("avisoForm").innerHTML="";
     }else{
+
         document.getElementById("avisoForm").innerHTML="El formulario debe ser completamente valido para enviarlo";
-        evento.preventDefault();
+        comidas.forEach(function(inputValidadoIng, index) {
+            console.log(`${index} : ${comida}`);
+        }); 
+        
     }
    
     
 }
-
-//control del envio del formulario Login
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("login").addEventListener('submit', validarFormularioLog, false); 
-  });
-  function validarFormularioLog(evento) {
-    
-    //Que al pulsar no se envie sino que primero cumpla la condicion validado true todos los campos
-	e.preventDefault();
-    if(inputValidado.usuario==true && inputValidado.Pass==true){
-        document.getElementById('formulario').submit();
-        document.getElementById('avisoFormulario').innerHTML="";
-    }else{
-        document.getElementById('avisoFormulario').innerHTML="El formulario debe ser completamente valido para enviarlo";
-    }
-	
-}
-
 

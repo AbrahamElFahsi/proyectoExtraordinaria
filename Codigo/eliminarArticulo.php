@@ -13,7 +13,8 @@ $conexion=conectar(false);
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
 <?php   include 'nav.php';
@@ -33,11 +34,11 @@ $conexion=conectar(false);
             <div class="container">
                 <h1 class="display-4">¿Esta seguro?</h1>
                 
-                <a href="adminArticulo.php" class="btn btn-primary col-11 mx-auto mb-3" role="button">Volver al administrador de articulos</a>
+                <a href="adminArticulo.php" class="mb-1 col-11 mx-auto boton" role="button">Volver al administrador de articulos</a>
                 <hr>
                 <h3>Con este paso se eliminara permanente mente</h3>
                 <form action="eliminarArticulo.php" method="POST">
-                    <input type="submit" value="Eliminar Articulo" class="btn btn-danger col-11 mx-auto mb-3" name="EliminarArticulo">
+                    <input type="submit" value="Eliminar Articulo" class="btn mb-1 col-11 mx-auto botonElim" name="EliminarArticulo">
                 </form>
                 <?php
                 if (isset($_POST['EliminarArticulo'])) {
@@ -78,7 +79,7 @@ $conexion=conectar(false);
                             }
                         ?>
                     </select>
-                    <input type="submit" value="Eliminar Hilo cambiando articulos" class="btn btn-danger" name="eliminarHiloCambio">
+                    <input type="submit" value="Eliminar Hilo cambiando articulos" class="mb-1 col-11 mx-auto botonElim" name="eliminarHiloCambio">
                 </form>
                 <?php
                     }

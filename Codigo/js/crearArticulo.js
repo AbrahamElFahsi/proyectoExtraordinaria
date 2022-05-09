@@ -66,22 +66,22 @@ function validarCuerpo(){
         let saltos=texto.length;
         switch (saltos) {
             case 1:
-                cuerpoTratado="<p>"+texto[0]+"</p>";
+                cuerpoTratado=texto[0]+"<br>";
                 break;
                 case 2:
-                cuerpoTratado="<p>"+texto[0]+"</p><p>"+texto[1]+"</p>";
+                cuerpoTratado=texto[0]+"<br>"+texto[1];
                 break;
                 case 3:
-                cuerpoTratado="<p>"+texto[0]+"</p><p>"+texto[1]+"</p><p>"+texto[2]+"</p>";
+                cuerpoTratado=texto[0]+"<br>"+texto[1]+"<br>"+texto[2];
                 break;
                 case 4:
-                cuerpoTratado="<p>"+texto[0]+"</p><p>"+texto[1]+"</p><p>"+texto[2]+"</p><p>"+texto[3]+"</p>";
+                cuerpoTratado=texto[0]+"<br>"+texto[1]+"<br>"+texto[2]+"<br>"+texto[3];
                 break;
                 case 5:
-                cuerpoTratado="<p>"+texto[0]+"</p><p>"+texto[1]+"</p><p>"+texto[2]+"</p><p>"+texto[3]+"</p><p>"+texto[4]+"</p>";
+                cuerpoTratado=texto[0]+"<br><br>"+texto[1]+"<br>"+texto[2]+"<br>"+texto[3]+"<br>"+texto[4];
                 break;
                 case 6:
-                cuerpoTratado="<p>"+texto[0]+"</p><p>"+texto[1]+"</p><p>"+texto[2]+"</p><p>"+texto[3]+"</p><p>"+texto[4]+"</p><p>"+texto[5]+"</p>";
+                cuerpoTratado=texto[0]+"<br>"+texto[1]+"<br>"+texto[2]+"<br>"+texto[3]+"<br>"+texto[4]+"<br>"+texto[5];
                 break;
         
             default:
@@ -107,22 +107,22 @@ function validarPie(){
         let saltos=texto.length;
         switch (saltos) {
             case 1:
-                pieTratado="<p>"+texto[0]+"</p>";
+                pieTratado=texto[0]+"<br>";
                 break;
                 case 2:
-                pieTratado="<p>"+texto[0]+"</p><p>"+texto[1]+"</p>";
+                pieTratado=texto[0]+"</p><p>"+texto[1]+"</p>";
                 break;
                 case 3:
-                pieTratado="<p>"+texto[0]+"</p><p>"+texto[1]+"</p><p>"+texto[2]+"</p>";
+                pieTratado=texto[0]+"<br>"+texto[1]+"<br>"+texto[2];
                 break;
                 case 4:
-                pieTratado="<p>"+texto[0]+"</p><p>"+texto[1]+"</p><p>"+texto[2]+"</p><p>"+texto[3]+"</p>";
+                pieTratado=texto[0]+"<br>"+texto[1]+"<br>"+texto[2]+"<br>"+texto[3];
                 break;
                 case 5:
-                pieTratado="<p>"+texto[0]+"</p><p>"+texto[1]+"</p><p>"+texto[2]+"</p><p>"+texto[3]+"</p><p>"+texto[4]+"</p>";
+                pieTratado=texto[0]+"<br><br>"+texto[1]+"<br>"+texto[2]+"<br>"+texto[3]+"<br>"+texto[4];
                 break;
                 case 6:
-                pieTratado="<p>"+texto[0]+"</p><p>"+texto[1]+"</p><p>"+texto[2]+"</p><p>"+texto[3]+"</p><p>"+texto[4]+"</p><p>"+texto[5]+"</p>";
+                pieTratado=texto[0]+"<br>"+texto[1]+"<br>"+texto[2]+"<br>"+texto[3]+"<br>"+texto[4]+"<br>"+texto[5];
                 break;
         
             default:

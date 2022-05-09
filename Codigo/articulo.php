@@ -15,11 +15,10 @@ $conexion=conectar(false);
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<?php include 'nav.php'; ?>
+<?php include 'nav.php'; 
+?>
 <! –– generamos un contenedor que va a estar compuesto por dos columnas–>
 <div class="container-fluid">
     <?php
@@ -31,15 +30,19 @@ $conexion=conectar(false);
             $articulo=mysqli_fetch_assoc($artic);
     ?>
     <div class="row">
-        <div class="col-10 m-auto mb-5 bg-dark articulo">
+        <div class="card m-auto col-11 mb-5 articulo">
             
                 <img src="<?php  echo $articulo['imagenArticulo']; ?>" alt="" class="card-img-top mt-3">
-                <div class="card-body">
+                <div class="card-body col-12">
                     <h5 class="card-title"><?php  echo $articulo['cabecera']; ?></h5>
                     <hr>
-                    <div class="card-text" style="height:100%; "><?php echo $articulo['cuerpo']; ?></div>
+                    <div class="col-12">
+                        <p><?php echo $articulo['cuerpo']; ?></p>
+                    </div>
                     <hr>
-                    <p class="card-text"><?php echo $articulo['pie']; ?></p>
+                    <div class="col-12">
+                        <p><?php echo $articulo['pie']; ?></p>
+                    </div>
                     
                     <p class="card-text float-right">Autor <u><?php 
                         $usu=usuarioPorId($conexion,$articulo['idcreadorArticulo']);
@@ -85,7 +88,7 @@ if (($fechaFin>=$fecha_actual && $_SESSION['idUsuario']==$comentario['idUsuario'
     <div class="form-group col-12">
         <input type="hidden" name="idComen" value="<?php echo $comentario['idComentario']; ?>">
         <input type="text" name="contenido" class="bg-dark col-12" value="<?php echo $comentario['contenido']; ?>">
-        <input type="submit" value="Modificar" name="modificarComen" class="btn btn-primary col-12">
+        <input type="submit" value="Modificar" name="modificarComen" class="btn boton col-12">
     </div>
 </form>
 <?php
@@ -100,7 +103,7 @@ if (($fechaFin>=$fecha_actual && $_SESSION['idUsuario']==$comentario['idUsuario'
                                             ?>
                                                 <form action="panelModeracion.php" method="post" class="form-group mt-1 ml-5 float-left col-5">
                                                     <input type="hidden" name="idComent" value="<?php echo $comentario['idComentario']; ?>">
-                                                    <input type="submit" value="Moderación" name="moderador" class="btn btn-primary col-12 mx-auto">
+                                                    <input type="submit" value="Moderación" name="moderador" class="btn boton col-12 mx-auto">
                                                 </form>
                                             <?php
                                             }
@@ -125,8 +128,8 @@ if (($fechaFin>=$fecha_actual && $_SESSION['idUsuario']==$comentario['idUsuario'
                             <div class="col-12">
                                 <div class="form-group col-12">
                                     <label for="comentario">Escribe aqui tu aportacion al foro</label>
-                                    <input type="text" id="comentario" class="bg-dark col-12" name="comentario" maxlength="99" class="form-control" placeholder="Enter User"> 
-                                    <input type="submit" value="comentar" name="comentarNivelOne" class="btn btn-primary col-12 mx-auto mt-1">   
+                                    <input type="text" id="comentario" class="col-12" name="comentario" maxlength="99" class="form-control" placeholder="Enter User"> 
+                                    <input type="submit" value="comentar" name="comentarNivelOne" class="btn boton col-12 mx-auto mt-1">   
                                 </div>
                             </div>
                         </form>

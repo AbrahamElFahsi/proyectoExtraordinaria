@@ -17,10 +17,15 @@ $conexion=conectar(false);
 <body>
 <?php   include 'nav.php';
             if ($_SESSION['Rol']!="adminnistrador") {
-                header('Location: principal.php');
+                header('Location: cerrarSesion.php');
             }
+            $fecha = date("Y-m-d H:i:00",time());
+            $baneo = $_SESSION['banner'];
+    if ($fecha<$baneo || $_SESSION['perBanned']==1) {
+        header('Location: principal.php');
+    }
     ?>
-<div class="container forms">
+<div class="container-fluid forms">
     <div class="row"><h1 class="text-center col-12">Panel de administrador de usuario</h1></div>
         <div class=row>  
             <table class="table table-responsive table-striped">
@@ -37,6 +42,7 @@ $conexion=conectar(false);
                     <th scope="col">Provincia</th>
                     <th scope="col">Cp</th>
                     <th scope="col">Direccion</th>
+                    <th scope="col">Baneo</th>
                     <th scope="col">Rol</th>
                     <th scope="col">Acciones</th>
                     </tr>
@@ -58,10 +64,29 @@ $conexion=conectar(false);
                     <td><?php echo $usu['provincia']; ?></td>
                     <td><?php echo $usu['cp']; ?></td>
                     <td><?php echo $usu['direccion']; ?></td>
+                    <td><?php 
+                         $fecha = date("Y-m-d H:i:00",time());
+                         $baneo = $usu['banner'];
+
+                         if($fecha<$baneo || $usu['perBanned']==1){
+                            ?>
+                            <form action="adminUsuario.php" method="post"><input type="hidden" name="usuarioQbanneo" value="<?php echo $usu['idUsuario']; ?>"> <input type="submit" class="boton" name="quitarBaneo" value="Quitar banneo"></form>
+                            <?php
+                            if (isset($_POST['quitarBaneo'])){
+                                echo $_POST['usuarioQbanneo'];
+                                $AHORA = date("Y-m-d H:i:00",time());
+                                $bannear=modificarUsuario($conexion,$_POST['usuarioQbanneo'], "perBanned", 0);
+                                $bannear1=modificarUsuario($conexion,$_POST['usuarioQbanneo'], "banner", $AHORA);
+                                
+                            }
+                         }
+
+                    ?> </td>
+                    
                     <td><?php echo $usu['Rol']; ?></td>
                     <td>
-                        <form action="modificarUsuario.php" method="POST" class="row"><input type="hidden" name="idUsuMo" value="<?php echo $usu['idUsuario']; ?>"><input type="submit" value="modificar" name="ModificarUsuAdmin" class="btn btn-primary col-12"></form>
-                        <form action="eliminarUsuario.php" method="POST" class="row"><input type="hidden" name="idUsuElim" value="<?php echo $usu['idUsuario']; ?>"><input type="submit" value="Eliminar" name="eliminarUsuAdmin" class="btn btn-danger col-12"></form>
+                        <form action="modificarUsuario.php" method="POST" class="row"><input type="hidden" name="idUsuMo" value="<?php echo $usu['idUsuario']; ?>"><input type="submit" value="modificar" name="ModificarUsuAdmin" class="btn boton col-12"></form>
+                        <form action="eliminarUsuario.php" method="POST" class="row"><input type="hidden" name="idUsuElim" value="<?php echo $usu['idUsuario']; ?>"><input type="submit" value="Eliminar" name="eliminarUsuAdmin" class="btn botonElim col-12"></form>
                     </td>
                     </tr>
                     <?php
@@ -70,9 +95,9 @@ $conexion=conectar(false);
                 </tbody>
             </table>
         </div>
-        <div class="row v-center">
-            <a href="ingreso.php" class="btn btn-primary col-11 mx-auto mb-3" role="button">Crear usuario</a>
-        </div>
+        <form action="crearUsuario.php" method="post">
+            <input type="submit" value="Crear usuario" name="crearArticulo" class="mb-1 col-12 mx-auto boton">
+        </form>
 
     
 </div>

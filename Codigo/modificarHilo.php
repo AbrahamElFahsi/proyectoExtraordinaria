@@ -54,8 +54,8 @@ $conexion=conectar(false);
                                     
                                     //Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
                                     if (!((strpos($tipo, "gif") || strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png")) && ($tamano < 2000000))) {
-                                        echo '<div><b>Error. La extensión o el tamaño de los archivos no es correcta.<br/>
-                                        - Se permiten archivos .gif, .jpg, .png. y de 200 kb como máximo.</b></div>';
+                                        echo '<div><b><p>Error. La extensión o el tamaño de los archivos no es correcta.</p>
+                                        - <p>Se permiten archivos .gif, .jpg, .png. y de 200 kb como máximo.</p></b></div>';
                                     }
                                     else {
                                         //Si la imagen es correcta en tamaño y tipo
@@ -65,19 +65,19 @@ $conexion=conectar(false);
                                             //Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
                                             chmod('images/'.$archivo, 0777);
                                             //Mostramos el mensaje de que se ha subido co éxito
-                                            echo '<div><b>Se ha subido correctamente la imagen.</b></div>';
+                                            echo '<div><b><p>Se ha subido correctamente la imagen.</p></b></div>';
                                             $envio=true;
                                         }
                                         else {
                                             //Si no se ha podido subir la imagen, mostramos un mensaje de error
-                                            echo '<div><b>Ocurrió algún error al subir el fichero. No pudo guardarse.</b></div>';
+                                            echo '<div><b><p>Ocurrió algún error al subir el fichero. No pudo guardarse.</p></b></div>';
                                         }
                                         
                                         $dir=strval("images/".$prefijo."".$archivo);
                                         echo $dir;
                                         $resulModificarImagen=modificarHilo($conexion,$_SESSION['hiloAModificar'],"imagen",$dir);
                                             if ($resulModificarImagen) {
-                                                echo "se modifico la imagen";
+                                                echo "<p>se modifico la imagen</p>";
                                         }
                                     
                                     }
@@ -91,7 +91,7 @@ $conexion=conectar(false);
                 <form action="ModificarHilo.php" method="post" enctype="multipart/form-data" id="temaForm">
                     <div class="form-group col-12">
                         <label for="tema">Tema: <?php echo $hilo['tema']; ?><i class="fas fa-user"></i></label>
-                        <input type="text" id="tema" name="tema" maxlength="99" class="form-control" placeholder="Enter User"> 
+                        <input type="text" id="tema" name="tema" value="<?php echo $hilo['tema']; ?>" maxlength="99" class="form-control" placeholder="Enter User"> 
                         <small id="avisoTema">El tema del que trata el hilo, maximo 100 caracteres</small>
                     </div>
                     <input type="submit" value="Modificar tema" name="modificarTemaHilo" class="btn boton col-12 mx-auto">
@@ -111,7 +111,7 @@ $conexion=conectar(false);
                 <form action="ModificarHilo.php" method="post" enctype="multipart/form-data" id="modDescrip">
                     <div class="form-group col-12">
                         <label for="descripcion">Descripcion <i class="fas fa-user"></i></label>
-                        <textarea class="form-control" id="descripcion" maxlength="199" name="descripcion" rows="3"><?php echo str_replace('</p>',"\n",str_replace('<p>', '', $hilo['descripcion'])); ?></textarea>
+                        <textarea class="form-control" id="descripcion" value="<?php echo str_replace('<br>',"\n", $hilo['descripcion']); ?>" maxlength="199" name="descripcion" rows="3"><?php echo str_replace('<br>',"\n", $hilo['descripcion']); ?></textarea>
                         <div id="parraf"></div>
                         <small id="avisoDescripcion">El Descripcion del que trata el hilo, maximo 200 caracteres</small>
                         
@@ -123,7 +123,7 @@ $conexion=conectar(false);
                     if (isset($_POST['modificarDescripHilo'])) {
                         $resulModificarDescripcion=modificarHilo($conexion,$_SESSION['hiloAModificar'],"descripcion",$_POST['descripcion']);
                         if ($resulModificarDescripcion) {
-                            echo "<p>Se modifico correctamente la descripcion</p></br>".$_POST['descripcion'];
+                            echo "<p>Se modifico correctamente la descripcion</p></br><p>".$_POST['descripcion']."</p>";
                         }else{
                             echo "<p>No se consigio intentelo de nuevo</p>";
                         }
