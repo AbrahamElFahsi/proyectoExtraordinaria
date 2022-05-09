@@ -29,7 +29,7 @@ session_start();
                   <li class="deplegableEnlace"><a class="footerLink ml-1" href="adminComentarios.php">Panel Comentarios</a></li>
                   <li class="deplegableEnlace"><a class="footerLink ml-1" href="cerrarSesion.php">Cerrar Usuario</a></li>
                   <li class="deplegableEnlace"><hr class="dropdown-divider"></li>
-                  <li class="deplegableEnlace"><a class="text-danger ml-1 text-decoration-none" href="EliminarUsuario.php">Eliminar Usuario</a></li>
+                  <li class="deplegableEnlace"><a class="text-danger ml-1 text-decoration-none" href="eliminarUsuario.php">Eliminar Usuario</a></li>
                 </ul>
               </li>
               <?php
@@ -44,7 +44,7 @@ session_start();
                   <li class="deplegableEnlace"><a class="footerLink ml-1" href="modificarUsuario.php">Modificar usuario</a></li>
                   <li class="deplegableEnlace"><a class="footerLink ml-1" href="cerrarSesion.php">Cerrar Usuario</a></li>
                   <li class="deplegableEnlace"><hr class="dropdown-divider"></li>
-                  <li class="deplegableEnlace"><a class="text-danger ml-1 text-decoration-none" href="EliminarUsuario.php">Eliminar Usuario</a></li>
+                  <li class="deplegableEnlace"><a class="text-danger ml-1 text-decoration-none" href="eliminarUsuario.php">Eliminar Usuario</a></li>
                 </ul>
               </li>
               
