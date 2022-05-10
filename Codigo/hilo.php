@@ -22,6 +22,9 @@ $conexion=conectar(false);
 <! –– generamos un contenedor que va a estar compuesto por dos columnas–>
 <div class="container-fluid">
     <?php
+    if (empty($_SESSION['usuario'])) {
+        header('Location: principal.php');
+    }
                 $fecha = date("Y-m-d H:i:00",time());
                 $baneo = $_SESSION['banner'];
         if ($fecha<$baneo || $_SESSION['perBanned']==1) {
@@ -50,13 +53,13 @@ $conexion=conectar(false);
                 <div class="card tarjetas bg-dark col-lg-11 col-xl-5  p-3 m-5 text-center">
                     <img class="card-img-top" src="<?php echo $articulo['imagenArticulo']; ?>" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title"><?php echo $articulo['cabecera']; ?></h5>
+                        <h5 class="display-4"><?php echo $articulo['cabecera']; ?></h5>
                             <div class="col-12">
-                            <p><?php echo $articulo['cuerpo']; ?></p>
+                            <p class="elipsis"><?php echo $articulo['cuerpo']; ?></p>
                             </div>
                             <form action="articulo.php" method="post">
                                     <input type="hidden" name="idArticulo" value="<?php echo $articulo['idArticulo']; ?>">
-                                    <input type="submit" class="btn boton mt-2" value="Mostrar Informacion" name="verArticulo">
+                                    <input type="submit" class="btn boton col-12 mt-2" value="Ver" name="verArticulo">
                             </form>
                     </div>
                     
@@ -67,10 +70,10 @@ $conexion=conectar(false);
                             <div class="card tarjetas bg-dark col-lg-11 col-xl-5  p-3 m-5 text-center" >
                                 <img class="card-img-top" src="<?php echo $articulo['imagenArticulo']; ?>" alt="Card image cap" style="filter: blur(5px);">
                                 <div class="card-body" style="filter: blur(5px);">
-                                    <h5 class="card-title"><?php echo $articulo['cabecera']; ?></h5>
+                                    <h5 class="display-4"><?php echo $articulo['cabecera']; ?></h5>
                                     <p><?php echo $articulo['estado']; ?></p>
                                         <div class="col-12">
-                                        <p><?php echo $articulo['cuerpo']; ?></p>
+                                        <p class="elipsis"><?php echo $articulo['cuerpo']; ?></p>
                                         </div>
                                 </div>
                                 
@@ -81,13 +84,13 @@ $conexion=conectar(false);
                             <div class="card tarjetas col-lg-11 col-xl-5  p-3 m-5 text-center" style="background-color: rgba(0, 0, 0, .5);">
                                 <img class="card-img-top" src="<?php echo $articulo['imagenArticulo']; ?>" alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title"><?php echo $articulo['cabecera']; ?></h5>
+                                    <h5 class="display-4"><?php echo $articulo['cabecera']; ?></h5>
                                         <div class="col-12">
-                                        <p><?php echo $articulo['cuerpo']; ?></p>
+                                        <p class="elipsis"><?php echo $articulo['cuerpo']; ?></p>
                                         </div>
                                         <form action="articulo.php" method="post">
                                                 <input type="hidden" name="idArticulo" value="<?php echo $articulo['idArticulo']; ?>">
-                                                <input type="submit" class="btn boton mt-2" value="Mostrar Informacion" name="verArticulo">
+                                                <input type="submit" class="btn boton col-12 mt-2" value="Ver" name="verArticulo">
                                         </form>
                                 </div>
                                 
@@ -96,17 +99,18 @@ $conexion=conectar(false);
                         }elseif ($_SESSION['Rol']=="adminnistrador" && $articulo['estado']="eliminado") {
                             ?>
                             <div class="card tarjetas bg-dark col-lg-11 col-xl-5  p-3 m-5 text-center" style="background-color: rgba(0, 0, 0, .5);">
-                            <p class="bg-danger"> Marcado como <?php echo $articulo['estado']; ?></p>
+                            
                                 <img class="card-img-top" src="<?php echo $articulo['imagenArticulo']; ?>" alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title"><?php echo $articulo['cabecera']; ?></h5>
+                                    <h5 class="display-4"><?php echo $articulo['cabecera']; ?></h5>
                                         <div class="col-12">
-                                        <p><?php echo $articulo['cuerpo']; ?></p>
+                                        <p class="elipsis"><?php echo $articulo['cuerpo']; ?></p>
                                         </div>
                                         <form action="articulo.php" method="post">
                                                 <input type="hidden" name="idArticulo" value="<?php echo $articulo['idArticulo']; ?>">
-                                                <input type="submit" class="btn boton mt-2" value="Mostrar Informacion" name="verArticulo">
+                                                <input type="submit" class="btn boton col-12 mt-2" value="Ver" name="verArticulo">
                                         </form>
+                                        <p class="botonElim"> Marcado como <?php echo $articulo['estado']; ?></p>
                                 </div>
                                 
                             </div>

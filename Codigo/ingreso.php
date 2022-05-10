@@ -39,7 +39,7 @@
                     <small id="avisoPass"></small>
                 </div>
                 <div class="form-group col-12">
-                    <label for="password1">Vuelva a escribir la contraseña <i class="fas fa-lock"></i></label>
+                    <label for="password1">Repite la contraseña <i class="fas fa-lock"></i></label>
                     <input type="password" maxlength="40" id="pass1" name="password1" class="form-control" placeholder="Enter password">
                     <small id="avisoPass1"></small>
                 </div>
@@ -196,11 +196,12 @@
     <small id="avisoForm"></small>
 </div>
 
-    <?php include 'footer.php'; ?>
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b57da3fc72.js" crossorigin="anonymous"></script>
     <script src="js/validacionLogin.js"></script>
     <script src="js/script.js"></script>
+    <?php include 'footer.php'; ?>
 </body>
 </html>

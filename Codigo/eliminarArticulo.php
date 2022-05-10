@@ -19,7 +19,7 @@ $conexion=conectar(false);
 <body>
 <?php   include 'nav.php';
             if ($_SESSION['Rol']!="adminnistrador") {
-                header('Location: principal.php');
+                header('Location: cerrarSesion.php');
             }
     ?>
 <div class="container forms">
@@ -51,45 +51,6 @@ $conexion=conectar(false);
                         ?>
                         <p class="lead">No se consigio, Intentelo de nuevo</p>
                         <?php
-                    }
-                }
-                ?>
-                <?php
-                if (empty($_POST['EliminarHiloArticulo'])) {
-                    $hilosCambio=consultaHilos($conexion);
-                    if (mysqli_num_rows($hilosCambio)<1) {
-
-                                ?>
-                <hr class="my-4">
-                
-                <p class="lead">Cambiar articulos de hilo</p>
-                <form action="eliminarHilo.php" method="POST">
-                    <label for="nuevoHilo">Asignar articulos a</label>
-                    <select name="hiloNuevo" id="hiloNuevo">
-                        <?php
-                       
-                            
-                        
-                            while ($hilos=mysqli_fetch_assoc($hilosCambio)) {
-                                if ($hilos['idHilo']!=$_SESSION['idArticuloElimninar']) {   
-                                    ?>
-                                    <option value="<?php echo $hilos['idHilo']; ?>"><?php echo $hilos['idHilo']."-".$hilos['tema']; ?></option>
-                                    <?php
-                                }
-                            }
-                        ?>
-                    </select>
-                    <input type="submit" value="Eliminar Hilo cambiando articulos" class="mb-1 col-11 mx-auto botonElim" name="eliminarHiloCambio">
-                </form>
-                <?php
-                    }
-                }
-                if (isset($_POST['eliminarHiloCambio'])) {
-                    $resulEliminarHilo=eliminarHiloConCambioDeArticulos($conexion,$_SESSION['idArticuloElimninar'],$_POST['hiloNuevo']);
-                    if ($resulEliminarHilo) {
-                        echo "Se modifico el hilo de los articulos de la seccion de id".$_SESSION['hiloElim']." y se elimino el hilo";
-                    }else{
-                        echo "No se consigio intentelo de nuevo";
                     }
                 }
                 ?>

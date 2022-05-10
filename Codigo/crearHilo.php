@@ -11,13 +11,14 @@
     <?php 
          include 'nav.php';
          if ($_SESSION['Rol']!="adminnistrador") {
-             header('Location: principal.php');
-         }
+            header('Location: cerrarSesion.php');
+        }
         require 'ConectorBD.php';
         require 'BD/DAOUsuario.php'; 
         require 'BD/DAOHilo.php'; 
          
-        $conexion=conectar(false)
+        $conexion=conectar(false);
+
     ?>
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>

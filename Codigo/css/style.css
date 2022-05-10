@@ -1,4 +1,5 @@
 body{
+  height: 100%;
     background: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f0c8f3a8-cb8c-4d8e-b51b-3ab481a9c2d1/d9bq65l-3f722b77-c1cb-4299-b2d5-151033eac7bd.jpg/v1/fill/w_1024,h_692,q_75,strp/2_by_tickler_kun_d9bq65l-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD02OTIiLCJwYXRoIjoiXC9mXC9mMGM4ZjNhOC1jYjhjLTRkOGUtYjUxYi0zYWI0ODFhOWMyZDFcL2Q5YnE2NWwtM2Y3MjJiNzctYzFjYi00Mjk5LWIyZDUtMTUxMDMzZWFjN2JkLmpwZyIsIndpZHRoIjoiPD0xMDI0In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.I8nuqVxOcTPcP__tLLSO0lUDJlHDgYqExMhz-RUNBeg) repeat-y;
 
 /* Animate Background Image */
@@ -69,7 +70,6 @@ background-color: #fdffb46c;
   }
   #cajaAnimacion{
     background:#fdffb4c4;
-    padding: 10px;
     
   }
   .logo:hover img:last-child {
@@ -230,10 +230,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcffb4', end
 	bottom: -195px;
   } 
 .elipsis{
-    height: calc(9em + 9vw);
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    height: 5%;
+    font-size: calc(0.5em + 0.5vw);
+    overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: nowrap;
 }
 .card:hover{
     transform: scale(1.06);

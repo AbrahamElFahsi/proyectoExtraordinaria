@@ -18,7 +18,7 @@ function eliminarHilosArticulos($conexion,$idHilo){
 }
 function eliminarHiloConCambioDeArticulos($conexion,$idHilo,$idHiloCambio){
     
-    $consulta1 = "UPDATE `hilo` SET idHilo=$idHiloCambio WHERE idHilo=$idHilo";
+    $consulta1 = "UPDATE `articulo` SET idHilo=$idHiloCambio WHERE `idHilo`=$idHilo";
     $resultado1 = mysqli_query($conexion,$consulta1);
     $consulta = "DELETE FROM `hilo` WHERE `idHilo` = $idHilo";
     $resultado = mysqli_query($conexion,$consulta);

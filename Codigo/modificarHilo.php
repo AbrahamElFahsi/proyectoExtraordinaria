@@ -20,6 +20,9 @@ $conexion=conectar(false);
     <div class="row"><h1 class="text-center col-12">Modificar </h1></div>
         <div class="row">  
             <?php
+            if ($_SESSION['Rol']!="adminnistrador") {
+                header('Location: cerrarSesion.php');
+            }
             if (isset($_POST['modificarHilo'])) {
                 $_SESSION['hiloAModificar']=$_POST['idHiloModi'];
                

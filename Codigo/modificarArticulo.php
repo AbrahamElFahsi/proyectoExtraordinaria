@@ -20,6 +20,10 @@
 </head>
 <body>
 <?php
+
+if ($_SESSION['Rol']!="adminnistrador") {
+    header('Location: cerrarSesion.php');
+}
             if (isset($_POST['modificarArticulo'])) {
                 $_SESSION['articuloAModificar']=$_POST['idArticuloModi'];
             }

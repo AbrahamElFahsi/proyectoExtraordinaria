@@ -15,7 +15,7 @@
         require 'BD/DAOArticulo.php'; 
         include 'nav.php';
         if ($_SESSION['Rol']!="adminnistrador") {
-            header('Location: principal.php');
+            header('Location: cerrarSesion.php');
         }
         $conexion=conectar(false)
     ?>

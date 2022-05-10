@@ -41,8 +41,10 @@ function insertarUsuario($conexion,$nombre, $apellidos, $usuario, $pass, $dni, $
     $resultado = mysqli_query($conexion,$consulta);
     return $resultado;
 }
-//Eliminar usuario
+//Eliminar usuario y sus comentarios
 function eliminarUsuario($conexion,$idUsuario){
+    $consulta1 = "DELETE FROM `comentarios` WHERE `idUsuario` = $idUsuario;";
+    $resultado1 = mysqli_query($conexion,$consulta1);
     $consulta = "DELETE FROM `usuario` WHERE `idUsuario` = $idUsuario;";
     $resultado = mysqli_query($conexion,$consulta);
     return $resultado;

@@ -54,7 +54,7 @@ if ($fecha<$baneo || $_SESSION['perBanned']==1) {
                 <div class="card col-md-5 tarjetas p-3 m-3 text-center" >
                     <img class="card-img-top" src="<?php echo $hilo['imagen']; ?>" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title"><?php echo $hilo['tema']; ?></h5>
+                        <h5 class="display-4"><?php echo $hilo['tema']; ?></h5>
                         <div class="col-12"><p><?php echo $hilo['descripcion']; ?></p></div>
                     </div>
                     <?php if (isset($_SESSION['usuario'])) { ?>
@@ -139,8 +139,8 @@ if ($fecha<$baneo || $_SESSION['perBanned']==1) {
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-            <div style="height: 400px;" class="col-12 mt-5 d-flex justify-content-center" id="cajaAnimacion">
-                <img style="height: 300px;" src="images/imagesAnimation/1.svg" id="imagen">
+            <div class="col-12 mt-5 d-flex justify-content-center" style="height: 300px;" id="cajaAnimacion">
+                <img class="col-12 p-1" src="images/imagesAnimation/1.svg" id="imagen">
             </div>
         </div>
         <! ––hasta aqui el bloque de la derecha–>

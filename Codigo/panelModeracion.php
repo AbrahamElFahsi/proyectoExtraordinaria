@@ -30,7 +30,9 @@ if ($_SESSION['Rol']!="adminnistrador") {
 <div class="container-fluid">
     <div class="row">
     <?php
-
+if ($_SESSION['Rol']!="adminnistrador") {
+    header('Location: cerrarSesion.php');
+}
         if (isset($_POST['moderador'])) {
             $_SESSION['comenModerar']=$_POST['idComent'];
         }

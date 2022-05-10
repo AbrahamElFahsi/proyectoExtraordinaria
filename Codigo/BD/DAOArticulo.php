@@ -40,6 +40,8 @@ function insertarArticulo($conexion,$image,$idHilo,$cuerpo,$pie,$cabecera,$idUsu
 }
 //Eliminar Articulo
 function eliminarArticulo($conexion,$idArticulo){
+    $consulta1 = "DELETE FROM `comentarios` WHERE `idArticulo` = $idArticulo";
+    $resultado1 = mysqli_query($conexion,$consulta);
     $consulta = "DELETE FROM `articulo` WHERE `idArticulo` = $idArticulo";
     $resultado = mysqli_query($conexion,$consulta);
     return $resultado;
