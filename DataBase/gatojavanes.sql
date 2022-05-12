@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 12, 2022 at 06:14 PM
+-- Generation Time: May 12, 2022 at 06:35 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -36,7 +36,7 @@ CREATE TABLE `articulo` (
   `pie` longtext,
   `cabecera` varchar(200) DEFAULT NULL,
   `idUsuario` int(11) NOT NULL,
-  `premium` bit(1) DEFAULT NULL,
+  `premium` int(1) DEFAULT NULL,
   `estado` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -45,8 +45,8 @@ CREATE TABLE `articulo` (
 --
 
 INSERT INTO `articulo` (`idArticulo`, `image`, `idHilo`, `cuerpo`, `pie`, `cabecera`, `idUsuario`, `premium`, `estado`) VALUES
-(1, 'images/img3.jpg', 2, 'En estos casos debes lavar a tu minino con agua tibia y un poco de champú para gatos. Asimismo, debes asegurarte de que la temperatura del ambiente esté templada para que no pase frío. También deberías tener una toalla preparada para secarlo. Es fundamental que seas muy cuidadoso, ya que muchos gatos temen al agua.<br>', 'En estos casos debes lavar a tu minino con agua tibia y un poco de champú para gatos. Asimismo, debes asegurarte de que la temperatura del ambiente es<br>', 'Duchar a tu gato', 2, b'0', 'null'),
-(3, 'images/ducha.jpg', 2, 'Ante la pregunta de cuánta agua debe beber un gato, hay que tener en cuenta que, cualquier gato, para mantenerse bien hidratado, necesita ingerir una media diaria de 50 a 100 mililitros de agua por kg de peso. Este límite conviene verse sobrepasado si tu gato está muy expuesto a altas temperaturas y/o se ejercita en exceso durante el periodo estival.<br>El problema es que algunos gatos muestran poca predisposición al contacto con el agua, y que su temperamento sibarita los condiciona a ser muy exigentes ante los condicionantes a la hora de ingerirla. Si éste es tu caso, te recomendamos que sigas los siguientes consejos sobre cómo hidratar a un gato para asegurar que tu gato bebe la cantidad de agua que requiere su cuerpo para mantenerse hidratado durante todo el verano.', 'Por eso recomendamos que ubiques varios bebedores en distintos lugares de tu casa. Su extremo sentido de la limpieza, puede hacer que se niegue a bebe<br>', 'Raciaonar la comida', 2, b'0', 'Null'),
+(1, 'images/img3.jpg', 2, 'En estos casos debes lavar a tu minino con agua tibia y un poco de champú para gatos. Asimismo, debes asegurarte de que la temperatura del ambiente esté templada para que no pase frío. También deberías tener una toalla preparada para secarlo. Es fundamental que seas muy cuidadoso, ya que muchos gatos temen al agua.<br>', 'En estos casos debes lavar a tu minino con agua tibia y un poco de champú para gatos. Asimismo, debes asegurarte de que la temperatura del ambiente es<br>', 'Duchar a tu gato', 2, 0, 'null'),
+(3, 'images/ducha.jpg', 2, 'Ante la pregunta de cuánta agua debe beber un gato, hay que tener en cuenta que, cualquier gato, para mantenerse bien hidratado, necesita ingerir una media diaria de 50 a 100 mililitros de agua por kg de peso. Este límite conviene verse sobrepasado si tu gato está muy expuesto a altas temperaturas y/o se ejercita en exceso durante el periodo estival.<br>El problema es que algunos gatos muestran poca predisposición al contacto con el agua, y que su temperamento sibarita los condiciona a ser muy exigentes ante los condicionantes a la hora de ingerirla. Si éste es tu caso, te recomendamos que sigas los siguientes consejos sobre cómo hidratar a un gato para asegurar que tu gato bebe la cantidad de agua que requiere su cuerpo para mantenerse hidratado durante todo el verano.', 'Por eso recomendamos que ubiques varios bebedores en distintos lugares de tu casa. Su extremo sentido de la limpieza, puede hacer que se niegue a bebe<br>', 'Raciaonar la comida', 2, 0, 'Null'),
 (10, 'images/descargar.jpg', 14, 'Busca un lugar tranquilo. Una de las cosas más importantes a la hora de saber dónde poner el arenero para tu gato es encontrar un sitio apartado del ajetreo de ...<br>', 'Intenta colocar el arenero en un sitio higiénico. Debes mantener tanto la arena como el entorno limpio, de lo contrario tampoco querrá usar esa bandej<br>', 'Donde ponerselo', 2, NULL, NULL),
 (11, 'images/th.jpg', 15, 'Un gato adulto normal y sano puede pasar unas 16 horas dedicado al sueño. Podemos encontrarlo durmiendo en cualquier lugar de la casa, preferiblemente al sol o, en su ausencia, en un lugar cálido o escondido, en función de su personalidad. Por eso, a simple vista, parece importante que disponga de un lugar confortable en el que dormir.<br>', 'Un gato adulto normal y sano puede pasar unas 16 horas dedicado al sueño. <br>', 'Donde duermen', 2, NULL, NULL),
 (12, 'images/OIP.jpg', 1, 'Cómo cuidar el pelaje de un gato: acostumbrarlo al cepillado. Por desgracia, no todos los gatos valoran que queramos ayudarlos con el cuidado del pelo.Cómo cuidar el pelaje de un gato: acostumbrarlo al cepillado. Por desgracia, no todos los gatos valoran que queramos ayudarlos con el cuidado del pelo.Cómo cuidar el pelaje de un gato: acostumbrarlo al cepillado. Por desgracia, no todos los gatos valoran que queramos ayudarlos con el cuidado del pelo.Cómo cuidar el pelaje de un gato: acostumbrarlo al cepillado. Por desgracia, no todos los gatos valoran que queramos ayudarlos con el cuidado del pelo.<br>Cómo cuidar el pelaje de un gato: acostumbrarlo al cepillado. Por desgracia, no todos los gatos valoran que queramos ayudarlos con el cuidado del pelo.', 'Cómo cuidar el pelaje de un gato: acostumbrarlo al cepillado. Por desgracia, no todos los gatos valoran que queramos ayudarlos con el cuidado del pelo<br>', 'Cómo cuidar el pelaje', 2, NULL, NULL);
