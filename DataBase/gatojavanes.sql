@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 12, 2022 at 04:56 PM
+-- Generation Time: May 12, 2022 at 05:13 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -137,10 +137,10 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idUsuario`, `nombre`, `apellidos`, `usuario`, `pass`, `dni`, `direccion`, `comunidad`, `provincia`, `cp`, `Rol`, `gmail`, `telefono`, `fechaSuscripcion`, `banner`, `perBanned`) VALUES
-(1, 'nombre', 'fasi', 'Elleon', 'Fasi@123', 'dni', 'direccion', 'comunidad', 'provincia', 'cp', 'usuario', 'sasa@gmail.com', '777777777', '2022-03-02 02:08:16', '2022-05-12 10:37:00', 1),
+(1, 'nombre', 'fasi', 'Elleon', 'Fasi@123', 'dni', 'direccion', 'comunidad', 'provincia', 'cp', 'usuario', 'sasa@gmail.com', '777777777', '2022-03-02 02:08:16', '2022-05-12 10:37:00', 0),
 (2, '', 'asdf fadfa asfsf', 'elgatillo', 'Fasi@123', '20481132X', 'dasde', 'Baleares', 'Baleares', '07015', 'adminnistrador', 'EFESFSDFE@UYIBHEFC.ES', '654456456', NULL, '2022-05-12 15:21:00', 0),
-(4, 'nombre', 'dddddddddddddddddd', 'sssssssss', 'Fasi123@123', '50458796W', 'direccion', 'Asturias', 'Asturia', '0', 'usuario', 'fasi@gmail.com', '654646', NULL, '2023-01-26 17:07:00', 0),
-(6, 'Abraham', 'Mohamed', 'Fasilo', 'Pasi123@', '20481144X', 'C/ Castellon de la plana', 'Cantabria', 'Cantabria', '39004', 'adminnistrador', 'fasi@gmail.com', '654654654', NULL, NULL, 1),
+(4, 'nombre', 'dddddddddddddddddd', 'gatoJava', 'Fasi@123', '50458796W', 'direccion', 'Asturias', 'Asturia', '0', 'usuario', 'fasi@gmail.com', '654646', NULL, '2023-01-26 17:07:00', 0),
+(6, 'Abraham', 'Mohamed', 'Fasilo', 'Fasi@123', '20481144X', 'C/ Castellon de la plana', 'Cantabria', 'Cantabria', '39004', 'adminnistrador', 'fasi@gmail.com', '654654654', '2022-07-14 19:12:16', NULL, 1),
 (8, 'Lucia', 'Reyes', 'bugato', 'Sasi@123', '20481145X', 'C/ Castellon de la plana', 'Baleares', 'Baleares', '07007', 'usuario', 'Lucia@gmail.com', '666666666', NULL, NULL, 0),
 (10, 'Hasan', 'El Fahsi', 'gatuso', 'Gatuso1@', '20481147X', 'C/ Castellon de la plana', 'andalucia', 'almería', '04000', 'usuario', 'Hasan@gmail.com', '654987987', NULL, NULL, 0),
 (11, '', '', 'dasdew', '', '', '', 'Baleares', 'Baleares', '07011', 'usuario', '', '', NULL, NULL, 0),
