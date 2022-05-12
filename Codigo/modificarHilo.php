@@ -33,7 +33,7 @@ $conexion=conectar(false);
 
             ?>
             <div class="col-12">
-                <form action="ModificarHilo.php" method="post" enctype="multipart/form-data">
+                <form action="modificarHilo.php" method="post" enctype="multipart/form-data">
                     <div class="form-group col-12">
                         <p class="text-center">Modificar imagen</p>
                         <div class="image-area mt-4"><img id="imageResult" src="<?php echo $hilo['imagen'] ?>" alt="" class="col-12 rounded shadow-sm mx-auto d-block"></div>  
@@ -91,7 +91,7 @@ $conexion=conectar(false);
                             ?>
             </div>
             <div class="col-12">
-                <form action="ModificarHilo.php" method="post" enctype="multipart/form-data" id="temaForm">
+                <form action="modificarHilo.php" method="post" enctype="multipart/form-data" id="temaForm">
                     <div class="form-group col-12">
                         <label for="tema">Tema: <?php echo $hilo['tema']; ?><i class="fas fa-user"></i></label>
                         <input type="text" id="tema" name="tema" value="<?php echo $hilo['tema']; ?>" maxlength="99" class="form-control" placeholder="Enter User"> 
@@ -111,7 +111,7 @@ $conexion=conectar(false);
                 ?>
             </div>
             <div class="col-12">
-                <form action="ModificarHilo.php" method="post" enctype="multipart/form-data" id="modDescrip">
+                <form action="modificarHilo.php" method="post" enctype="multipart/form-data" id="modDescrip">
                     <div class="form-group col-12">
                         <label for="descripcion">Descripcion <i class="fas fa-user"></i></label>
                         <textarea class="form-control" id="descripcion" value="<?php echo str_replace('<br>',"\n", $hilo['descripcion']); ?>" maxlength="199" name="descripcion" rows="3"><?php echo str_replace('<br>',"\n", $hilo['descripcion']); ?></textarea>
