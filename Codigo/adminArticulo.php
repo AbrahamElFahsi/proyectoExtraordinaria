@@ -1,5 +1,5 @@
 <?php
-require 'ConectorBD.php';
+require 'BD/ConectorBD.php';
 require 'BD/DAOHilo.php';
 require 'BD/DAOArticulo.php';
 $conexion=conectar(false);
@@ -17,7 +17,7 @@ $conexion=conectar(false);
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <?php   include 'nav.php';
+    <?php   include 'partes/nav.php';
             if ($_SESSION['Rol']!="adminnistrador") {
                 header('Location: cerrarSesion.php');
             }

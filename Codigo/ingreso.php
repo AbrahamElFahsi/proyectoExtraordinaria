@@ -9,8 +9,8 @@
     <script src="https://kit.fontawesome.com/a477e7ee05.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
     <?php 
-        include 'nav.php';
-        require 'ConectorBD.php';
+        include 'partes/nav.php';
+        require 'BD/ConectorBD.php';
         require 'BD/DAOUsuario.php'; 
          
         $conexion=conectar(false)
@@ -202,6 +202,6 @@
     <script src="https://kit.fontawesome.com/b57da3fc72.js" crossorigin="anonymous"></script>
     <script src="js/validacionLogin.js"></script>
     <script src="js/script.js"></script>
-    <?php include 'footer.php'; ?>
+    <?php include 'partes/footer.php'; ?>
 </body>
 </html>

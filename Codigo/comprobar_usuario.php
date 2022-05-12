@@ -1,5 +1,5 @@
 <?php
-require 'ConectorBD.php';
+require 'BD/ConectorBD.php';
 require 'BD/DAOUsuario.php';
 $conexion=conectar(false);
    //Voy a recoger los datos del formulario

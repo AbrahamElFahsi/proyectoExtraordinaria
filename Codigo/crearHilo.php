@@ -9,11 +9,11 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
     <link rel="stylesheet" href="css/style.css">
     <?php 
-         include 'nav.php';
+         include 'partes/nav.php';
          if ($_SESSION['Rol']!="adminnistrador") {
             header('Location: cerrarSesion.php');
         }
-        require 'ConectorBD.php';
+        require 'BD/ConectorBD.php';
         require 'BD/DAOUsuario.php'; 
         require 'BD/DAOHilo.php'; 
          
@@ -64,7 +64,7 @@
     </div>
 </div>
 
-    <?php include 'footer.php'; ?>
+    <?php include 'partes/footer.php'; ?>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b57da3fc72.js" crossorigin="anonymous"></script>

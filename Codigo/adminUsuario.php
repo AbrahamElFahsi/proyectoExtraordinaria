@@ -1,5 +1,5 @@
 <?php
-require 'ConectorBD.php';
+require 'BD/ConectorBD.php';
 require 'BD/DAOUsuario.php';
 $conexion=conectar(false);
 ?>
@@ -15,7 +15,7 @@ $conexion=conectar(false);
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
-<?php   include 'nav.php';
+<?php   include 'partes/nav.php';
             if ($_SESSION['Rol']!="adminnistrador") {
                 header('Location: cerrarSesion.php');
             }
@@ -79,8 +79,58 @@ $conexion=conectar(false);
                                 $bannear1=modificarUsuario($conexion,$_POST['usuarioQbanneo'], "banner", $AHORA);
                                 
                             }
+                            }else {
+                                ?>
+<form method="post" class="ml-3 col-12"> 
+            <div class="form-check">
+                <input type="hidden" name="usuBanear" value="<?php echo $usu['idUsuario']; ?>">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <input type="radio" class="form-check-input" name="bannear" id="" value="0">
+                <label class="form-check-label" for="check">
+                    permanente: 
+                </label>
+                </div>
+                <div class="form-check">
+                <input type="radio" name="bannear" class="form-check-input" id="fecha" value="1" onchange="javascript:showContent()">
+                <label class="form-check-label" for="check">
+                    Hasta fecha: 
+                </label>
+                <div id="content" style="display: none;">
+                <?php $fechaymd = date("Y-m-d"); $fechahis = date("H:i");?>
+                        <input type="datetime-local" class="" min="<?php echo $fechaymd."T".$fechahis; ?>" name="fechaBaneo" id="">
+                </div>
+            </div>
+                   
+                    <input type="submit" value="Banear" name="banneado" class="boton col-12 mb-2">
+            </form>
+<?php
                          }
-
+if (isset($_POST['banneado'])) {
+    if ($_POST['bannear']==0) {
+        $bannear=modificarUsuario($conexion,$_POST['usuBanear'],"perBanned",1);
+        $bannear1=modificarUsuario($conexion,$_POST['usuBanear'],"banner","null");
+        if ($bannear && $bannear1) {
+            ?>
+                        <div class="col-12 mb-2">
+                            <h1 class="display-5">Se banneo correctamente el usuario <?php echo $moderador['usuario']; ?></h1>
+                        </div>
+            <?php
+        }
+    }elseif($_POST['bannear']==1){
+        $fecha = date("Y-m-d H:i:s", strtotime($_POST['fechaBaneo']));
+        $bannear2=modificarUsuario($conexion,$_POST['usuBanear'],"perBanned",0);
+        echo $fecha;
+        $bannear3=modificarUsuario($conexion,$_POST['usuBanear'],"banner","$fecha");
+        if ($bannear3 && $bannear2) {
+            ?>
+                        <div class="col-12 mb-2">
+                            <h1 class="display-5">Se banneo correctamente el usuario <?php echo $moderador['usuario']; ?> hasta</h1>
+                        </div>
+            <?php
+        }
+    }
+    
+}
                     ?> </td>
                     
                     <td><?php echo $usu['Rol']; ?></td>
@@ -101,9 +151,9 @@ $conexion=conectar(false);
 
     
 </div>
-    <?php include 'footer.php'; ?>
+    <?php include 'partes/footer.php'; ?>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-    
+    <script src="js/script.js"></script>
 </body>
 </html>

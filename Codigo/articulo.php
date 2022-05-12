@@ -1,5 +1,5 @@
 <?php
-require 'ConectorBD.php';
+require 'BD/ConectorBD.php';
 require 'BD/DAOArticulo.php';
 require 'BD/DAOHilo.php';
 require 'BD/DAOUsuario.php';
@@ -17,7 +17,7 @@ $conexion=conectar(false);
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<?php include 'nav.php'; 
+<?php include 'partes/nav.php'; 
 ?>
 <! –– generamos un contenedor que va a estar compuesto por dos columnas–>
 <div class="container-fluid">
@@ -29,7 +29,7 @@ $conexion=conectar(false);
             $artic=articulosPorIdArticulo($conexion,$_SESSION['idVerArticulo']);
             $articulo=mysqli_fetch_assoc($artic);
     ?>
-    <div class="row">
+    <div class="row mt-5">
         <div class="card m-auto col-11 mb-5 articulo">
             
                 <img src="<?php  echo $articulo['imagenArticulo']; ?>" alt="" class="card-img-top mt-3">
@@ -87,7 +87,7 @@ if (($fechaFin>=$fecha_actual && $_SESSION['idUsuario']==$comentario['idUsuario'
 <form action="modificarComentario.php" method="post" class="ml-3"> 
     <div class="form-group col-12">
         <input type="hidden" name="idComen" value="<?php echo $comentario['idComentario']; ?>">
-        <input type="text" name="contenido" class="bg-dark col-12" value="<?php echo $comentario['contenido']; ?>">
+        <input type="text" name="contenido" class="col-12" value="<?php echo $comentario['contenido']; ?>">
         <input type="submit" value="Modificar" name="modificarComen" class="btn boton col-12">
     </div>
 </form>
@@ -141,7 +141,7 @@ if (($fechaFin>=$fecha_actual && $_SESSION['idUsuario']==$comentario['idUsuario'
         
     </div>
 </div>
-<?php include 'footer.php'; ?>
+<?php include 'partes/footer.php'; ?>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b57da3fc72.js" crossorigin="anonymous"></script>

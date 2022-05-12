@@ -16,7 +16,7 @@
     <title>Document</title>
 </head>
 <body>
-<?php include 'nav.php'; ?>
+<?php include 'partes/nav.php'; ?>
 <div class="container forms mb-5">
 <div class="jumbotron-fluid">
   <h1 class="display-4">Suscripcion tramitada</h1>
@@ -25,7 +25,7 @@
   if (isset($_SESSION['usuario'])) {
     
     $date = date("Y-m-d H:i:s");
-    $mod_date = strtotime($date."+ 2 months");
+    $mod_date = strtotime($date."+ 1 months");
     setlocale(LC_TIME, 'es_ES.UTF-8');
     echo "Su suscripcion termina el ". strftime("%d de %B del %Y", $mod_date);
       $resul=modificarUsuario($conexion,$_SESSION['idUsuario'],"fechaSuscripcion",date("Y-m-d H:i:s",$mod_date));
@@ -39,7 +39,7 @@
   </p>
 </div>
 </div>
-<?php include 'footer.php'; ?>
+<?php include 'partes/footer.php'; ?>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>

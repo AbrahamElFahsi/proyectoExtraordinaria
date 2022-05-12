@@ -4,10 +4,9 @@ function primeraLetraMa(str) {
   }
 
 //Ingreso
-const expr={telefono:/[0-9]{9}/, usuario:/[a-zA-ZáéíóúÁÉÍÓÚ]{6,45}/, dni:/^[0-9]{8}[a-zA-Z]$/, email:/^[A-Za-z]{1,15}[@]{1}[A-Za-z]{1,15}[.]{1}[A-Za-z]{1,5}$/, pass:/(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,40}/, nombre:/^[A-Za-záéíóúÁÉÍÓÚ]+[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ]+[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ]{2,}?$/, direccion:/^([A-Za-záéíóúÁÉÍÓÚ/,0-9]{1,}[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ/,0-9]*[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ/,0-9]*[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ/,0-9]*[ ]{0,1}){0,50}?$/}
+const expr={contra:/(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,40}/ ,telefono:/[0-9]{9}/, usuario:/[a-zA-ZáéíóúÁÉÍÓÚ]{6,45}/, dni:/^[0-9]{8}[a-zA-Z]$/, email:/^[A-Za-z]{1,15}[@]{1}[A-Za-z]{1,15}[.]{1}[A-Za-z]{1,5}$/, pass:/(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,40}/, nombre:/^[A-Za-záéíóúÁÉÍÓÚ]+[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ]+[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ]{2,}?$/, direccion:/^([A-Za-záéíóúÁÉÍÓÚ/,0-9]{1,}[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ/,0-9]*[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ/,0-9]*[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ/,0-9]*[ ]{0,1}){0,50}?$/}
 //el array input validado, es para controlar si ha sido validado todos los campos antes de enviarlo
 let inputValidadoIng=[false, false, false, false, false,false,false,false,false,false];
-
 let usu=document.getElementById('usuario');
 let avisoUsu=document.getElementById('avisoUsuario');
 const inputValidado={Usuario:false, Pass:false}
@@ -28,9 +27,7 @@ function validarUsuario(){
             inputValidadoIng[0]=false;
                 usu.classList.remove('is-valid');
                 usu.classList.add('is-invalid');
-               
                 avisoUsu.innerHTML="El usuario de contener al menos 6 carecteres";
-            
         }            
     }else{
             avisoUsu.innerHTML=" ";
@@ -38,7 +35,6 @@ function validarUsuario(){
             usu.classList.add('is-invalid');
             inputValidado.Usuario=false;
             inputValidadoIng[0]=false;
-
     }
 }
 usu.addEventListener('keyup',validarUsuario);
@@ -50,7 +46,7 @@ function validarPass(){
     //Aseguramos que no esta vacio o no definido
     if(pass.value!="" && pass.value!=undefined){
         //aseguramos que sige la expresion
-        if(/(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,40}/.test(pass.value)){
+        if(expr.contra.test(pass.value)){
             pass.classList.remove('is-invalid');
             pass.classList.add('is-valid');
             //variable de control a true, color del bode rojo y vaciamos el aviso
@@ -62,12 +58,12 @@ function validarPass(){
             pass.classList.add('is-invalid');
             inputValidado.Pass=false;
             inputValidadoIng[1]=false;
-            avisoPass.innerHTML="No es suficientemente segura";
+            avisoPass.innerHTML="Mayuscula,8 caracteres,número y caracter especial";
         }        
     }else{
-        pass.classList.remove('is-valid');
-            pass.classList.add('is-invalid');
-            avisoPass.innerHTML="Debe rellenar el campo contraseña";
+            pass.classList.remove('is-valid');
+            pass.classList.remove('is-invalid');
+            avisoPass.innerHTML=" ";
         inputValidado.Pass=false;
         inputValidadoIng[1]=false;
     }
@@ -112,8 +108,8 @@ function validarDNI(){
         }
     }else{
         DNI.classList.remove('is-valid');
-                DNI.classList.add('is-invalid');
-                avisoDni.innerHTML="Debe rellenar todos los campos";
+                DNI.classList.remove('is-invalid');
+                avisoDni.innerHTML=" ";
                 inputValidadoIng[2]=false;
         
     }   
@@ -138,8 +134,8 @@ function validarApellido1(){
         } 
     }else{
         apellido1.classList.remove('is-valid');
-        apellido1.classList.add('is-invalid');
-        avisoapellido.innerHTML="Debe rellenar todos los campos";
+        apellido1.classList.remove('is-invalid');
+        avisoapellido.innerHTML=" ";
         inputValidadoIng[3]=false;
     }
            
@@ -230,7 +226,7 @@ function validarPass2(){
             inputValidadoIng[6]=false;
         }            
     }else{
-        avisoPass2.innerHTML="Debe rellenar todos los campos";
+        avisoPass2.innerHTML=" ";
         pass2.classList.remove('is-valid');
         pass2.classList.add('is-invalid');
         inputValidadoIng[6]=false;
@@ -335,7 +331,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if(contador==9){
         document.getElementById("avisoForm").innerHTML="";
     }else{
-
+        evento.preventDefault();
         document.getElementById("avisoForm").innerHTML="El formulario debe ser completamente valido para enviarlo";
         comidas.forEach(function(inputValidadoIng, index) {
             console.log(`${index} : ${comida}`);

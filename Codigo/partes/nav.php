@@ -56,7 +56,7 @@ session_start();
         ?>
         
         <li class="nav-item">
-          <a class="footerLink" href="login.php">
+          <a class="footerLink ml-3" href="login.php">
             Log in
           </a>
         </li>

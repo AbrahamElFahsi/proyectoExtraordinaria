@@ -1,6 +1,6 @@
 
 <?php
-require 'ConectorBD.php';
+require 'BD/ConectorBD.php';
 require 'BD/DAOArticulo.php';
 require 'BD/DAOHilo.php';
 require 'BD/DAOUsuario.php';
@@ -20,7 +20,7 @@ $conexion=conectar(false);
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<?php include 'nav.php'; 
+<?php include 'partes/nav.php'; 
 if ($_SESSION['Rol']!="adminnistrador") {
     header('Location: principal.php');
 }
@@ -28,7 +28,7 @@ if ($_SESSION['Rol']!="adminnistrador") {
 
 <! –– generamos un contenedor que va a estar compuesto por dos columnas–>
 <div class="container-fluid">
-    <div class="row">
+    <div class="row forms">
     <?php
 if ($_SESSION['Rol']!="adminnistrador") {
     header('Location: cerrarSesion.php');
@@ -42,7 +42,7 @@ if ($_SESSION['Rol']!="adminnistrador") {
             
             
             ?>
-        <div class="jumbotron col-12"> 
+        <div class="col-12"> 
             <div class="col-12">
                 <h5 class="col-5"><?php echo $moderador['usuario']; ?></h5>
                 <small class="float col-2 mr-3"><?php $fecha = new DateTime($moderador['fecha']); echo date_format($fecha,"d/m/Y H:i"); ?></small>
@@ -50,13 +50,13 @@ if ($_SESSION['Rol']!="adminnistrador") {
             <form action="panelModeracion.php" method="post" class="ml-3 col-12"> 
                     <input type="hidden" name="idComen" value="<?php echo $moderador['idComentario']; ?>">
                     <input type="text" name="contenido" class="col-12" value="<?php echo $moderador['contenido']; ?>">
-                    <input type="submit" value="Modificar" name="modificarComen" class="btn btn-primary col-12">
+                    <input type="submit" value="Modificar" name="modificarComen" class="boton col-12">
             </form>
             
             <hr>
             <h3 class="col-12">¿Eliminar comentario?</h3>
             <form method="post" class="ml-3 col-12"> 
-                    <input type="submit" value="Eliminar" name="eliminarComentar" class="btn btn-danger col-12">
+                    <input type="submit" value="Eliminar" name="eliminarComentar" class="botonElim col-12">
             </form>
             <?php
 if ($moderador['idUsuario']!=$_SESSION['idUsuario']) {
@@ -84,7 +84,7 @@ if ($moderador['idUsuario']!=$_SESSION['idUsuario']) {
                 </div>
             </div>
                    
-                    <input type="submit" value="Banear" name="banneado" class="btn btn-warning col-12">
+                    <input type="submit" value="Banear" name="banneado" class="boton col-12 mb-2">
             </form>
             <?php
 }else {
@@ -100,11 +100,11 @@ if (isset($_POST['banneado'])) {
         $bannear1=modificarUsuario($conexion,$moderador['idUsuario'],"banner","null");
         if ($bannear && $bannear1) {
             ?>
-<div class="jumbotron col-12">
+                        <div class="col-12 mb-2">
                             <h1 class="display-5">Se banneo correctamente el usuario <?php echo $moderador['usuario']; ?></h1>
                             <hr class="my-4">
                             <p>Para volver al articulo</p>
-                            <a class="btn btn-primary btn-lg" href="articulo.php" role="button">Volver al Post</a>
+                            <a class="enlaceContra col-12" href="articulo.php" role="button">Volver al Post</a>
                         </div>
             <?php
         }
@@ -115,11 +115,11 @@ if (isset($_POST['banneado'])) {
         $bannear3=modificarUsuario($conexion,$moderador['idUsuario'],"banner","$fecha");
         if ($bannear3 && $bannear2) {
             ?>
-<div class="jumbotron col-12">
+                        <div class="col-12 mb-2">
                             <h1 class="display-5">Se banneo correctamente el usuario <?php echo $moderador['usuario']; ?> hasta</h1>
                             <hr class="my-4">
                             <p>Para volver al articulo</p>
-                            <a class="btn btn-primary btn-lg" href="articulo.php" role="button">Volver al Post</a>
+                            <a class="enlaceContra col-12" href="articulo.php" role="button">Volver al Post</a>
                         </div>
             <?php
         }
@@ -134,20 +134,20 @@ if (isset($_POST['banneado'])) {
                 $resulElim=eliminarComentario($conexion,$_SESSION['comenModerar']);
                 if ($resulElim) {
                     ?>
-                        <div class="jumbotron col-12">
+                        <div class="col-12 mb-2">
                             <h1 class="display-5">Se eliminó correctamente</h1>
                             <hr class="my-4">
                             <p>Para volver al articulo</p>
-                            <a class="btn btn-primary btn-lg" href="articulo.php" role="button">Volver al Post</a>
+                            <a class="enlaceContra col-12" href="articulo.php" role="button">Volver al Post</a>
                         </div>
                     <?php
                 }else {
                     ?>
-                        <div class="jumbotron col-12">
+                        <div class="col-12 mb-2">
                             <h1 class="display-5">No se consigió eliminar intentel de nuevo</h1>
                             <hr class="my-4">
                             <p>Para volver al articulo</p>
-                            <a class="btn btn-primary btn-lg" href="articulo.php" role="button">Volver al Post</a>
+                            <a class="enlaceContra col-12" href="articulo.php" role="button">Volver al Post</a>
                         </div>
                     <?php
                 }
@@ -157,22 +157,22 @@ if (isset($_POST['modificarComen'])) {
     $resulModiComentario=modificarComentario($conexion,$_POST['idComen'],$_POST['contenido']);
     if ($resulModiComentario) {
     ?>
-        <div class="jumbotron col-12">
+        <div class="col-12 mb-2">
             <h1 class="display-5">Se modifico correctamente</h1>
             <p class="lead">El contenido del comentario tras el cambio es: <?php echo $_POST['contenido']; ?></p>
             <hr class="my-4">
             <p>Para volver al articulo</p>
-            <a class="btn btn-primary btn-lg" href="articulo.php" role="button">Volver al Post</a>
+            <a class="enlaceContra col-12" href="articulo.php" role="button">Volver al Post</a>
         </div>
     <?php
     }else {
     ?>
-        <div class="jumbotron col-12">
+        <div class="col-12 mb-2">
             <h1 class="display-5">Hubó un error al modificar</h1>
             <p class="lead">No se consigio modificar intentelo de nuevo</p>
             <hr class="my-4">
             <p>Para volver al articulo</p>
-            <a class="btn btn-primary btn-lg" href="articulo.php" role="button">Volver al Post</a>
+            <a class="enlaceContra col-12" href="articulo.php" role="button">Volver al Post</a>
         </div>
     <?php
     }
@@ -181,7 +181,7 @@ if (isset($_POST['modificarComen'])) {
         </div>
     </div>
 </div>
-<?php include 'footer.php'; ?>
+<?php include 'partes/footer.php'; ?>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b57da3fc72.js" crossorigin="anonymous"></script>

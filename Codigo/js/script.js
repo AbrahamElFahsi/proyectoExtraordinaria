@@ -39,22 +39,19 @@ onload=function()
     setInterval(rotarImagenes,180);
 }
 
-
-
-
-
-
-function showContent() {
-    element = document.getElementById("content");
+ element = document.getElementById("content");
     check = document.getElementById("fecha");
-    if (check.checked) {
+function showContent() {
+   
+    console.log(check.value);
+    if (check.value=="0") {
         element.style.display='block';
     }
     else {
         element.style.display='none';
     }
 }
-
+check.addEventListener('change',showContent);
 $(document).ready(function(){
 
 let andalucia = [
