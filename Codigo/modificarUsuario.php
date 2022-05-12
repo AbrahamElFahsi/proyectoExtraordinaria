@@ -24,9 +24,9 @@ $conexion=conectar(false);
      $_SESSION['usuarioMo']=$_POST['idUsuMo'];
  }
 ?>
-<div class="container forms">
+<div class="container forms mb-5">
     <div class="row"><h1 class="text-center col-12">Modificar Usuario</h1></div>
-    <div class="row">
+    <div class="row mb-3">
         <div class="col-md-6">
             
             <form action="modificarUsuario.php" method="POST" class="row" id="modiUsuario">
@@ -437,7 +437,62 @@ $conexion=conectar(false);
                     <input type="submit" value="Modificar Direccion" name="modificarDir" class="btn boton col-12 mb-2">
                 </div>
             </form>
-            <form action="modificarUsuario.php" method="post" class="row" id="cpcForm">
+            
+            <?php
+                    //Hacemos el mecanismo para poder modificar los datos del usuario
+                    if (isset($_POST['modificarDir'])) {
+                        if ($_SESSION['accion']=="administrador") {
+                            $resultModifyDireccion=modificarUsuario($conexion,$_SESSION['usuarioMo'],"direccion",$_POST['direccion']);
+                        }else {
+                            $resultModifyDireccion=modificarUsuario($conexion,$_SESSION['idUsuario'],"direccion",$_POST['direccion']);
+                        }
+                       
+                       
+                        if ($resultModifyDireccion) {   
+                            $_SESSION['direccionBefore']=$_SESSION['direccion'];
+                            $_SESSION['direccion']=$_POST['direccion'];   
+                            ?>
+                            <div class="jumbotron-fluid">
+                            <div class="container">
+                                <h5 class="display-5">Se modifico correctamente</h5>
+                                <p class="lead"><?php echo $_SESSION['usuario'];?> sus direccion de <?php echo $_SESSION['direccionBefore'];?> a sido modificado a <?php echo $_POST['direccion'];?></p>
+                            </div>
+                            </div>
+                            <?php
+                                }else {
+                            ?>
+                            <div class=" jumbotron-fluid">
+                            <div class="container">
+                                <h5 class="display-5">No se consiguio, intentelo de nuevo</h5>
+                            </div>
+                            </div>
+                        <?php
+                        }
+                    }
+            ?>
+            <form action="modificarUsuario.php" method="post" class="row">
+                <?php
+                if ($_SESSION['Rol']=="adminnistrador") {
+                    ?>
+                        <div class="form-group col-12">
+                            <label for="rol">Rol <i class="fas fa-id-card"></i></label>
+                            <small>Su Rol es: <b><?php echo $usMo['Rol']; ?></b></small>
+                            <div>
+                            <select name="rol">
+                                <option value="usuario">Usuario</option>
+                                <option value="adminnistrador">Administrador</option>
+                            </select>
+                            </div>
+                        </div>
+               
+                <div class="form-group col-4">
+                    <input type="submit" value="Modificar Rol" name="modificarR" class="boton col-12 mb-2">
+                </div>
+            </form>
+            <?php
+                }
+                ?> 
+                <form action="modificarUsuario.php" method="post" class="row" id="cpcForm">
                 <div class="form-group col-12">
                     <?php
                         if ($_SESSION['accion']=="administrador") {
@@ -494,7 +549,6 @@ $conexion=conectar(false);
                                         <select name="cp" id="cp" class="form-select col-12" aria-label="Default select example">
                                             <option value="0">Seleccione una opción</option>
                                         </select>
-                                        
                                     </div>
                                     <small id="avisoComunidad"></small>
                         </div>
@@ -535,62 +589,7 @@ $conexion=conectar(false);
                         <?php
                         }
                     }
-            ?>
-            <?php
-                    //Hacemos el mecanismo para poder modificar los datos del usuario
-                    if (isset($_POST['modificarDir'])) {
-                        if ($_SESSION['accion']=="administrador") {
-                            $resultModifyDireccion=modificarUsuario($conexion,$_SESSION['usuarioMo'],"direccion",$_POST['direccion']);
-                        }else {
-                            $resultModifyDireccion=modificarUsuario($conexion,$_SESSION['idUsuario'],"direccion",$_POST['direccion']);
-                        }
-                       
-                       
-                        if ($resultModifyDireccion) {   
-                            $_SESSION['direccionBefore']=$_SESSION['direccion'];
-                            $_SESSION['direccion']=$_POST['direccion'];   
-                            ?>
-                            <div class="jumbotron-fluid">
-                            <div class="container">
-                                <h5 class="display-5">Se modifico correctamente</h5>
-                                <p class="lead"><?php echo $_SESSION['usuario'];?> sus direccion de <?php echo $_SESSION['direccionBefore'];?> a sido modificado a <?php echo $_POST['direccion'];?></p>
-                            </div>
-                            </div>
-                            <?php
-                                }else {
-                            ?>
-                            <div class=" jumbotron-fluid">
-                            <div class="container">
-                                <h5 class="display-5">No se consiguio, intentelo de nuevo</h5>
-                            </div>
-                            </div>
-                        <?php
-                        }
-                    }
-            ?>
-            <form action="modificarUsuario.php" method="post" class="row">
-                <?php
-                if ($_SESSION['Rol']=="adminnistrador") {
-                    ?>
-                        <div class="form-group col-12">
-                            <label for="rol">Rol <i class="fas fa-id-card"></i></label>
-                            <small>Su Rol es: <b><?php echo $usMo['Rol']; ?></b></small>
-                            <div>
-                            <select name="rol">
-                                <option value="usuario">Usuario</option>
-                                <option value="adminnistrador">Administrador</option>
-                            </select>
-                            </div>
-                        </div>
-               
-                <div class="form-group col-4">
-                    <input type="submit" value="Modificar Rol" name="modificarR" class="boton col-12 mb-2">
-                </div>
-            </form>
-            <?php
-                }
-                ?> 
-                                       
+            ?>                       
         </div>
     </div>
     
