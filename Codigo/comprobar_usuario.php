@@ -17,12 +17,8 @@ $conexion=conectar(false);
    $existeSoloUsuario=consultaUsuario($conexion, $usuario);
    if(mysqli_num_rows($existeUsuario)==1){
        $fila = mysqli_fetch_assoc($existeUsuario);
-
        crearSesion($fila);
-
        header('Location: principal.php');
-       
-      
    }else{
        if(mysqli_num_rows($existeSoloUsuario)==1){
            //echo "contraseña incorrecta";
@@ -30,10 +26,6 @@ $conexion=conectar(false);
            crearSesion($fila);
            header('Location: login.php');
        }else{
-           echo "<p> El usuario no existe </p>";
-           $url ="ingresar_usuario.php";
-           $texto= "Ingresar usuario";
-           echo "<a href=$url>$texto</a>";
            header('Location: ingreso.php');
        }
        

@@ -65,6 +65,10 @@ if ($moderador['idUsuario']!=$_SESSION['idUsuario']) {
             ?>
             <hr>
             <h3 class="col-12">¿Bannear a <?php echo $moderador['usuario']; ?> ?</h3>
+            <?php
+            if ($moderador['usuario']!=$_SESSION['usuario']) {
+            ?>
+            
             <form method="post" class="ml-3 col-12"> 
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
@@ -78,7 +82,7 @@ if ($moderador['idUsuario']!=$_SESSION['idUsuario']) {
                 <label class="form-check-label" for="check">
                     Hasta fecha: 
                 </label>
-                <div id="content" style="display: none;">
+                <div id="content" style="">
                 <?php $fechaymd = date("Y-m-d"); $fechahis = date("H:i");?>
                         <input type="datetime-local" class="" min="<?php echo $fechaymd."T".$fechahis; ?>" name="fechaBaneo" id="">
                 </div>
@@ -86,7 +90,11 @@ if ($moderador['idUsuario']!=$_SESSION['idUsuario']) {
                    
                     <input type="submit" value="Banear" name="banneado" class="boton col-12 mb-2">
             </form>
+       
+       
             <?php
+        }
+
 }else {
     ?>
 <h4 class="col-12"><?php echo $moderador['usuario']; ?> Es su usuario no lo puede banear</h4>
@@ -109,6 +117,7 @@ if (isset($_POST['banneado'])) {
             <?php
         }
     }else{
+        
         $fecha = date("Y-m-d H:i:s", strtotime($_POST['fechaBaneo']));
         $bannear2=modificarUsuario($conexion,$moderador['idUsuario'],"perBanned",0);
         echo $fecha;
@@ -144,10 +153,10 @@ if (isset($_POST['banneado'])) {
                 }else {
                     ?>
                         <div class="col-12 mb-2">
-                            <h1 class="display-5">No se consigió eliminar intentel de nuevo</h1>
+                            <h1 class="display-5">No se consigió eliminar intentelo de nuevo</h1>
                             <hr class="my-4">
                             <p>Para volver al articulo</p>
-                            <a class="enlaceContra col-12" href="articulo.php" role="button">Volver al Post</a>
+                            <a class="enlaceContra col-12" href="adminComentarios.php" role="button">Volver al Post</a>
                         </div>
                     <?php
                 }

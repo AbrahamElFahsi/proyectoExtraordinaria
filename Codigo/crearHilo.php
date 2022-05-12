@@ -29,37 +29,34 @@
         
     ?>
 <div class="container forms">
-    <div class="row"><h1 class="text-center col-12">Crear Hilo</h1></div>
+    <div class="row"><h1 class="text-center titulo col-12">Crear Hilo</h1></div>
     <div class="row">
         <div class="col-12">
             <form action="adminHilo.php" method="post" enctype="multipart/form-data" id="crearHiloForm">
-                    
+                <div class="form-group col-12">
+                    <p class="text-center">Imagen del hilo</p>
+                    <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>  
+                        <input id="upload" name="archivo" id="image" type="file" onchange="readURL(this);" class="form-control border-0">
+                    </div>  
+                </div>
+                <div class="col-12">
+                    <div class="form-group col-12">
+                        <label for="tema">Tema: <?php echo $hilo['tema']; ?></label>
+                        <input type="text" id="tema" name="tema" maxlength="99" class="form-control" placeholder="Enter User"> 
+                        <small id="avisoTema">El tema del que trata el hilo, maximo 100 caracteres</small>
+                    </div>
+                </div>
+                <div class="col-12">
                         <div class="form-group col-12">
-                            <p class="text-center">Imagen del hilo</p>
-                            <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>  
-                            <input id="upload" name="archivo" id="image" type="file" onchange="readURL(this);" class="form-control border-0">
-                            <label id="upload-label" for="upload" class="">Elija una imagen representativa del hilo</label>
-                        </div>  
+                            <label for="descripcion">Descripcion </label>
+                            <textarea class="form-control" id="descripcion" maxlength="199" name="descripcion" rows="3"><?php echo str_replace('</p>',"\n",str_replace('<p>', '', $hilo['descripcion'])); ?></textarea>
+                            <div id="parraf"></div>
+                            <small id="avisoDescripcion">El Descripcion del que trata el hilo, maximo 200 caracteres</small>
+                            <small id="avisoForm"></small>
                         </div>
-                        <div class="col-12">
-                                <div class="form-group col-12">
-                                    <label for="tema">Tema: <?php echo $hilo['tema']; ?><i class="fas fa-user"></i></label>
-                                    <input type="text" id="tema" name="tema" maxlength="99" class="form-control" placeholder="Enter User"> 
-                                    <small id="avisoTema">El tema del que trata el hilo, maximo 100 caracteres</small>
-                                </div>
-                        </div>
-                        <div class="col-12">
-                                <div class="form-group col-12">
-                                    <label for="descripcion">Descripcion <i class="fas fa-user"></i></label>
-                                    <textarea class="form-control" id="descripcion" maxlength="199" name="descripcion" rows="3"><?php echo str_replace('</p>',"\n",str_replace('<p>', '', $hilo['descripcion'])); ?></textarea>
-                                    <div id="parraf"></div>
-                                    <small id="avisoDescripcion">El Descripcion del que trata el hilo, maximo 200 caracteres</small>
-                                    <small id="avisoForm"></small>
-                                </div>
-                        </div>
-                        <input type="submit" value="Crear hilo" name="crearHilo" class="mb-1 col-11 mx-auto boton">   
+                </div>
+                <input type="submit" value="Crear hilo" name="crearHilo" class="mb-1 col-11 mx-auto boton">   
             </form>
-       
         </div>
     </div>
 </div>

@@ -120,7 +120,7 @@ if ($_SESSION['Rol']!="adminnistrador") {
                 </div>
                 <div class="form-group col-12">
                     <small id="avisoHilo"></small>
-                    <input type="submit" value="Modificar Hilo" name="modiHiloArticul" class="btn boton col-12 mx-auto">   
+                    <input type="submit" value="Modificar Hilo" name="modiHiloArticul" class="boton col-12 mx-auto mb-2">   
                 </div>
             </form>  
             <div class="col-12">
@@ -149,7 +149,7 @@ if ($_SESSION['Rol']!="adminnistrador") {
                 </div>
                 <div class="form-group col-12">
                     <small id="avisoEnvioCabecera"> </small>
-                    <input type="submit" value="Modificar cabecera" name="modiCabeceraArticulo" class="btn boton col-12 mx-auto">   
+                    <input type="submit" value="Modificar cabecera" name="modiCabeceraArticulo" class="boton col-12 mx-auto mb-2">   
                 </div>
             </form> 
             <div class="col-12">
@@ -187,7 +187,7 @@ if ($_SESSION['Rol']!="adminnistrador") {
                                 echo "<p>se modifico correctamente el cuerpo del articulo</p>";
                                 ?>
                                     <hr>
-                                    <a href="adminArticulo.php" class="btn btn-primary col-12 mb-2 center mx-auto"> Volver al administrador de Articulos</a>
+                                    <a href="adminArticulo.php" class="boton col-12 mx-auto mb-2"> Volver al administrador de Articulos</a>
                                 <?php
                             }else {
                                 echo "<p>No se consigio modificar la cuerpo del articulo</p>";
@@ -203,7 +203,7 @@ if ($_SESSION['Rol']!="adminnistrador") {
                 </div>
                 <div class="form-group col-12">
                     <small id="avisoenvioPie"> </small>
-                    <input type="submit" value="Modificar pie" name="modiPie" class="btn boton col-12 mx-auto">   
+                    <input type="submit" value="Modificar pie" name="modiPie" class="boton col-12 mx-auto mb-2">   
                     
                 </div>
             </form> 
@@ -215,7 +215,7 @@ if ($_SESSION['Rol']!="adminnistrador") {
                                 echo "<p>se modifico correctamente el pie del articulo</p>";
                                 ?>
                                 <hr>
-                               <a href="adminArticulo.php" class="btn btn-primary col-12 mb-2 center mx-auto"> Volver al administrador de Articulos</a>
+                               <a href="adminArticulo.php" class="boton col-12 mx-auto mb-2"> Volver al administrador de Articulos</a>
                                 <?php
                             }else {
                                 echo "<p>No se consigio modificar el pie del articulo</p>";

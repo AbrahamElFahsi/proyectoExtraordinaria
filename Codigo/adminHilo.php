@@ -48,7 +48,7 @@ $conexion=conectar(false);
                     <th scope="row"><?php echo $hiloMostrar['idHilo']; ?></th>
                     <td><?php echo $hiloMostrar['tema']; ?></td>
                     <td><?php echo $hiloMostrar['descripcion']; ?></td>
-                    <td><img src="<?php echo $hiloMostrar['imagen']; ?>"></td>
+                    <td><img class="" src="<?php echo $hiloMostrar['imagen']; ?>"></td>
                     <td><?php echo $hiloMostrar['usuario']; ?></td>
                     <td><?php echo $hiloMostrar['nombre']; ?></td>
                     <td><?php echo $hiloMostrar['apellidos']; ?></td>
@@ -81,8 +81,8 @@ $conexion=conectar(false);
                                                 
                                                 //Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
                                                 if (!((strpos($tipo, "gif") || strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png")) && ($tamano < 2000000))) {
-                                                    echo '<div><b>Error. La extensión o el tamaño de los archivos no es correcta.<br/>
-                                                    - Se permiten archivos .gif, .jpg, .png. y de 200 kb como máximo.</b></div>';
+                                                    echo '<div><p><b>Error. La extensión o el tamaño de los archivos no es correcta.<br/>
+                                                    - Se permiten archivos .gif, .jpg, .png. y de 200 kb como máximo.</b></p></div>';
                                                 }
                                                 else {
                                                     //Si la imagen es correcta en tamaño y tipo
@@ -92,12 +92,12 @@ $conexion=conectar(false);
                                                         //Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
                                                         chmod('images/'.$archivo, 0777);
                                                         //Mostramos el mensaje de que se ha subido co éxito
-                                                        echo '<div><b>Se ha subido correctamente la imagen.</b></div>';
+                                                        echo '<div><p><b>Se ha subido correctamente la imagen.</b></p></div>';
                                                         $envio=true;
                                                     }
                                                     else {
                                                         //Si no se ha podido subir la imagen, mostramos un mensaje de error
-                                                        echo '<div><b>Ocurrió algún error al subir el fichero. No pudo guardarse.</b></div>';
+                                                        echo '<div><p><b>Ocurrió algún error al subir el fichero. No pudo guardarse.</b></p></div>';
                                                     }
                                                     //Subir Hilo
                                                     $dir=strval("images/".$prefijo."".$archivo);
@@ -105,12 +105,12 @@ $conexion=conectar(false);
                                                     echo $_SESSION['idUsuario']."".$_POST['tema']."".$_POST['descripcion'];
                                                     $resulCrearHilo=insertarHilo($conexion,$_SESSION['idUsuario'],$dir,$_POST['tema'],$_POST['descripcion']);
                                                         if ($resulCrearHilo) {
-                                                            echo "se creo correctamente el hilo";
+                                                            echo "<p>se creo correctamente el hilo</p>";
                                                             ?>
                                                             <a href="adminHilo.php" class="btn btn-primary col-11 mx-auto mb-3" role="button">Ver en tabla</a>
                                                             <?php
                                                         }else {
-                                                            echo "No se consiio crear el hilo, intentelo de nuevo";
+                                                            echo "<p>No se consiio crear el hilo, intentelo de nuevo</p>";
                                                         }
                                                 
                                                 }

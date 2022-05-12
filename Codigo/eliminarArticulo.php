@@ -23,11 +23,11 @@ $conexion=conectar(false);
             }
     ?>
 <div class="container forms">
-<?php
- if (isset($_POST['eliminarArticulo'])) {
-     $_SESSION['idArticuloElimninar']=$_POST['idArticuloElim'];
- }
-?>
+    <?php
+    if (isset($_POST['eliminarArticulo'])) {
+        $_SESSION['idArticuloElimninar']=$_POST['idArticuloElim'];
+    }
+    ?>
     <div class="row"><h1 class="text-center col-12">Eliminar usuario</h1></div>
     <div class="row">
         <div class="col-12 jumbotron-fluid">

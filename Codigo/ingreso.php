@@ -24,7 +24,7 @@
         
     ?>
 <div class="container forms mb-5">
-    <div class="row"><h1 class="text-center col-12">Ingreso</h1></div>
+    <div class="row"><h1 class="text-center titulo col-12">Ingreso</h1></div>
     <div class="row">
         <div class="col-md-6">
             <form id="alta" action="ingreso.php" method="POST">

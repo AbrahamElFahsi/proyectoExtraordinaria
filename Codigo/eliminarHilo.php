@@ -31,18 +31,19 @@ $conexion=conectar(false);
         <div class="col-12 jumbotron-fluid">
             <div class="container">
                 <h1 class="display-4">¿Esta seguro?</h1>
-                
                 <a href="adminHilo.php" class="mb-1 col-11 mx-auto boton" role="button">Volver al administrador de hilos</a>
-
                 <p class="lead">Eliminar junto a todos sus articulo tambien</p>
                 <form action="eliminarHilo.php" method="POST">
                     <input type="submit" value="Eliminar Hilo articulos" class="mb-1 col-11 mx-auto botonElim" name="EliminarHiloArticulo">
                 </form>
-
                 <?php
                 if (isset($_POST['EliminarHiloArticulo'])) {
+                    $consultaHilo=consultaHilosPorId($conexion,$_SESSION['hiloElim']);
+                    $HiloEliminar=mysqli_fetch_assoc($consultaHilo);
+                    $_SESSION['imagenElim']=$HiloEliminar['image'];
                     $resultadoEliminar=eliminarHilosArticulos($conexion,$_SESSION['hiloElim']);
                     if ($resultadoEliminar) {
+                        unlink($_SESSION['imagenElim']);
                         ?>
                         <p class="lead">Se elimino correctamente</p>
                         <?php
@@ -65,9 +66,6 @@ $conexion=conectar(false);
                     <label for="nuevoHilo">Asignar articulos a</label>
                     <select name="hiloNuevo" id="hiloNuevo">
                         <?php
-                       
-                            
-                        
                             while ($hilos=mysqli_fetch_assoc($hilosCambio)) {
                                 if ($hilos['idHilo']!=$_SESSION['hiloElim']) {   
                                     ?>

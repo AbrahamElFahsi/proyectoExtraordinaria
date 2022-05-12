@@ -43,48 +43,45 @@ $conexion=conectar(false);
         <h1 class="text-center col-12 titulo mt-2" class="col-12 text-center">Articulos de <?php echo $tema['tema']; ?></h1>
     <! ––Para las tarjetas con los hilos que va a tener nuestra pagina–>
        
-<?php
+            <?php
                 $articulos=articulosPorIdHilo($conexion,$_SESSION['verHilo']);
-                    while($articulo = mysqli_fetch_assoc($articulos)){
-                        $fechaHoy = date("Y-m-d H:i:s");
-                        //Usuario con suscripcion activa cuando no este eliminado
-                        if ($_SESSION['fechaSuscripcion']>$fechaHoy && $articulo['estado']!="eliminado" && $_SESSION['Rol']=="usuario") {
-                           //Se muestra completo
-                            ?>
-                <div class="card tarjetas bg-dark col-lg-11 col-xl-5  p-3 m-5 text-center">
-                    <img class="card-img-top" src="<?php echo $articulo['imagenArticulo']; ?>" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="display-4"><?php echo $articulo['cabecera']; ?></h5>
-                            <div class="col-12">
-                            <p class="elipsis"><?php echo $articulo['cuerpo']; ?></p>
-                            </div>
-                            <form action="articulo.php" method="post">
-                                    <input type="hidden" name="idArticulo" value="<?php echo $articulo['idArticulo']; ?>">
-                                    <input type="submit" class="btn boton col-12 mt-2" value="Ver" name="verArticulo">
-                            </form>
-                    </div>
-                    
-                </div>
-                            <?php
-                        //Usuario sin suscripción en articulos premium
-                        }elseif (($articulo['premium'] && $_SESSION['fechaSuscripcion']<$fechaHoy && $articulo['estado']!="eliminado" && $_SESSION['Rol']=="usuario")) {
-                            //Se le muestra difuminado
-                            ?>
-                            <div class="card tarjetas bg-dark col-lg-11 col-xl-5  p-3 m-5 text-center" >
-                                <img class="card-img-top" src="<?php echo $articulo['imagenArticulo']; ?>" alt="Card image cap" style="filter: blur(5px);">
-                                <div class="card-body" style="filter: blur(5px);">
-                                    <h5 class="display-4"><?php echo $articulo['cabecera']; ?></h5>
-                                    <p><?php echo $articulo['estado']; ?></p>
-                                        <div class="col-12">
-                                        <p class="elipsis"><?php echo $articulo['cuerpo']; ?></p>
+                while($articulo = mysqli_fetch_assoc($articulos)){
+                    $fechaHoy = date("Y-m-d H:i:s");
+                    //Usuario con suscripcion activa cuando no este eliminado
+                    if ($_SESSION['fechaSuscripcion']>$fechaHoy && $articulo['estado']!="eliminado" && $_SESSION['Rol']=="usuario") {
+                       //Se muestra completo
+            ?>
+                    <div class="card tarjetas col-lg-11 col-xl-5  p-3 m-5 text-center">
+                        <img class="card-img-top" src="<?php echo $articulo['imagenArticulo']; ?>" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="display-4"><?php echo $articulo['cabecera']; ?></h5>
+                                <div class="col-12">
+                                <p class="elipsis"><?php echo $articulo['cuerpo']; ?></p>
                                 </div>
                                 <form action="articulo.php" method="post">
-                                    <input type="hidden" name="idArticulo" value="<?php echo $articulo['idArticulo']; ?>">
-                                    <input type="submit" class="btn boton col-12 mt-2" value="Ver" name="verArticulo">
+                                        <input type="hidden" name="idArticulo" value="<?php echo $articulo['idArticulo']; ?>">
+                                        <input type="submit" class="btn boton col-12 mt-2" value="Ver" name="verArticulo">
                                 </form>
-                            </div>
-                                
-                            </div>
+                        </div>
+                    </div>
+                    <?php
+                    //Usuario sin suscripción en articulos premium
+                    }elseif (($articulo['premium'] && $_SESSION['fechaSuscripcion']<$fechaHoy && $articulo['estado']!="eliminado" && $_SESSION['Rol']=="usuario")) {
+                    //Se le muestra difuminado
+                    ?>
+                    <div class="card tarjetas col-lg-11 col-xl-5  p-3 m-5 text-center" >
+                        <img class="card-img-top" src="<?php echo $articulo['imagenArticulo']; ?>" alt="Card image cap" style="filter: blur(5px);">
+                        <div class="card-body" style="filter: blur(5px);">
+                            <h5 class="display-4"><?php echo $articulo['cabecera']; ?></h5>
+                            <p><?php echo $articulo['estado']; ?></p>
+                                <div class="col-12">
+                                <p class="elipsis"><?php echo $articulo['cuerpo']; ?></p>
+                        </div>
+                        <form action="articulo.php" method="post">
+                            <input type="hidden" name="idArticulo" value="<?php echo $articulo['idArticulo']; ?>">
+                            <input type="submit" class="btn boton col-12 mt-2" value="Ver" name="verArticulo">
+                        </form>
+                    </div>  
                                         <?php
                                         //articulos no premium para usuarios sin suscripción
                         
@@ -92,7 +89,7 @@ $conexion=conectar(false);
                         }elseif (empty($_SESSION['dni'])) {
                             //Se le muestra difuminado
                             ?>
-                            <div class="card tarjetas bg-dark col-lg-11 col-xl-5  p-3 m-5 text-center" >
+                            <div class="card tarjetas col-lg-11 col-xl-5  p-3 m-5 text-center" >
                                 <img class="card-img-top" src="<?php echo $articulo['imagenArticulo']; ?>" alt="Card image cap" style="filter: blur(5px);">
                                 <div class="card-body" style="filter: blur(5px);">
                                     <h5 class="display-4"><?php echo $articulo['cabecera']; ?></h5>
@@ -126,7 +123,7 @@ $conexion=conectar(false);
                                         //administrador articulos marcados como eliminados
                         }elseif ($_SESSION['Rol']=="adminnistrador" && $articulo['estado']=="eliminado") {
                             ?>
-                            <div class="card tarjetas bg-dark col-lg-11 col-xl-5  p-3 m-5 text-center" style="background-color: rgba(0, 0, 0, .5);">
+                            <div class="card tarjetas col-lg-11 col-xl-5  p-3 m-5 text-center" style="background-color: rgba(0, 0, 0, .5);">
                             
                                 <img class="card-img-top" src="<?php echo $articulo['imagenArticulo']; ?>" alt="Card image cap">
                                 <div class="card-body">
@@ -141,15 +138,13 @@ $conexion=conectar(false);
                             
                                 
                                         <p class="botonElim"> Marcado como <?php echo $articulo['estado']; ?></p>
-                                
                                 </div>
-                                
                             </div>
                                         <?php
                                         //administrador articulos no marcados como eliminados
                         }elseif ($_SESSION['Rol']=="adminnistrador" && $articulo['estado']!="eliminado") {
                 ?>
-                <div class="card tarjetas bg-dark col-lg-11 col-xl-5  p-3 m-5 text-center" style="background-color: rgba(0, 0, 0, .5);">
+                <div class="card tarjetas col-lg-11 col-xl-5  p-3 m-5 text-center" style="background-color: rgba(0, 0, 0, .5);">
                 
                     <img class="card-img-top" src="<?php echo $articulo['imagenArticulo']; ?>" alt="Card image cap">
                     <div class="card-body">
@@ -161,9 +156,6 @@ $conexion=conectar(false);
                                     <input type="hidden" name="idArticulo" value="<?php echo $articulo['idArticulo']; ?>">
                                     <input type="submit" class="btn boton col-12 mt-2" value="Ver" name="verArticulo">
                             </form>
-                
-                    
-                    
                     </div>
                     
                 </div>

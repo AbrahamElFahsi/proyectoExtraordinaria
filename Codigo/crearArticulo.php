@@ -34,7 +34,7 @@
             <form action="adminArticulo.php" method="post" enctype="multipart/form-data" id="crearArticuloForm">
                 <div class="form-group col-12">
                     <p class="text-center">Imagen del hilo</p>
-                    <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>  
+                    <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto col-12"></div>  
                     <input id="upload" name="archivo" id="image" type="file" onchange="readURL(this);" class="form-control border-0">
                     <label id="upload-label" for="upload" class="font-weight-light text-muted">Elija una imagen representativa del Articulo</label>
                 </div>   

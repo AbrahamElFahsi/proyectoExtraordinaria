@@ -139,8 +139,8 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
-                <div class="col-12 mt-5 d-flex justify-content-center" style="height: 300px;" id="cajaAnimacion">
-                    <img class="col-12 p-1" src="images/imagesAnimation/1.svg" id="imagen">
+                <div class="col-12 mt-5 d-flex justify-content-center" style="height: 50%;" id="cajaAnimacion">
+                    <img class="col-10 p-1" src="images/imagesAnimation/1.svg" id="imagen">
                 </div>
             </div>
             <! ––hasta aqui el bloque de la derecha–>

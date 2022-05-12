@@ -39,18 +39,6 @@ onload=function()
     setInterval(rotarImagenes,180);
 }
 
- element = document.getElementById("content");
-    check = document.getElementById("fecha");
-function showContent() {
-   
-    console.log(check.value);
-    if (check.value=="0") {
-        element.style.display='block';
-    }
-    else {
-        element.style.display='none';
-    }
-}
 check.addEventListener('change',showContent);
 $(document).ready(function(){
 

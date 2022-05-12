@@ -70,6 +70,7 @@ $conexion=conectar(false);
                                 <form action="adminArticulo.php" method="post"><input type="hidden" name="idArticuloQuitarMarcar" value="<?php echo $articuloMostrar['idArticulo']; ?>"> <input type="submit" class="text-danger boton" name="QuitarMarcaArticuEliminado" value="Quitar de eliminado"></form>
                                 <?php
                                     }
+                                    //Mecanismo para marcar como eliminado articulo si no lo esta
                                     if (isset($_POST['MarcarArticuEliminado']) && $articuloMostrar['idArticulo']==$_POST['idArticuloMarcar']) {
                                         $resultadoElim=actualizarArticulo($conexion,"estado","eliminado",$_POST['idArticuloMarcar']);
                                         if ($resultadoElim) {
@@ -77,6 +78,7 @@ $conexion=conectar(false);
                                         }else {
                                             echo "<p>No se consigio modificar el estado</p>";
                                         }
+                                        //Mecanismo para quitar marca de eliminado si esta marcado como eliminado
                                     }elseif (isset($_POST['QuitarMarcaArticuEliminado']) && $articuloMostrar['idArticulo']==$_POST['idArticuloQuitarMarcar']) {
                                         $resultadoElim=actualizarArticulo($conexion,"estado","Null",$_POST['idArticuloQuitarMarcar']);
                                         if ($resultadoElim) {
@@ -96,62 +98,60 @@ $conexion=conectar(false);
                     </tbody>
                 </table>
             </div>
-            <form action="ingreso.php" method="post">
+            <form action="crearArticulo.php" method="post">
                 <input type="submit" value="Crear articulo" name="crearArticulo" class="mb-1 col-12 mx-auto boton">
             </form>
             <div class="row">
-                <?php
-                    if (isset($_POST['crearArticulo'])) {
+            <?php
+                if (isset($_POST['crearArticulo'])) {
+                
+                    //Recogemos el archivo enviado por el formulario
+                    $archivo = $_FILES['archivo']['name'];
+                    //Si el archivo contiene algo y es diferente de vacio
+                    if (isset($archivo) && $archivo != "") {
+                    //Obtenemos algunos datos necesarios sobre el archivo
+                    $tipo = $_FILES['archivo']['type'];
+                    $tamano = $_FILES['archivo']['size'];
+                    $temp = $_FILES['archivo']['tmp_name'];
                     
-                        //Recogemos el archivo enviado por el formulario
-                        $archivo = $_FILES['archivo']['name'];
-                        //Si el archivo contiene algo y es diferente de vacio
-                        if (isset($archivo) && $archivo != "") {
-                        //Obtenemos algunos datos necesarios sobre el archivo
-                        $tipo = $_FILES['archivo']['type'];
-                        $tamano = $_FILES['archivo']['size'];
-                        $temp = $_FILES['archivo']['tmp_name'];
-                        
-                        //Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
-                        if (!((strpos($tipo, "gif") || strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png")) && ($tamano < 2000000))) {
-                            echo '<div><b>Error. La extensión o el tamaño de los archivos no es correcta.<br/>
-                            - Se permiten archivos .gif, .jpg, .png. y de 200 kb como máximo.</b></div>';
+                    //Se comprueba si el archivo a cargar es correcto observando su extensión y tamaño
+                    if (!((strpos($tipo, "gif") || strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png")) && ($tamano < 2000000))) {
+                        echo '<div><p><b>Error. La extensión o el tamaño de los archivos no es correcta.<br/>
+                        - Se permiten archivos .gif, .jpg, .png. y de 200 kb como máximo.</b></p></div>';
+                    }
+                    else {
+                        //Si la imagen es correcta en tamaño y tipo
+                        //Se intenta subir al servidor
+                        $prefijo=strval($_SESSION['hiloAModificar']);
+                        if (move_uploaded_file($temp, "images/".$prefijo."".$archivo)) {
+                            //Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
+                            chmod('images/'.$archivo, 0777);
+                            //Mostramos el mensaje de que se ha subido co éxito
+                            echo '<div><p><b>Se ha subido correctamente la imagen.</b></p></div>';
+                            $envio=true;
                         }
                         else {
-                            //Si la imagen es correcta en tamaño y tipo
-                            //Se intenta subir al servidor
-                            $prefijo=strval($_SESSION['hiloAModificar']);
-                            if (move_uploaded_file($temp, "images/".$prefijo."".$archivo)) {
-                                //Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
-                                chmod('images/'.$archivo, 0777);
-                                //Mostramos el mensaje de que se ha subido co éxito
-                                echo '<div><b>Se ha subido correctamente la imagen.</b></div>';
-                                $envio=true;
+                            //Si no se ha podido subir la imagen, mostramos un mensaje de error
+                            echo '<div><p><b>Ocurrió algún error al subir el fichero. No pudo guardarse.</b></p></div>';
+                        }
+                        //Subir Hilo
+                        $dir=strval("images/".$prefijo."".$archivo);
+                        echo $dir;
+                        echo $_SESSION['idUsuario']."".$_POST['tema']."".$_POST['descripcion'];
+                        $resulCrearHilo=insertarArticulo($conexion,$dir,$_POST['hilo'],$_POST['cuerpo'],$_POST['pie'],$_POST['cabecera'],$_SESSION['idUsuario']);
+                            if ($resulCrearHilo) {
+                                echo "se creo correctamente el hilo";
+                                ?>
+                                <a href="adminArticulo.php" class="mb-1 col-12 mx-auto boton" role="button">Ver en tabla</a>
+                                <?php
+                            }else {
+                                echo "<p>No se consiio crear el hilo, intentelo de nuevo</p>";
                             }
-                            else {
-                                //Si no se ha podido subir la imagen, mostramos un mensaje de error
-                                echo '<div><b>Ocurrió algún error al subir el fichero. No pudo guardarse.</b></div>';
-                            }
-                            //Subir Hilo
-                            $dir=strval("images/".$prefijo."".$archivo);
-                            echo $dir;
-                            echo $_SESSION['idUsuario']."".$_POST['tema']."".$_POST['descripcion'];
-                            $resulCrearHilo=insertarHilo($conexion,$_SESSION['idUsuario'],$dir,$_POST['tema'],$_POST['descripcion']);
-                                if ($resulCrearHilo) {
-                                    echo "se creo correctamente el hilo";
-                                    ?>
-                                    <a href="adminHilo.php" class="btn btn-primary col-11 mx-auto mb-3" role="button">Ver en tabla</a>
-                                    <?php
-                                }else {
-                                    echo "No se consiio crear el hilo, intentelo de nuevo";
-                                }
-                        
-                            }
+                    
                         }
                     }
-                                            ?>
-        
-        
+                }
+            ?>
         </div>
     </div>
     <?php include 'footer.php'; ?>

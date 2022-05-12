@@ -8,17 +8,11 @@ background-size: cover;
         -webkit-background-size: cover;
         -o-background-size: cover;
     -webkit-animation: aitf 120s linear infinite;
-
 /* Activate hardware acceleration for smoother animations */
-
     -webkit-transform: translate3d(0,0,0);
     -webkit-backface-visibility: hidden;
 
 }
-
-
-/* Animate Background Image */
-
 @-webkit-keyframes aitf {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
@@ -94,12 +88,12 @@ ul {
     list-style-type: none;
 }
 .boton{
-    size: calc(0.5em + 1vw);
+    text-decoration: none;
+    font-size: calc(0.4em + 1vw);
     background:#fcffb4;
     border: 2px solid #9c7208;
     filter: opacity(0.9);
     color: #946d09;
-    text-decoration: none;
 
 }
 .boton:hover{
@@ -109,7 +103,6 @@ ul {
   border: 2px solid #9c7208;
   filter: opacity(0.9);
   color: #946d09;
-  text-decoration: none;
 
 }
 .carousel-caption{

@@ -97,8 +97,7 @@ if (($fechaFin>=$fecha_actual && $_SESSION['idUsuario']==$comentario['idUsuario'
 ?>
     <p class="lead ml-2"><?php echo $comentario['contenido']; ?></p>
 <?php
-}
-                               
+}             
                                             if ($_SESSION['Rol']=="adminnistrador") {
                                             ?>
                                                 <form action="panelModeracion.php" method="post" class="form-group mt-1 ml-5 float-left col-5">
