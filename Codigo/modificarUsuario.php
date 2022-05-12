@@ -412,6 +412,31 @@ $conexion=conectar(false);
                         }
                     }
             ?>
+            
+            <form action="modificarUsuario.php" method="post" class="row" id="dirForm">
+                <div class="form-group col-12">
+                    <label for="direccion">Direccion <i class="fas fa-id-card"></i></label>
+                    <?php
+                        if ($_SESSION['accion']=="administrador") {
+                            $direccionModificar=campoUsuario($conexion,"dirección",$_SESSION['usuarioMo']);
+                            $usuAModificarDireccion=mysqli_fetch_assoc($direccionModificar);
+                            ?>
+                            <small>Su dirección es: <b><?php echo $usuAModificarDireccion['dirección']; ?></b></small>
+                            <?php
+                        }else{
+                            ?>
+                            <small>Su dirección es: <b><?php echo $_SESSION['direccion']; ?></b></small>
+                            <?php
+                        }
+                    ?>
+                    
+                    <input type="text" id="direccion" maxlength="40" name="direccion" class="form-control" placeholder="C/ Federico Lorca, 8">
+                    <small id="avisoDirec"></small>
+                </div>
+                <div class="form-group col-12">
+                    <input type="submit" value="Modificar Direccion" name="modificarDir" class="btn boton col-12 mb-2">
+                </div>
+            </form>
             <form action="modificarUsuario.php" method="post" class="row" id="cpcForm">
                 <div class="form-group col-12">
                     <?php
@@ -472,6 +497,7 @@ $conexion=conectar(false);
                                         
                                     </div>
                                     <small id="avisoComunidad"></small>
+                        </div>
                 </div>
                 <div class="form-group col-12">
                     <input type="submit" value="Modificar Comunidad" name="modificarCPC" class="btn boton col-12 mb-2">
@@ -510,30 +536,6 @@ $conexion=conectar(false);
                         }
                     }
             ?>
-            <form action="modificarUsuario.php" method="post" class="row" id="dirForm">
-                <div class="form-group col-12">
-                    <label for="direccion">Direccion <i class="fas fa-id-card"></i></label>
-                    <?php
-                        if ($_SESSION['accion']=="administrador") {
-                            $direccionModificar=campoUsuario($conexion,"dirección",$_SESSION['usuarioMo']);
-                            $usuAModificarDireccion=mysqli_fetch_assoc($direccionModificar);
-                            ?>
-                            <small>Su dirección es: <b><?php echo $usuAModificarDireccion['dirección']; ?></b></small>
-                            <?php
-                        }else{
-                            ?>
-                            <small>Su dirección es: <b><?php echo $_SESSION['direccion']; ?></b></small>
-                            <?php
-                        }
-                    ?>
-                    
-                    <input type="text" id="direccion" maxlength="40" name="direccion" class="form-control" placeholder="C/ Federico Lorca, 8">
-                    <small id="avisoDirec"></small>
-                </div>
-                <div class="form-group col-12">
-                    <input type="submit" value="Modificar Direccion" name="modificarDir" class="btn boton col-12 mb-2">
-                </div>
-            </form>
             <?php
                     //Hacemos el mecanismo para poder modificar los datos del usuario
                     if (isset($_POST['modificarDir'])) {
@@ -568,7 +570,7 @@ $conexion=conectar(false);
             ?>
             <form action="modificarUsuario.php" method="post" class="row">
                 <?php
-                if ($_SESSION['Rol']=="administrador") {
+                if ($_SESSION['Rol']=="adminnistrador") {
                     ?>
                         <div class="form-group col-12">
                             <label for="rol">Rol <i class="fas fa-id-card"></i></label>
@@ -582,12 +584,13 @@ $conexion=conectar(false);
                         </div>
                
                 <div class="form-group col-4">
-                    <input type="submit" value="Modificar Rol" name="modificarR" class="btn boton col-12 mb-2">
+                    <input type="submit" value="Modificar Rol" name="modificarR" class="boton col-12 mb-2">
                 </div>
             </form>
             <?php
                 }
-                ?>                        
+                ?> 
+                                       
         </div>
     </div>
     
