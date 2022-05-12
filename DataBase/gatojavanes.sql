@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 09, 2022 at 05:54 PM
+-- Generation Time: May 12, 2022 at 04:56 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -45,11 +45,11 @@ CREATE TABLE `articulo` (
 --
 
 INSERT INTO `articulo` (`idArticulo`, `image`, `idHilo`, `cuerpo`, `pie`, `cabecera`, `idUsuario`, `premium`, `estado`) VALUES
-(1, 'images/descarga.jpg', 2, 'aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaas sssssssssssss aaaaaaaaaaaa ssssss aa asss ssssss aaa ssssss aaaaaaaa ssssssss aaaaaaaaaaaa<br>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '', 'Duchar a tu gato', 2, b'0', 'null'),
-(2, 'images/descarga.jpg', 1, 'aaaaaaaaaaaaaaasassss<br>asasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<br>aaaaaaaaaaaaaa', '', 'Comedero de tu gato', 2, b'0', 'Null'),
-(3, 'images/descarga.jpg', 7, '', '', 'Raciaonar la comida', 2, b'0', 'eliminado'),
-(4, 'images/descarga.jpg', 1, '', '', 'cabecera', 2, b'1', 'Null'),
-(5, 'images/descarga.jpg', 1, '', '', 'cabecera', 2, b'1', NULL);
+(1, 'images/img3.jpg', 2, 'En estos casos debes lavar a tu minino con agua tibia y un poco de champú para gatos. Asimismo, debes asegurarte de que la temperatura del ambiente esté templada para que no pase frío. También deberías tener una toalla preparada para secarlo. Es fundamental que seas muy cuidadoso, ya que muchos gatos temen al agua.<br>', 'En estos casos debes lavar a tu minino con agua tibia y un poco de champú para gatos. Asimismo, debes asegurarte de que la temperatura del ambiente es<br>', 'Duchar a tu gato', 2, b'0', 'null'),
+(3, 'images/ducha.jpg', 2, 'Ante la pregunta de cuánta agua debe beber un gato, hay que tener en cuenta que, cualquier gato, para mantenerse bien hidratado, necesita ingerir una media diaria de 50 a 100 mililitros de agua por kg de peso. Este límite conviene verse sobrepasado si tu gato está muy expuesto a altas temperaturas y/o se ejercita en exceso durante el periodo estival.<br>El problema es que algunos gatos muestran poca predisposición al contacto con el agua, y que su temperamento sibarita los condiciona a ser muy exigentes ante los condicionantes a la hora de ingerirla. Si éste es tu caso, te recomendamos que sigas los siguientes consejos sobre cómo hidratar a un gato para asegurar que tu gato bebe la cantidad de agua que requiere su cuerpo para mantenerse hidratado durante todo el verano.', 'Por eso recomendamos que ubiques varios bebedores en distintos lugares de tu casa. Su extremo sentido de la limpieza, puede hacer que se niegue a bebe<br>', 'Raciaonar la comida', 2, b'0', 'Null'),
+(10, 'images/descargar.jpg', 14, 'Busca un lugar tranquilo. Una de las cosas más importantes a la hora de saber dónde poner el arenero para tu gato es encontrar un sitio apartado del ajetreo de ...<br>', 'Intenta colocar el arenero en un sitio higiénico. Debes mantener tanto la arena como el entorno limpio, de lo contrario tampoco querrá usar esa bandej<br>', 'Donde ponerselo', 2, NULL, NULL),
+(11, 'images/th.jpg', 15, 'Un gato adulto normal y sano puede pasar unas 16 horas dedicado al sueño. Podemos encontrarlo durmiendo en cualquier lugar de la casa, preferiblemente al sol o, en su ausencia, en un lugar cálido o escondido, en función de su personalidad. Por eso, a simple vista, parece importante que disponga de un lugar confortable en el que dormir.<br>', 'Un gato adulto normal y sano puede pasar unas 16 horas dedicado al sueño. <br>', 'Donde duermen', 2, NULL, NULL),
+(12, 'images/OIP.jpg', 1, 'Cómo cuidar el pelaje de un gato: acostumbrarlo al cepillado. Por desgracia, no todos los gatos valoran que queramos ayudarlos con el cuidado del pelo.Cómo cuidar el pelaje de un gato: acostumbrarlo al cepillado. Por desgracia, no todos los gatos valoran que queramos ayudarlos con el cuidado del pelo.Cómo cuidar el pelaje de un gato: acostumbrarlo al cepillado. Por desgracia, no todos los gatos valoran que queramos ayudarlos con el cuidado del pelo.Cómo cuidar el pelaje de un gato: acostumbrarlo al cepillado. Por desgracia, no todos los gatos valoran que queramos ayudarlos con el cuidado del pelo.<br>Cómo cuidar el pelaje de un gato: acostumbrarlo al cepillado. Por desgracia, no todos los gatos valoran que queramos ayudarlos con el cuidado del pelo.', 'Cómo cuidar el pelaje de un gato: acostumbrarlo al cepillado. Por desgracia, no todos los gatos valoran que queramos ayudarlos con el cuidado del pelo<br>', 'Cómo cuidar el pelaje', 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -76,11 +76,11 @@ INSERT INTO `comentarios` (`idComentario`, `idUsuario`, `idRespuesta`, `fecha`, 
 (50, 4, 0, '2022-04-16 15:35:01', 'asasasasa', 3),
 (52, 10, 0, '2022-04-19 14:17:42', 'Hola, soy nuevo necesito ayuda con el pelaje de mi gato', 1),
 (53, 10, 0, '2022-04-19 14:20:03', 'si alguien me responde', 1),
-(54, 1, 0, '2022-04-23 17:54:49', 'Hola chavales iwa', 1),
-(56, 2, 0, '2022-05-05 13:33:09', 'AAAAAAAAAAA', 4),
 (57, 2, 0, '2022-05-06 14:35:12', '25dsdsd', 1),
 (58, 8, 0, '2022-05-07 08:46:01', 'Hola', 1),
-(59, 8, 0, '2022-05-08 09:40:17', 'Cuanto cuesta la suscripcion?', 1);
+(59, 8, 0, '2022-05-08 09:40:17', 'Cuanto cuesta la suscripcion?', 1),
+(60, 33, 0, '2022-05-11 13:18:30', 'sasd', 3),
+(62, 8, 0, '2022-05-12 09:50:12', 'dddddd', 3);
 
 -- --------------------------------------------------------
 
@@ -101,9 +101,11 @@ CREATE TABLE `hilo` (
 --
 
 INSERT INTO `hilo` (`idHilo`, `idUsuario`, `imagen`, `tema`, `descripcion`) VALUES
-(1, 1, 'images/1images (2).jpg', 'Pelaje', 'Aprende todo sobre el pelaje de tu gato y mantenerlo perfecto<br>Lo mejor en elGatoJavaness<br>'),
-(2, 1, 'images/2images (3).jpg', 'Agua', ''),
-(7, 2, 'images/6images.jpg', 'Comida', '');
+(1, 2, 'images/img1.jpg', 'Pelaje', 'Aprende todo sobre el pelaje de tu gato y mantenerlo perfecto<br>Lo mejor en elGatoJavaness<br>'),
+(2, 2, 'images/img2.jpg', 'Agua', 'Cuando, donde ponele el agua...'),
+(13, 2, 'images/img3.jpg', 'Comedero', 'Crea rutinas para el habito de comer y mucho más'),
+(14, 2, 'images/img4.jpg', 'Arenero', 'Crea rutinas para el habito de comer y mucho más'),
+(15, 2, 'images/img5.jpg', 'Descanso', 'Aprende todo sobre el descanso de tu gato');
 
 -- --------------------------------------------------------
 
@@ -135,16 +137,17 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idUsuario`, `nombre`, `apellidos`, `usuario`, `pass`, `dni`, `direccion`, `comunidad`, `provincia`, `cp`, `Rol`, `gmail`, `telefono`, `fechaSuscripcion`, `banner`, `perBanned`) VALUES
-(1, 'nombre', 'fasi', 'Elleon', 'aaaaaaaa', 'dni', 'direccion', 'comunidad', 'provincia', 'cp', 'usuario', 'sasa@gmail.com', '777777777', '2022-06-29 02:08:16', NULL, 0),
-(2, '', 'asdf fadfa asfsf', 'elgatillo', 'a', '20481132X', 'dasde', 'Baleares', 'Baleares', '07015', 'adminnistrador', 'EFESFSDFE@UYIBHEFC.ES', '654456456', '2022-07-06 13:05:59', '2022-05-07 18:01:31', 0),
-(4, 'nombre', 'dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd', 'ssssssssssssssssssssssssssssssssssssssss', 'Fasi123@123', '50458796W', 'direccion', 'Asturias', 'Asturia', '0', 'usuario', 'fasi@gmail.com', '654646', NULL, NULL, NULL),
-(6, 'Abraham', 'Mohamed', 'Fasilo', 'Pasi123@', '20481144X', 'C/ Castellon de la plana', 'Cantabria', 'Cantabria', '39004', 'adminnistrador', 'fasi@gmail.com', '654654654', NULL, '2022-05-09 15:46:00', 0),
-(8, 'Lucia', 'Reyes', 'bugato', 'Sasi@123', '20481145X', 'C/ Castellon de la plana', 'Baleares', 'Baleares', '07007', 'usuario', 'Lucia@gmail.com', '666666666', NULL, '2022-05-09 15:29:00', 0),
-(10, 'Hasan', 'El Fahsi', 'gatuso', 'Gatuso1@', '20481147X', 'C/ Castellon de la plana', 'andalucia', 'almería', '04000', 'usuario', 'Hasan@gmail.com', '654987987', NULL, '2022-05-09 15:50:00', 0),
-(11, '', '', 'dasdew', '', '', '', 'Baleares', 'Baleares', '07011', 'usuario', '', '', NULL, '2022-05-09 15:46:00', 0),
-(20, 'asdsf', 'ededw', 'elLion', 'Sasi@123', '20481143B', 'C/ Castellon de la plana', 'andalucia', 'Granada', '18015', 'usuario', 'dsasdffrr@gmail.com', '', NULL, NULL, NULL),
-(28, 'Hamed', 'asdasd', 'sdfsfsf', 'Fasi123@', '20481181A', 'C/ CANTABRIA', 'Baleares', 'Baleares', '07013', 'usuario', 'asdasd@asd.vfd', '654654666', NULL, NULL, NULL),
-(33, 'Fasi', 'asds', 'gatoLoco', 'Sasi123@', '20481142X', 'adsdasds', 'Baleares', 'Baleares', '07013', 'usuario', 'abrahamelfahsi@gmail.com', '654789321', NULL, NULL, NULL);
+(1, 'nombre', 'fasi', 'Elleon', 'Fasi@123', 'dni', 'direccion', 'comunidad', 'provincia', 'cp', 'usuario', 'sasa@gmail.com', '777777777', '2022-03-02 02:08:16', '2022-05-12 10:37:00', 1),
+(2, '', 'asdf fadfa asfsf', 'elgatillo', 'Fasi@123', '20481132X', 'dasde', 'Baleares', 'Baleares', '07015', 'adminnistrador', 'EFESFSDFE@UYIBHEFC.ES', '654456456', NULL, '2022-05-12 15:21:00', 0),
+(4, 'nombre', 'dddddddddddddddddd', 'sssssssss', 'Fasi123@123', '50458796W', 'direccion', 'Asturias', 'Asturia', '0', 'usuario', 'fasi@gmail.com', '654646', NULL, '2023-01-26 17:07:00', 0),
+(6, 'Abraham', 'Mohamed', 'Fasilo', 'Pasi123@', '20481144X', 'C/ Castellon de la plana', 'Cantabria', 'Cantabria', '39004', 'adminnistrador', 'fasi@gmail.com', '654654654', NULL, NULL, 1),
+(8, 'Lucia', 'Reyes', 'bugato', 'Sasi@123', '20481145X', 'C/ Castellon de la plana', 'Baleares', 'Baleares', '07007', 'usuario', 'Lucia@gmail.com', '666666666', NULL, NULL, 0),
+(10, 'Hasan', 'El Fahsi', 'gatuso', 'Gatuso1@', '20481147X', 'C/ Castellon de la plana', 'andalucia', 'almería', '04000', 'usuario', 'Hasan@gmail.com', '654987987', NULL, NULL, 0),
+(11, '', '', 'dasdew', '', '', '', 'Baleares', 'Baleares', '07011', 'usuario', '', '', NULL, NULL, 0),
+(20, 'asdsf', 'ededw', 'elLion', 'Sasi@123', '20481143B', 'C/ Castellon de la plana', 'andalucia', 'Granada', '18015', 'usuario', 'dsasdffrr@gmail.com', '', NULL, NULL, 0),
+(28, 'Hamed', 'asdasd', 'sdfsfsf', 'Fasi123@', '20481181A', 'C/ CANTABRIA', 'Baleares', 'Baleares', '07013', 'usuario', 'asdasd@asd.vfd', '654654666', NULL, NULL, 0),
+(33, 'Fasi', 'asds', 'gatoLoco', 'Fasila@12', '20481142X', 'adsdasds', 'Baleares', 'Baleares', '07013', 'usuario', 'abrahamelfahsi@gmail.com', '654789321', NULL, NULL, 0),
+(34, 'Dasd', 'asdsds', 'dasdsad', 'Sasi123@', '28063017G', 'cadssac', 'Aragon', 'Teruel', '44002', 'usuario', 'abrahamelfahsi@gmail.com', '666666666', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -189,25 +192,25 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `articulo`
 --
 ALTER TABLE `articulo`
-  MODIFY `idArticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idArticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `idComentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `idComentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `hilo`
 --
 ALTER TABLE `hilo`
-  MODIFY `idHilo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idHilo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Constraints for dumped tables

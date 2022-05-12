@@ -148,7 +148,7 @@ $conexion=conectar(false);
                 </tbody>
             </table>
         </div>
-        <form action="crearUsuario.php" method="post">
+        <form action="ingreso.php" method="post">
             <input type="submit" value="Crear usuario" name="crearArticulo" class="mb-1 col-12 mx-auto boton">
         </form>
 </div>
