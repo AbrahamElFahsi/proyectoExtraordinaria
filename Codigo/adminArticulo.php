@@ -62,7 +62,7 @@ $conexion=conectar(false);
                             <td><p><?php echo $articuloMostrar['descripcion']; ?></p></td>
                             <td><p><?php echo $articuloMostrar['creadorHilo']; ?></p></td>
                             <td><p><?php echo $articuloMostrar['idCreadorHilo']; ?></p></td>
-                            <td><?php if ($articuloMostrar['estado']!="eliminado") { ?>  
+                            <td><?php echo $articuloMostrar['estado']; if ($articuloMostrar['estado']!="eliminado") { ?>  
                                 <form action="adminArticulo.php" method="post"><input type="hidden" name="idArticuloMarcar" value="<?php echo $articuloMostrar['idArticulo']; ?>"> <input type="submit" class="text-danger boton" name="MarcarArticuEliminado" value="Marcar como eliminado"></form>
                                 <?php
                                     }else {
@@ -89,32 +89,32 @@ $conexion=conectar(false);
                                     }
                                     echo "<p>".$articuloMostrar['estado']."</p>"; ?>
                             </td>
-                            <td><?php if ($articuloMostrar['premium']!=1) { ?>  
-                                <form action="adminArticulo.php" method="post"><input type="hidden" name="idArticuloMarcar" value="<?php echo $articuloMostrar['idArticulo']; ?>"> <input type="submit" class="text-danger boton" name="marcarComoPremium" value="Marcar como eliminado"></form>
+                            <td><?php if ($articuloMostrar['premium']==0) { ?>  
+                                <form action="adminArticulo.php" method="post"><input type="hidden" name="idArticuloMarcarPre" value="<?php echo $articuloMostrar['idArticulo']; ?>"> <input type="submit" class="text-danger boton" name="marcarComoPremium" value="Marcar como premium"></form>
                                 <?php
-                                    }else {
+                                    }elseif($articuloMostrar['premium']==1){
                                 ?>
-                                <form action="adminArticulo.php" method="post"><input type="hidden" name="idArticuloQuitarMarcar" value="<?php echo $articuloMostrar['idArticulo']; ?>"> <input type="submit" class="text-danger boton" name="quitarMarcarComoPremium" value="Quitar de eliminado"></form>
+                                <form action="adminArticulo.php" method="post"><input type="hidden" name="idArticuloQuitarMarcarPre" value="<?php echo $articuloMostrar['idArticulo']; ?>"> <input type="submit" class="text-danger boton" name="quitarMarcarComoPremium" value="Quitar de premium"></form>
                                 <?php
                                     }
                                     //Mecanismo para marcar como eliminado articulo si no lo esta
-                                    if (isset($_POST['marcarComoPremium']) && $articuloMostrar['idArticulo']==$_POST['idArticuloMarcar']) {
-                                        $resultadoElim=actualizarArticulo($conexion,"premium",1,$_POST['idArticuloMarcar']);
+                                    if (isset($_POST['marcarComoPremium'])) {
+                                        $resultadoElim=actualizarArticulo($conexion,"premium",1,$_POST['idArticuloMarcarPre']);
                                         if ($resultadoElim) {
                                             echo "<p>Se marco como premium</p>";
                                         }else {
-                                            echo "<p>No se consigio modificar el estapremiumdo</p>";
+                                            echo "<p>No se consigio modificar premiumdo</p>";
                                         }
                                         //Mecanismo para quitar marca de eliminado si esta marcado como eliminado
-                                    }elseif (isset($_POST['quitarMarcarComoPremium']) && $articuloMostrar['idArticulo']==$_POST['idArticuloQuitarMarcar']) {
-                                        $resultadoElim=actualizarArticulo($conexion,"premium","0",$_POST['idArticuloQuitarMarcar']);
+                                    }elseif (isset($_POST['quitarMarcarComoPremium'])) {
+                                        $resultadoElim=actualizarArticulo($conexion,"premium",0,$_POST['idArticuloQuitarMarcarPre']);
                                         if ($resultadoElim) {
                                             echo "<p>Se quito marca premium</p>";
                                         }else {
                                             echo "<p>No se consigio modificar el premium</p>";
                                         }
                                     }
-                                    echo "<p>".$articuloMostrar['estado']."</p>"; ?>
+                                    echo "<p>".$articuloMostrar['premium']."</p>"; ?>
                             </td>
                             <td>
                                 <form action="modificarArticulo.php" method="POST" class="row"><input type="hidden" name="idArticuloModi" value="<?php echo $articuloMostrar['idArticulo']; ?>"><input type="submit" value="modificar" name="modificarArticulo" class="btn boton col-12"></form>
