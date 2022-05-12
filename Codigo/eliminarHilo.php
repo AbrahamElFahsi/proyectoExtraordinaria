@@ -56,7 +56,7 @@ $conexion=conectar(false);
                 ?>
                 <?php
                     
-                    if (mysqli_num_rows($hilosCambio)<1) {
+
                         $hilosCambio=consultaHilos($conexion);
                                 ?>
                 <hr class="my-4">
@@ -78,7 +78,7 @@ $conexion=conectar(false);
                     <input type="submit" value="Eliminar Hilo cambiando articulos" class="mb-1 col-11 mx-auto botonElim" name="eliminarHiloCambio">
                 </form>
                 <?php
-                    }
+
 
                 if (isset($_POST['eliminarHiloCambio'])) {
                     $resulEliminarHilo=eliminarHiloConCambioDeArticulos($conexion,$_SESSION['hiloElim'],$_POST['hiloNuevo']);

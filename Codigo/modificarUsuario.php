@@ -89,7 +89,7 @@ $conexion=conectar(false);
                 <div class="form-group col-12">
                     <label for="password">contraseña <i class="fas fa-lock"></i></label>
                     <?php
-                        if ($_SESSION['accion']=="adminnistrador") {
+                        if ($_SESSION['accion']=="administrador") {
                             $passModificar=campoUsuario($conexion,"pass",$_SESSION['usuarioMo']);
                             $usuAModificarPass=mysqli_fetch_assoc($passModificar);
                             ?>
