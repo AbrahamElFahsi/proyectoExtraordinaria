@@ -418,7 +418,7 @@ $conexion=conectar(false);
                     <label for="direccion">Direccion <i class="fas fa-id-card"></i></label>
                     <?php
                         if ($_SESSION['accion']=="administrador") {
-                            $direccionModificar=campoUsuario($conexion,"dirección",$_SESSION['usuarioMo']);
+                            $direccionModificar=campoUsuario($conexion,"direccion",$_SESSION['usuarioMo']);
                             $usuAModificarDireccion=mysqli_fetch_assoc($direccionModificar);
                             ?>
                             <small>Su dirección es: <b><?php echo $usuAModificarDireccion['dirección']; ?></b></small>
