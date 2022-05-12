@@ -82,6 +82,7 @@ $conexion=conectar(false);
                             <input type="submit" class="btn boton col-12 mt-2" value="Ver" name="verArticulo">
                         </form>
                     </div>  
+                            </div>
                                         <?php
                                         //articulos no premium para usuarios sin suscripción
                         
@@ -123,7 +124,7 @@ $conexion=conectar(false);
                                         //administrador articulos marcados como eliminados
                         }elseif ($_SESSION['Rol']=="adminnistrador" && $articulo['estado']=="eliminado") {
                             ?>
-                            <div class="card tarjetas col-lg-11 col-xl-5  p-3 m-5 text-center" style="background-color: rgba(0, 0, 0, .5);">
+                            <div class="card tarjetas bg-dark col-lg-11 col-xl-5  p-3 m-5 text-center" style="background-color: rgba(0, 0, 0, .5);">
                             
                                 <img class="card-img-top" src="<?php echo $articulo['imagenArticulo']; ?>" alt="Card image cap">
                                 <div class="card-body">
@@ -138,13 +139,15 @@ $conexion=conectar(false);
                             
                                 
                                         <p class="botonElim"> Marcado como <?php echo $articulo['estado']; ?></p>
+                                
                                 </div>
+                                
                             </div>
                                         <?php
                                         //administrador articulos no marcados como eliminados
                         }elseif ($_SESSION['Rol']=="adminnistrador" && $articulo['estado']!="eliminado") {
                 ?>
-                <div class="card tarjetas col-lg-11 col-xl-5  p-3 m-5 text-center" style="background-color: rgba(0, 0, 0, .5);">
+                <div class="card tarjetas bg-dark col-lg-11 col-xl-5  p-3 m-5 text-center" style="background-color: rgba(0, 0, 0, .5);">
                 
                     <img class="card-img-top" src="<?php echo $articulo['imagenArticulo']; ?>" alt="Card image cap">
                     <div class="card-body">
@@ -156,6 +159,9 @@ $conexion=conectar(false);
                                     <input type="hidden" name="idArticulo" value="<?php echo $articulo['idArticulo']; ?>">
                                     <input type="submit" class="btn boton col-12 mt-2" value="Ver" name="verArticulo">
                             </form>
+                
+                    
+                    
                     </div>
                     
                 </div>
