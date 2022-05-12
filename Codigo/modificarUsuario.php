@@ -421,7 +421,7 @@ $conexion=conectar(false);
                             $direccionModificar=campoUsuario($conexion,"direccion",$_SESSION['usuarioMo']);
                             $usuAModificarDireccion=mysqli_fetch_assoc($direccionModificar);
                             ?>
-                            <small>Su dirección es: <b><?php echo $usuAModificarDireccion['dirección']; ?></b></small>
+                            <small>Su dirección es: <b><?php echo $usuAModificarDireccion['direccion']; ?></b></small>
                             <?php
                         }else{
                             ?>
