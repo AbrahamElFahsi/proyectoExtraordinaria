@@ -26,7 +26,12 @@ $conexion=conectar(false);
 
 </head>
 <body>
-    <?php include 'partes/nav.php'; ?>
+    <?php include 'partes/nav.php';
+     $fecha = date("Y-m-d H:i:00",time());
+     $baneo = $_SESSION['banner'];
+if ($fecha<$baneo || $_SESSION['perBanned']==1) {
+    header('Location: principal.php');
+} ?>
 <div class="container forms p-3">
       <?php
     
