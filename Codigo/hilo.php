@@ -113,8 +113,7 @@ $conexion=conectar(false);
                                         <div class="col-12">
                                         <p class="elipsis"><?php echo $articulo['cuerpo']; ?></p>
                                         </div>
-                                        <form action="articulo.php" method="post">
-                                                <input type="hidden" name="idArticulo" value="<?php echo $articulo['idArticulo']; ?>">
+                                        <form action="hilo.php" method="post">
                                                 <input type="submit" class="btn boton col-12 mt-2" value="Ver" name="verArticulo">
                                         </form>
                                 </div>
