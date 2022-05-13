@@ -91,7 +91,7 @@ descripcion.addEventListener('keypress',validarDescripcion);
   
   tema.addEventListener('keyup',validartema);
   //Validar Envio
-  document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('crearHiloForm').addEventListener('submit', envioTema); 
   });
   

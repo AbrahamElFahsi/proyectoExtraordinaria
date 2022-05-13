@@ -56,7 +56,7 @@ function validarCabecera(){
 }
 cabecera.addEventListener('keyup',validarCabecera);
 //Validar Envio cabecera
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('modificarCabeceraArticulo').addEventListener('submit', modificarCabeceraArticulo); 
   });
   
@@ -79,7 +79,7 @@ function validarHilo(){
 }
 Hilo.addEventListener('change',validarHilo);
 //Validar Envio Hilo
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('modificarHilodeArticulo').addEventListener('submit', modificarHiloArticulo); 
   });
   
@@ -133,7 +133,7 @@ function validarCuerpo(){
 
 cuerpo.addEventListener('keypress',validarCuerpo);
 //Validar Envio Cuerpo
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('modiCuerArticulo').addEventListener('submit', modificarCuerpoArticulo); 
   });
   
@@ -188,7 +188,7 @@ function validarPie(){
 pie.addEventListener('keyup',validarPie);
 pie.addEventListener('keypress',validarPie);
 //Validar Envio pie
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('modiPieForm').addEventListener('submit', envioPieArticulo); 
   });
   

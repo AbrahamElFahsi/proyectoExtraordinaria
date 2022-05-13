@@ -316,7 +316,7 @@ function validarNombre(){
 nombre.addEventListener('keyup',validarNombre);
 
 //control del envio del formulario alta
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("alta").addEventListener('submit', validarFormulario, false); 
   });
   function validarFormulario(evento) {

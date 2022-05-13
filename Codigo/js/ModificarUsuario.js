@@ -38,7 +38,7 @@ function validarUsuario(){
     }
 }
 usuarioM.addEventListener('keyup',validarUsuario);
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('modiUsuario').addEventListener('submit', validarFormularioUsu); 
   });
   
@@ -113,7 +113,7 @@ function validarPass2(){
     }
 }
 pass2.addEventListener('keyup',validarPass2);
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("modiContra").addEventListener('submit', validarContrase); 
   });
   
@@ -152,7 +152,7 @@ function validarEmail(){
 }
 
 email.addEventListener('keyup',validarEmail);
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("validacionEmail").addEventListener('submit', valiEmail); 
   });
   
@@ -194,7 +194,7 @@ function validarTelefono(){
 }
 
 telefono.addEventListener('keyup',validarTelefono);
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('telefonoValidation').addEventListener('submit', valiTelefono); 
   });
   
@@ -236,7 +236,7 @@ function validarNombre(){
 
 nombre.addEventListener('keyup',validarNombre);
 //controlar envio
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('nombreForm').addEventListener('submit', envioNombre); 
   });
   
@@ -275,7 +275,7 @@ function validarApellido1(){
 
 apellidos.addEventListener('keyup',validarApellido1);
 //controlar envio
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('ApellidosForm').addEventListener('submit', envioApellidos); 
   });
   
@@ -329,7 +329,7 @@ function validarDNI(){
 }
 DNI.addEventListener('keyup',validarDNI);
 //controlar envio
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('dniForm').addEventListener('submit', enviodni); 
   });
   
@@ -373,7 +373,7 @@ comunidad.addEventListener('change',validarCPC);
 provincia.addEventListener('change',validarCPC);
 cp.addEventListener('change',validarCPC);
 //controlar envio
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('cpcForm').addEventListener('submit', envioCPC); 
   });
   
@@ -411,7 +411,7 @@ function validarDireccion(){
 
 direccion.addEventListener('keyup',validarDireccion);
 //controlar envio
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('dirForm').addEventListener('submit', envioDireccion); 
   });
   

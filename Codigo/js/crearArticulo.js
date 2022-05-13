@@ -139,7 +139,7 @@ function validarPie(){
 pie.addEventListener('keyup',validarPie);
 pie.addEventListener('keypress',validarPie);
 //Validar Envio
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('crearArticuloForm').addEventListener('submit', envioArticulo); 
   });
   

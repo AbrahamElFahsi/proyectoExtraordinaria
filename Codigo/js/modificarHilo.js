@@ -74,7 +74,7 @@ function validarDescripcion(){
 descripcion.addEventListener('keyup',validarDescripcion);
 descripcion.addEventListener('keypress',validarDescripcion);
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('modDescrip').addEventListener('submit', envioDes); 
   });
   
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   //Envio del tema
   let tema=document.getElementById('tema');
-  document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('temaForm').addEventListener('submit', envioTema); 
   });
   

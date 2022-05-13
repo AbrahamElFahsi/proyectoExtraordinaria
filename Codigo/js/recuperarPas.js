@@ -30,7 +30,7 @@ function validarEmail(){
 }
 
 email.addEventListener('keyup',validarEmail);
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("validacionEmail").addEventListener('submit', valiEmail); 
   });
 //validación del dni
@@ -81,7 +81,7 @@ function validarDNI(){
 }
 DNI.addEventListener('keyup',validarDNI);
 //controlar envio
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('dniUsuarioForm').addEventListener('submit', enviodniEmail); 
   });
   
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 usuarioM.addEventListener('keyup',validarUsuario);
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("dniUsuarioForm").addEventListener('submit', validarFormularioUsu); 
   });
   
@@ -170,7 +170,7 @@ function validarPass2(){
     }
 }
 pass2.addEventListener('keyup',validarPass2);
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("modiContra").addEventListener('submit', validarContrase); 
   });
   
