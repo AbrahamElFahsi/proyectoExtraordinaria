@@ -177,30 +177,15 @@ $conexion=conectar(false);
    
     if (isset($_POST['comentarNivelOne'])) {
         $fechaactual = date("Y-m-d H:i:s");
-        echo $_POST['comentario']." -".$_SESSION['idUsuario']." -".$_POST['idComen']." -".$fechaactual." -".$_SESSION['idVerArticulo'];
         //responderAComentario($conexion,$contenido,$idUsuario,$idRespuesta,$fecha,$idArticulo)
         $respuesComentario=responderAComentario($conexion,$_POST['comentario'],$_SESSION['idUsuario'],"0",$fechaactual,$_SESSION['idVerArticulo']);
         if ($respuesComentario) {
             header('Location: articulo.php');
-            echo "<p>Se comento correctamente</p>";
         }else{
             echo "<p>No se consiguio comentar intentelo de nuevo</p>";
         }
     }
-   
-    if (isset($_POST['responderComentario'])) {
-        $fecha_actual = date("Y-m-d H:i:s");
-        echo $_POST['contenido']." -".$_SESSION['idUsuario']." -".$_POST['idComen']." -".$fecha_actual." -".$_SESSION['idVerArticulo'];
-        //responderAComentario($conexion,$contenido,$idUsuario,$idRespuesta,$fecha,$idArticulo)
-        $respuesComentario=responderAComentario($conexion,$_POST['contenido'],$_SESSION['idUsuario'],$_POST['idComen'],$fecha_actual,$_SESSION['idVerArticulo']);
-        if ($respuesComentario) {
-            echo "<p>Se comento correctamente</p>";
-            header('Location: articulo.php');
-        }else{
-            echo "<p>No se consiguio comentar intentelo de nuevo</p>";
-        }
-    }
-    
+  
             ?>
 </div>
 <?php include 'partes/footer.php'; ?>

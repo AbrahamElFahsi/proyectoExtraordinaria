@@ -41,7 +41,15 @@
                 </section>
   <?php
                 }else{
-                    
+                    ?>
+                <section class="col-md-3 p-3">
+                    <h3>Página principal</h3>
+                    <ul class="list-group">
+                        <li><a href="principal.php" class="enlaceMapa">Principal</a></li>
+                        
+                    </ul>
+                </section>
+  <?php
                 }
             }
         ?>
