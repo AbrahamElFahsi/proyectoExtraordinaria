@@ -333,9 +333,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }else{
         evento.preventDefault();
         document.getElementById("avisoForm").innerHTML="El formulario debe ser completamente valido para enviarlo";
-        comidas.forEach(function(inputValidadoIng, index) {
-            console.log(`${index} : ${comida}`);
-        }); 
+
         
     }
    

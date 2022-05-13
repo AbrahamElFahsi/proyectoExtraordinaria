@@ -1,8 +1,11 @@
+const expr={telefono:/[0-9]{9}/, usuario:/[a-zA-ZáéíóúÁÉÍÓÚ]{6,45}/, dni:/^[0-9]{8}[a-zA-Z]$/, email:/^[A-Za-z]{1,15}[@]{1}[A-Za-z]{1,15}[.]{1}[A-Za-z]{1,5}$/, pass:/(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,40}/, nombre:/^[A-Za-záéíóúÁÉÍÓÚ]+[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ]+[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ]{2,}?$/, direccion:/^([A-Za-záéíóúÁÉÍÓÚ/,0-9]{1,}[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ/,0-9]*[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ/,0-9]*[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ/,0-9]*[ ]{0,1}){0,50}?$/}
+
+
 //Modificar usuario
 //Validacion del usuario 
 let usuarioM=document.getElementById('usuarioM');
 let avisoUsuaM=document.getElementById('avisoUsuario');
-const inputValidado={Usuario:false, Pass:false}
+let inputValidado={Usuario:false, Pass:false}
 function validarUsuario(){
     if(usuarioM.value!="" && usuarioM.value!=undefined){
         //Comprobamos que sigue la expresion regular
@@ -31,22 +34,23 @@ function validarUsuario(){
         usuarioM.classList.add('is-invalid');
         inputValidado.Usuario=false;
         //inputValidadoIng[0]=false;
-        
+        avisoUsuaM.innerHTML=" ";
     }
 }
 usuarioM.addEventListener('keyup',validarUsuario);
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("modiUsuario").addEventListener('submit', validarFormularioUsu); 
+    document.getElementById('modiUsuario').addEventListener('submit', validarFormularioUsu); 
   });
   
   function validarFormularioUsu(evento) {
     
     if(!inputValidado.Usuario){
+        avisoUsuaM.innerHTML="Debe rellenar el campo usuario";
         evento.preventDefault();
     }
     
   }
-  const expr={telefono:/[0-9]{9}/, usuario:/[a-zA-ZáéíóúÁÉÍÓÚ]{6,45}/, dni:/^[0-9]{8}[a-zA-Z]$/, email:/^[A-Za-z]{1,15}[@]{1}[A-Za-z]{1,15}[.]{1}[A-Za-z]{1,5}$/, pass:/(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,40}/, nombre:/^[A-Za-záéíóúÁÉÍÓÚ]+[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ]+[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ]{2,}?$/, direccion:/^([A-Za-záéíóúÁÉÍÓÚ/,0-9]{1,}[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ/,0-9]*[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ/,0-9]*[ ]{0,1}[A-Za-záéíóúÁÉÍÓÚ/,0-9]*[ ]{0,1}){0,50}?$/}
+  
   //validar contraseña
   let pass=document.getElementById('password');
   let avisoPass=document.getElementById('avisoPass');
