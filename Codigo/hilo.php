@@ -22,9 +22,6 @@ $conexion=conectar(false);
 <! –– generamos un contenedor que va a estar compuesto por dos columnas–>
 <div class="container-fluid">
     <?php
-    if (empty($_SESSION['usuario'])) {
-        header('Location: principal.php');
-    }
                 $fecha = date("Y-m-d H:i:00",time());
                 $baneo = $_SESSION['banner'];
         if ($fecha<$baneo || $_SESSION['perBanned']==1) {
