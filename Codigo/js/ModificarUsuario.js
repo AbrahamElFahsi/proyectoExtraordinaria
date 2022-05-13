@@ -9,7 +9,7 @@ let inputValidado={Usuario:false, Pass:false}
 function validarUsuario(){
     if(usuarioM.value!="" && usuarioM.value!=undefined){
         //Comprobamos que sigue la expresion regular
-        if(/[a-zA-ZáéíóúÁÉÍÓÚ]{6,45}/.test(usuarioM.value)){
+        if(expr.usuario.test(usuarioM.value)){
             //cambiamos el color del borde
             usuarioM.classList.remove('is-invalid');
             usuarioM.classList.add('is-valid');
@@ -122,8 +122,6 @@ document.addEventListener('DOMContentLoaded', function() {
         evento.preventDefault();
         avisoPass2.innerHTML="No se relleno correctamente";
     }
-    const myTimeout = setTimeout($("#tempo").css("display", "inline"), 100);
-    clearTimeout(myTimeout);
 }
   //Email
 let email=document.getElementById('email');
