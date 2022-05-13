@@ -155,7 +155,7 @@ $conexion=conectar(false);
                             <?php
                         }else{
                             ?>
-                            <small>Su email es: <b><?php echo $_SESSION['email']; ?></b></small>
+                            <small>Su email es: <b><?php echo $_SESSION['gmail']; ?></b></small>
                             <?php
                         }
                     ?>
@@ -490,6 +490,31 @@ $conexion=conectar(false);
                 </div>
             </form>
             <?php
+            if (isset($_POST['modificarR'])) {
+                        if ($_SESSION['accion']=="administrador") {
+                            $resultModRol=modificarUsuario($conexion,$_SESSION['usuarioMo'],"Rol",$_POST['rol']);
+                        }
+                       
+                       
+                        if ($resultModRol) {   
+                            ?>
+                            <div class="jumbotron-fluid">
+                            <div class="container">
+                                <h5 class="display-5">Se modifico correctamente</h5>
+                            </div>
+                            </div>
+                            <?php
+                                }else {
+                            ?>
+                            <div class=" jumbotron-fluid">
+                            <div class="container">
+                                <h5 class="display-5">No se consiguio, intentelo de nuevo</h5>
+                            </div>
+                            </div>
+                        <?php
+                        }
+                    }
+         
                 }
                 ?> 
                 <form action="modificarUsuario.php" method="post" class="row" id="cpcForm">
