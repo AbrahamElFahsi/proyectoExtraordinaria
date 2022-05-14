@@ -64,7 +64,7 @@ $conexion=conectar(false);
                                         //Si la imagen es correcta en tamaño y tipo
                                         //Se intenta subir al servidor
                                         $prefijo=strval($_SESSION['hiloAModificar']);
-                                        if (move_uploaded_file($temp, "images/".$prefijo."".$archivo)) {
+                                        if (move_uploaded_file($temp, "images/".$archivo)) {
                                             //Cambiamos los permisos del archivo a 777 para poder modificarlo posteriormente
                                             chmod('images/'.$archivo, 0777);
                                             //Mostramos el mensaje de que se ha subido co éxito
@@ -76,7 +76,7 @@ $conexion=conectar(false);
                                             echo '<div><b><p>Ocurrió algún error al subir el fichero. No pudo guardarse.</p></b></div>';
                                         }
                                         
-                                        $dir=strval("images/".$prefijo."".$archivo);
+                                        $dir=strval("images/".$archivo);
                                         echo $dir;
                                         $resulModificarImagen=modificarHilo($conexion,$_SESSION['hiloAModificar'],"imagen",$dir);
                                             if ($resulModificarImagen) {
